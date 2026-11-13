@@ -21,7 +21,18 @@
    "konu": "Anestezi makinesi ve sabah kontrolü",
    "yogun_bakim": "Kan gazı ve asit-baz",
    "algoloji": "Ağrı yolları ve nosisepsiyon"
+  },
+  {
+   "sayi": 3,
+   "tarih": "2026-11-13",
+   "tarih_yazi": "13 Kasım 2026",
+   "html": "sayilar/sayi-03.html",
+   "pdf": "pdf/Uyku-Denizi-Postasi-Sayi-03.pdf",
+   "manset": "Kalp Cerrahisinde “Hastaya Özel Tansiyon” Hedefi Erken Durduruldu: OPTIPAM",
+   "konu": "Standart monitörizasyon",
+   "yogun_bakim": "Mekanik ventilasyonun temelleri",
+   "algoloji": "Ağrı değerlendirmesi ve skalalar"
   }
  ],
- "guncelleme": "2026-11-13T10:51:15Z"
+ "guncelleme": "2026-11-13T11:00:27Z"
 }

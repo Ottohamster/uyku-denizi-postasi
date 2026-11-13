@@ -1,0 +1,1504 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Uyku Denizi Postası</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap">
+<style>
+/* Layout: aged sea-port broadsheet — masthead, lead story + wanted poster, pinned clippings, news column, quiz box. Single deliberate "old paper" look in both host themes. */
+:root{
+  --paper:#e9dcbf;
+  --paper-2:#f3e8cf;
+  --paper-dark:#d6c39c;
+  --ink:#2a2018;
+  --ink-soft:#5a4a38;
+  --sea:#1f4e5f;
+  --wax:#9b2d20;
+  --tape:rgba(214,196,140,.75);
+  --f-mast:"Pirata One","UnifrakturMaguntia",Georgia,serif;
+  --f-head:"Old Standard TT",Georgia,"Times New Roman",serif;
+  --f-body:"Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --f-type:"Special Elite","Courier New",monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#3b3026;
+  background-image:radial-gradient(ellipse at 50% 0%,#55463a 0%,#2e251d 70%);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:16px;
+  line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:28px 48px;
+}
+a{color:var(--sea);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px dashed var(--wax);outline-offset:3px}
+
+.sheet{
+  max-width:1120px;margin:0 auto;
+  background-color:var(--paper);
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .27  0 0 0 0 .16  0 0 0 .16 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    radial-gradient(ellipse at 15% 10%,rgba(255,250,235,.55),transparent 55%),
+    radial-gradient(ellipse at 90% 95%,rgba(150,110,60,.28),transparent 50%),
+    radial-gradient(ellipse at 5% 90%,rgba(150,110,60,.2),transparent 40%);
+  box-shadow:0 30px 60px rgba(0,0,0,.45), inset 0 0 90px rgba(120,85,40,.35);
+  padding:clamp(18px,4vw,44px);
+  position:relative;
+}
+
+/* ---------- Masthead ---------- */
+.mast{text-align:center;display:grid;gap:6px}
+.mast-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--f-type);font-size:.78rem;color:var(--ink-soft);letter-spacing:.04em;flex-wrap:wrap}
+.mast-row{display:flex;align-items:center;justify-content:center;gap:clamp(8px,2vw,22px)}
+.gull{width:clamp(54px,9vw,96px);height:auto;flex:none}
+.gull.flip{transform:scaleX(-1)}
+h1.name{font-family:var(--f-mast);font-weight:400;font-size:clamp(2.6rem,9vw,6.2rem);line-height:.95;margin:0;letter-spacing:.01em;color:var(--ink);text-shadow:1px 1px 0 rgba(255,245,220,.6)}
+.motto{font-family:var(--f-head);font-style:italic;font-size:clamp(.9rem,2vw,1.05rem);color:var(--ink-soft);margin:0}
+.ribbon{
+  margin-top:10px;border-top:3px double var(--ink);border-bottom:3px double var(--ink);
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  padding:6px 4px;font-family:var(--f-head);font-size:.85rem;text-transform:uppercase;letter-spacing:.12em
+}
+
+/* ---------- Front grid ---------- */
+.front{display:grid;grid-template-columns:2fr 1fr;gap:clamp(18px,3vw,34px);margin-top:26px}
+.front > *{min-width:0}
+.kicker{font-family:var(--f-type);font-size:.8rem;letter-spacing:.08em;color:var(--wax);text-transform:uppercase}
+.lead h2{font-family:var(--f-head);font-weight:700;font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:1.05;margin:.2em 0 .25em;text-wrap:balance}
+.lead .deck{font-family:var(--f-head);font-style:italic;font-size:1.12rem;color:var(--ink-soft);margin:0 0 14px;text-wrap:balance}
+.lead .cols{column-count:2;column-gap:26px;column-rule:1px solid rgba(42,32,24,.35)}
+.lead .cols p{margin:0 0 .8em;hyphens:auto;text-align:justify}
+.lead .cols p:first-child::first-letter{font-family:var(--f-mast);float:left;font-size:4.1em;line-height:.8;padding:4px 8px 0 0;color:var(--wax)}
+.stat{
+  break-inside:avoid;margin:4px 0 14px;padding:10px 12px;border:2px solid var(--ink);
+  background:var(--paper-2);text-align:center;font-family:var(--f-head)
+}
+.stat b{display:block;font-size:2.2rem;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em}
+.src{font-family:var(--f-type);font-size:.78rem;color:var(--ink-soft)}
+.src a{color:var(--sea)}
+
+/* ---------- Wanted poster ---------- */
+.wanted{
+  background:var(--paper-2);
+  border:1px solid rgba(42,32,24,.4);
+  padding:18px 18px 16px;text-align:center;position:relative;
+  transform:rotate(1.4deg);
+  box-shadow:4px 6px 14px rgba(60,40,20,.35);
+  align-self:start;
+}
+.wanted::before{content:"";position:absolute;top:-10px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#d0503f,var(--wax) 60%,#5c1a12);box-shadow:1px 2px 3px rgba(0,0,0,.4)}
+.wanted .w-title{font-family:var(--f-mast);font-size:clamp(2.8rem,6vw,3.6rem);line-height:1;margin:2px 0 4px;letter-spacing:.06em}
+.wanted .w-sub{font-family:var(--f-head);text-transform:uppercase;letter-spacing:.25em;font-size:.72rem;margin:0}
+.portrait{margin:12px auto;border:3px solid var(--ink);background:#d8c8a2;aspect-ratio:4/3.2;max-width:100%;display:grid;place-items:center;filter:sepia(.4)}
+.portrait svg{width:82%;height:auto}
+.wanted .w-name{font-family:var(--f-head);font-weight:700;font-size:1.35rem;line-height:1.15;margin:4px 0}
+.wanted .w-crime{font-size:.9rem;margin:6px 0 10px;text-align:left}
+.bounty{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:6px 0;font-family:var(--f-head);font-size:.82rem;text-transform:uppercase;letter-spacing:.1em}
+.bounty b{display:block;font-family:var(--f-mast);font-size:1.5rem;letter-spacing:.02em;text-transform:none;font-weight:400}
+.wanted .w-foot{font-family:var(--f-type);font-size:.72rem;margin-top:8px;color:var(--ink-soft)}
+
+/* ---------- Section heading ---------- */
+.sec-h{display:flex;align-items:center;gap:14px;margin:44px 0 18px}
+.sec-h h3{font-family:var(--f-head);font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:clamp(1rem,2.6vw,1.25rem);margin:0;white-space:nowrap}
+.sec-h::before,.sec-h::after{content:"";flex:1;height:0;border-top:3px double var(--ink)}
+
+/* ---------- Clippings ---------- */
+.clips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px}
+.clip{
+  background:var(--paper-2);padding:18px 16px 14px;position:relative;
+  box-shadow:2px 4px 10px rgba(60,40,20,.28);
+  clip-path:polygon(0 2%,6% 0,14% 1.5%,25% 0,38% 1%,52% 0,63% 1.6%,76% 0,88% 1.2%,100% 0,100% 98%,93% 100%,82% 98.6%,70% 100%,57% 98.4%,44% 100%,31% 98.5%,19% 100%,8% 98.6%,0 100%);
+}
+.clip:nth-child(3n+1){transform:rotate(-.8deg)}
+.clip:nth-child(3n+2){transform:rotate(.6deg)}
+.clip:nth-child(3n){transform:rotate(-.3deg)}
+.clip .journal{font-family:var(--f-type);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--wax);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;border-bottom:1px solid rgba(42,32,24,.35);padding-bottom:6px;margin-bottom:8px}
+.clip h4{font-family:var(--f-head);font-weight:700;font-size:1.13rem;line-height:1.2;margin:0 0 8px;text-wrap:balance}
+.clip p{margin:0 0 10px;font-size:.92rem}
+.clip .why{font-style:italic;color:var(--ink-soft);font-size:.88rem}
+.tag{display:inline-block;font-family:var(--f-type);font-size:.68rem;border:1px solid var(--ink);padding:0 6px;margin-right:4px;text-transform:uppercase;letter-spacing:.05em}
+
+/* ---------- News ---------- */
+.news{display:grid;grid-template-columns:2fr 1fr;gap:clamp(18px,3vw,34px)}
+.news > *{min-width:0}
+.wire{display:grid;gap:0}
+.wire article{padding:14px 0;border-bottom:1px solid rgba(42,32,24,.35)}
+.wire article:first-child{padding-top:0}
+.wire .dateline{font-family:var(--f-type);font-size:.76rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em}
+.wire h4{font-family:var(--f-head);font-weight:700;font-size:1.3rem;line-height:1.2;margin:4px 0 6px;text-wrap:balance}
+.wire p{margin:0 0 6px}
+.yerel{
+  background:var(--sea);color:#efe4c8;padding:18px 18px 16px;align-self:start;
+  box-shadow:3px 5px 12px rgba(30,30,40,.35);
+}
+.yerel .kicker{color:#f0c27a}
+.yerel h4{font-family:var(--f-head);font-size:1.25rem;line-height:1.2;margin:6px 0 8px}
+.yerel p{font-size:.93rem;margin:0 0 10px}
+.yerel a{color:#f6dca6}
+.yerel .src{color:#cfc2a3}
+
+/* ---------- Bottom row ---------- */
+.bottom{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,34px)}
+.bottom > *{min-width:0}
+.box{border:2px solid var(--ink);padding:18px;background:rgba(243,232,207,.6);position:relative}
+.box h4{font-family:var(--f-head);font-size:1.45rem;margin:4px 0 8px;line-height:1.15}
+.box ul{margin:6px 0 10px;padding-left:1.1em}
+.box li{margin-bottom:4px}
+.box .tape{position:absolute;top:-12px;width:90px;height:24px;background:var(--tape);left:24px;transform:rotate(-4deg);box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.quiz ol{padding-left:1.4em;margin:8px 0 12px}
+.quiz details{border-top:1px dashed var(--ink);padding-top:10px}
+.quiz summary{cursor:pointer;font-family:var(--f-type);font-size:.9rem;color:var(--wax);list-style:none}
+.quiz summary::-webkit-details-marker{display:none}
+.quiz summary::before{content:"✒ "}
+.quiz details[open] summary::before{content:"✓ "}
+.quiz .ans{margin-top:8px}
+
+/* ---------- Footer ---------- */
+.foot{margin-top:40px;border-top:3px double var(--ink);padding-top:12px;display:grid;gap:8px;font-size:.84rem;color:var(--ink-soft)}
+.foot p{margin:0}
+.foot .fine{font-family:var(--f-type);font-size:.74rem}
+
+/* ---------- Topic of the week ---------- */
+.topic{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,34px)}
+.topic > *{min-width:0}
+.topic h2{font-family:var(--f-head);font-weight:700;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.08;margin:.15em 0 .3em;text-wrap:balance}
+.topic .deck{font-family:var(--f-head);font-style:italic;color:var(--ink-soft);margin:0 0 14px}
+.topic .body p{margin:0 0 .8em;text-align:justify;hyphens:auto}
+.topic .body h5{font-family:var(--f-head);font-size:1.05rem;text-transform:uppercase;letter-spacing:.1em;margin:18px 0 6px;border-bottom:1px solid rgba(42,32,24,.4);padding-bottom:3px}
+.cmp{width:100%;border-collapse:collapse;font-size:.9rem;margin:6px 0 12px}
+.cmp th,.cmp td{border:1px solid rgba(42,32,24,.5);padding:6px 8px;text-align:left;vertical-align:top}
+.cmp th{font-family:var(--f-head);background:rgba(214,195,156,.55);font-weight:700}
+.tbl-wrap{overflow-x:auto}
+.chart{background:var(--paper-2);border:2px solid var(--ink);padding:12px 12px 8px}
+.chart svg{width:100%;height:auto;display:block}
+.chart .cap{font-family:var(--f-type);font-size:.74rem;color:var(--ink-soft);margin:6px 0 0}
+.pearls{margin-top:18px;background:var(--sea);color:#efe4c8;padding:16px 18px}
+.pearls .kicker{color:#f0c27a}
+.pearls ul{margin:8px 0 0;padding-left:1.1em}
+.pearls li{margin-bottom:6px;font-size:.94rem}
+.pearls b{color:#f6dca6}
+.cyp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0 12px}
+.cyp div{border:1px dashed var(--ink);padding:8px 10px;font-size:.88rem;background:rgba(243,232,207,.6)}
+.cyp b{font-family:var(--f-head);display:block;margin-bottom:2px}
+
+/* ---------- Crossword ---------- */
+.puzzle{display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,30px);align-items:start}
+.puzzle > *{min-width:0}
+.cw-wrap{overflow-x:auto;padding:6px 4px 10px;position:relative}
+.cw{display:grid;grid-template-columns:repeat(13,var(--cell));grid-auto-rows:var(--cell);gap:2px;--cell:clamp(22px,4.6vw,34px);width:max-content;margin:0 auto}
+.cw .blk{background:transparent}
+.cw .cell{position:relative;background:var(--paper-2);border:1.5px solid var(--ink);box-shadow:1px 1px 0 rgba(42,32,24,.35)}
+.cw .cell input{width:100%;height:100%;border:0;background:transparent;text-align:center;font-family:var(--f-head);font-weight:700;font-size:calc(var(--cell) * .52);color:var(--ink);padding:0;text-transform:none;caret-color:var(--wax)}
+.cw .cell input:focus{outline:none;background:rgba(240,194,122,.45)}
+.cw .cell.hl{background:#efdcb0}
+.cw .cell .n{position:absolute;top:0;left:2px;font-size:calc(var(--cell) * .27);font-family:var(--f-type);line-height:1.1;pointer-events:none;color:var(--ink-soft)}
+.cw .cell.ok{background:#cfe0c8}
+.cw .cell.bad{background:#efc3b5}
+.cw-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.btn{font-family:var(--f-type);font-size:.85rem;border:2px solid var(--ink);background:var(--paper-2);color:var(--ink);padding:7px 14px;cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
+.btn:hover{background:#efdcb0}
+.btn:active{transform:translate(2px,2px);box-shadow:none}
+.cw-status{font-family:var(--f-type);font-size:.85rem;text-align:center;margin-top:8px;min-height:1.3em;color:var(--ink-soft)}
+.clues h5{font-family:var(--f-head);text-transform:uppercase;letter-spacing:.12em;font-size:1rem;margin:0 0 6px;border-bottom:2px solid var(--ink);padding-bottom:3px}
+.clues ol{list-style:none;padding:0;margin:0 0 16px;display:grid;gap:6px}
+.clues li{font-size:.92rem;cursor:pointer;padding:2px 4px}
+.clues li b{font-family:var(--f-head);margin-right:6px}
+.clues li.on{background:rgba(240,194,122,.45)}
+.clues li.done{text-decoration:line-through;text-decoration-color:rgba(42,32,24,.5);color:var(--ink-soft)}
+.stamp{
+  position:absolute;left:50%;top:42%;transform:translate(-50%,-50%) rotate(-14deg);
+  font-family:var(--f-mast);font-size:clamp(2rem,6vw,3.4rem);color:var(--wax);
+  border:5px double var(--wax);padding:4px 18px;background:rgba(243,232,207,.8);pointer-events:none;white-space:nowrap
+}
+
+/* ---------- Calendar ---------- */
+.cal{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.cal li{border:1px solid rgba(42,32,24,.45);padding:8px 10px;background:rgba(243,232,207,.55);font-size:.88rem;line-height:1.3}
+.cal li .wk{display:block;font-family:var(--f-type);font-size:.7rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em}
+.cal li.now{background:var(--ink);color:var(--paper-2);border-color:var(--ink)}
+.cal li.now .wk{color:#f0c27a}
+.cal-note{font-size:.85rem;color:var(--ink-soft);margin:10px 0 0}
+
+/* ---------- Motion (resting state is fully visible) ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .gull{animation:bob 4.5s ease-in-out infinite}
+  .gull.flip{animation:bobf 5.2s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-3deg)}}
+  @keyframes bobf{0%,100%{transform:scaleX(-1) translateY(0) rotate(0)}50%{transform:scaleX(-1) translateY(-5px) rotate(-3deg)}}
+  .clip{animation:settle .7s cubic-bezier(.2,.9,.3,1.2) both}
+  .clip:nth-child(2){animation-delay:.08s}.clip:nth-child(3){animation-delay:.16s}
+  .clip:nth-child(4){animation-delay:.24s}.clip:nth-child(5){animation-delay:.32s}.clip:nth-child(6){animation-delay:.4s}
+  @keyframes settle{from{translate:0 -14px;scale:1.03}to{translate:0 0;scale:1}}
+  .stamp{animation:thud .45s cubic-bezier(.3,1.6,.5,1) both}
+  @keyframes thud{from{scale:2.2;opacity:.2}to{scale:1;opacity:1}}
+  .cw .cell.ok{animation:pop .35s ease}
+  @keyframes pop{50%{scale:1.12}}
+}
+
+/* ---------- Supplement pages (Yoğun Bakım / Algoloji) ---------- */
+.ek{margin-top:52px;border:3px double var(--ink);padding:clamp(14px,3vw,28px);position:relative;background:rgba(243,232,207,.45)}
+.ek::before{content:"";position:absolute;inset:0 0 auto 0;height:10px;background:var(--ek-band)}
+.ek.yb{--ek-band:repeating-linear-gradient(90deg,var(--sea) 0 18px,transparent 18px 26px);--ek-acc:var(--sea)}
+.ek.ag{--ek-band:repeating-linear-gradient(90deg,var(--wax) 0 18px,transparent 18px 26px);--ek-acc:var(--wax)}
+.ek-mast{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:3px double var(--ink);padding:10px 0 8px;margin-bottom:18px}
+.ek-mast .ek-tag{font-family:var(--f-type);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ek-acc)}
+.ek-mast h2{font-family:var(--f-mast);font-weight:400;font-size:clamp(2.1rem,6vw,3.6rem);line-height:.95;margin:2px 0 0;color:var(--ink)}
+.ek-mast .ek-sub{font-family:var(--f-head);font-style:italic;color:var(--ink-soft);margin:0;max-width:34ch;text-align:right}
+.ek-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,34px)}
+.ek-grid > *{min-width:0}
+.ek h3.t{font-family:var(--f-head);font-weight:700;font-size:clamp(1.5rem,3.6vw,2.2rem);line-height:1.1;margin:.15em 0 .3em;text-wrap:balance}
+.ek .body p{margin:0 0 .8em;text-align:justify;hyphens:auto}
+.ek .body h5{font-family:var(--f-head);font-size:1.02rem;text-transform:uppercase;letter-spacing:.1em;margin:16px 0 6px;border-bottom:1px solid rgba(42,32,24,.4);padding-bottom:3px}
+.ek .kicker{color:var(--ek-acc)}
+.ek .pearls .kicker{color:#f0c27a}
+.formula{font-family:var(--f-type);background:var(--paper-2);border-left:4px solid var(--ek-acc);padding:8px 12px;margin:6px 0 12px;font-size:.88rem;line-height:1.7;overflow-x:auto}
+.mini-clips{display:grid;gap:12px;margin-top:20px}
+.mini-clips article{background:var(--paper-2);padding:12px 14px;box-shadow:2px 3px 8px rgba(60,40,20,.22);border-top:3px solid var(--ek-acc)}
+.mini-clips h4{font-family:var(--f-head);font-size:1.05rem;line-height:1.2;margin:4px 0 6px}
+.mini-clips p{margin:0 0 6px;font-size:.9rem}
+.mini-clips .journal{font-family:var(--f-type);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ek-acc)}
+.ek-cal{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.ek-cal li{font-size:.8rem;border:1px solid rgba(42,32,24,.45);padding:3px 8px;background:rgba(243,232,207,.7)}
+.ek-cal li.now{background:var(--ek-acc);color:#f3e8cf;border-color:var(--ek-acc)}
+
+/* ABG tool */
+.abg{background:var(--paper-2);border:2px solid var(--ink);padding:14px 14px 12px;box-shadow:4px 5px 0 rgba(31,78,95,.35)}
+.abg h4{font-family:var(--f-head);font-size:1.25rem;margin:2px 0 4px}
+.abg .hint{font-size:.84rem;color:var(--ink-soft);margin:0 0 10px}
+.abg-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 10px}
+.abg-form label{display:grid;gap:2px;font-family:var(--f-type);font-size:.74rem;color:var(--ink-soft)}
+.abg-form input{font-family:var(--f-head);font-size:1.05rem;padding:5px 7px;border:1.5px solid var(--ink);background:#fbf5e6;color:var(--ink);width:100%;min-width:0;font-variant-numeric:tabular-nums}
+.abg-form input:focus{outline:2px dashed var(--sea);outline-offset:1px}
+.abg-out{margin-top:12px;border-top:2px solid var(--ink);padding-top:10px;display:grid;gap:7px}
+.abg-out .dx{font-family:var(--f-head);font-weight:700;font-size:1.15rem;line-height:1.25}
+.abg-out .step{font-size:.88rem;display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:baseline}
+.abg-out .step > b{font-family:var(--f-type);font-size:.7rem;background:var(--sea);color:#f3e8cf;padding:1px 6px;letter-spacing:.05em;white-space:nowrap}
+.abg-out .warn{font-size:.82rem;color:var(--wax)}
+.abg-presets{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.abg-presets .btn{font-size:.74rem;padding:4px 9px}
+
+/* Pain pathway figure */
+.pathway{background:var(--paper-2);border:2px solid var(--ink);padding:12px}
+.pathway svg{width:100%;height:auto;display:block}
+.pathway .cap{font-family:var(--f-type);font-size:.74rem;color:var(--ink-soft);margin:6px 0 0}
+.fiber{width:100%;border-collapse:collapse;font-size:.88rem;margin:6px 0 12px}
+.fiber th,.fiber td{border:1px solid rgba(42,32,24,.5);padding:6px 8px;text-align:left;vertical-align:top}
+.fiber th{font-family:var(--f-head);background:rgba(155,45,32,.14)}
+
+@media (max-width:860px){
+  .ek-grid{grid-template-columns:1fr}
+  .ek-mast .ek-sub{text-align:left}
+}
+@media (max-width:460px){
+  .abg-form{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:no-preference){
+  .abg-out .dx{animation:ink .5s ease}
+  @keyframes ink{from{translate:0 4px}to{translate:0 0}}
+  .pathway .pulse{animation:travel 3.2s linear infinite}
+  @keyframes travel{from{stroke-dashoffset:0}to{stroke-dashoffset:-60}}
+}
+
+@media (max-width:860px){
+  .front,.news,.bottom,.topic,.puzzle{grid-template-columns:1fr}
+  .cal{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .clips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .wanted{max-width:380px;margin:8px auto 0;transform:rotate(1deg)}
+}
+@media (max-width:560px){
+  body{padding-block:12px 28px}
+  .lead .cols{column-count:1}
+  .clips{grid-template-columns:1fr}
+  .clip{transform:none!important}
+  .cyp{grid-template-columns:1fr}
+  .gull{display:none}
+  .gull.show-sm{display:block;width:56px}
+  .sec-h h3{white-space:normal;text-align:center}
+}
+@media (prefers-reduced-motion:no-preference){
+  .wanted{transition:transform .3s ease}
+  .wanted:hover{transform:rotate(0deg) scale(1.01)}
+}
+@media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{padding-block:0}.sheet{box-shadow:none}.clip,.wanted,.ek,.abg,.pathway,.chart,.box,.pearls{break-inside:avoid}}
+/* --- Sayı 3 ekleri --- */
+/* YB Hafta 2 · Ventilatör başlangıç hesaplayıcısı (yalnızca yeni sınıflar) */
+.abg.vent{margin-bottom:18px}
+.vent-form select{font-family:var(--f-head);font-size:1.05rem;padding:5px 7px;border:1.5px solid var(--ink);background:#fbf5e6;color:var(--ink);width:100%;min-width:0;border-radius:0}
+.vent-form select:focus{outline:2px dashed var(--sea);outline-offset:1px}
+.vent-presets{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.vent-presets .btn{font-size:.74rem;padding:4px 9px}
+
+/* Algoloji Hafta 2 · ağrı ölçekleri şeması (yalnız ag- önekli yeni sınıflar) */
+.ag-sema .ag-imlec,.ag-sema .ag-olcu{transform-box:view-box}
+.ag-sema .ag-olcu{transform-origin:30px 0}
+.ag-sema .ag-nabiz{transform-box:fill-box;transform-origin:center}
+.ag-sema .ag-don{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:no-preference){
+  .ag-sema .ag-imlec{animation:ag-kay 4.8s ease-in-out infinite alternate}
+  .ag-sema .ag-olcu{animation:ag-olc 4.8s ease-in-out infinite alternate}
+  .ag-sema .ag-nabiz{animation:ag-atim 2.4s ease-out infinite}
+  .ag-sema .ag-nabiz.ag-g2{animation-delay:.8s}
+  .ag-sema .ag-nabiz.ag-g3{animation-delay:1.6s}
+  .ag-sema .ag-don{animation:ag-cevir 16s linear infinite}
+  @keyframes ag-kay{from{transform:translateX(-84px)}to{transform:translateX(56px)}}
+  @keyframes ag-olc{from{transform:scaleX(.5)}to{transform:scaleX(1.3333)}}
+  @keyframes ag-atim{0%{transform:scale(1);opacity:.85}100%{transform:scale(1.7);opacity:0}}
+  @keyframes ag-cevir{to{transform:rotate(360deg)}}
+}
+@media print{
+  .ag-sema .ag-imlec,.ag-sema .ag-olcu,.ag-sema .ag-nabiz,.ag-sema .ag-don{animation:none!important;transform:none!important}
+  .ag-sema .ag-nabiz{opacity:0}
+}
+</style>
+<!-- udp-uygulama -->
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1f4e5f">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/favicon-32.png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Uyku Denizi">
+<script src="../uygulama.js" defer></script>
+</head>
+<body>
+
+
+<div class="sheet">
+
+  <!-- ===== Masthead ===== -->
+  <header class="mast">
+    <div class="mast-top">
+      <span>Sayı 3 · Cilt I</span>
+      <span>Haftalık · Nöbet çıkışı okunur</span>
+      <span>Fiyatı: 1 kutu taze soda kireci</span>
+    </div>
+    <div class="mast-row">
+      <svg class="gull" viewBox="0 0 120 100" aria-hidden="true">
+        <g fill="none" stroke="#2a2018" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 40 Q30 18 52 38 Q74 18 100 34" fill="#f3e8cf"/>
+          <ellipse cx="56" cy="56" rx="22" ry="15" fill="#f3e8cf"/>
+          <circle cx="78" cy="44" r="10" fill="#f3e8cf"/>
+          <path d="M87 45 L100 49 L87 51 Z" fill="#c98a2b"/>
+          <circle cx="80" cy="42" r="1.6" fill="#2a2018"/>
+          <path d="M70 36 Q78 26 88 36 Z" fill="#1f4e5f"/>
+          <rect x="40" y="58" width="22" height="16" rx="2" fill="#d6c39c"/>
+          <path d="M40 62 L62 62"/>
+          <path d="M50 71 L50 86 M60 71 L60 86"/>
+        </g>
+      </svg>
+      <h1 class="name">Uyku Denizi Postası</h1>
+      <svg class="gull flip" viewBox="0 0 120 100" aria-hidden="true">
+        <g fill="none" stroke="#2a2018" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 40 Q30 18 52 38 Q74 18 100 34" fill="#f3e8cf"/>
+          <ellipse cx="56" cy="56" rx="22" ry="15" fill="#f3e8cf"/>
+          <circle cx="78" cy="44" r="10" fill="#f3e8cf"/>
+          <path d="M87 45 L100 49 L87 51 Z" fill="#c98a2b"/>
+          <circle cx="80" cy="42" r="1.6" fill="#2a2018"/>
+          <path d="M70 36 Q78 26 88 36 Z" fill="#1f4e5f"/>
+          <path d="M50 71 L50 86 M60 71 L60 86"/>
+        </g>
+      </svg>
+    </div>
+    <p class="motto">Uyutanların, uyandıranların ve aradaki her şeyin gazetesi</p>
+    <div class="ribbon">
+      <span>13 Kasım 2026, Cuma</span>
+      <span>Hava: Ameliyathane 21 °C, SpO₂ %99, transdüser kalp seviyesinde ve sıfırlandı</span>
+      <span>ASA I–VI okurlarımıza</span>
+    </div>
+  </header>
+
+  <!-- ===== Front page ===== -->
+  <section class="front">
+    <article class="lead">
+      <div class="kicker">Manşet · Hemodinami ve monitörizasyon</div>
+      <h2>Kalp Cerrahisinde “Hastaya Özel Tansiyon” Hedefi Erken Durduruldu: OPTIPAM</h2>
+      <p class="deck">Ameliyat öncesi istirahat tansiyonuna göre belirlenen ortalama arter basıncı hedefi, klasik “OAB ≥ 65 mmHg” kuralını geçemedi. İkincil bir özete göre çalışma kanama komplikasyonları nedeniyle erken sonlandırıldı.</p>
+      <div class="cols">
+        <p><i>Anesthesiology</i> 6 Kasım 2026'da Fransız OPTIPAM çalışmasının sonuçlarını çevrim içi yayımladı. Çalışmanın kayıt bilgilerine göre kardiyopulmoner baypasla kalp cerrahisi geçirecek hastalar iki gruba ayrıldı. Bir grupta hedef, hastanın anestezi polikliniğinde ölçülen istirahat ortalama arter basıncının (OAB) %10 yakınında tutulmaktı. Diğer grupta standart hedef OAB ≥ 65 mmHg idi. Bireysel hedef ameliyathanede ve yoğun bakımın ilk 24 saatinde sürdürüldü. Planlanan birincil sonuç 7. gündeki ölüm, nörolojik ve böbrek komplikasyonlarından oluşan bileşik bir sonuçtu.</p>
+        <div class="stat"><b>172 / 1.100</b><span>İkincil özete göre erken durdurulduğunda alınan hasta sayısı / protokolde planlanan</span></div>
+        <p>ClinicalTrials.gov kaydı çalışmayı “sonlandırıldı” olarak gösteriyor ve gerekçe olarak güvenlik konularını yazıyor. Bir blog özetine göre 10 merkezde 172 hasta alındığında durduruldu. Aynı özete göre kanama komplikasyonları bireysel hedef grubunda %18, standart grupta %3 oranında görüldü. Bu rakamları birincil yayından doğrulayamadık, tam metne bakın. Protokolde 21 merkez öngörülüyordu, yayımlanan özette ise 10 merkez geçiyor.</p>
+        <p><b>Bizim için anlamı:</b> “Daha yüksek basınç her zaman daha iyi perfüzyon” varsayımı kalp cerrahisinde sınandı ve en azından bu tasarımda yarar göstermedi. Bu haftanın konusu monitörizasyon: hedefi ne olursa olsun, invaziv arter basıncının doğru okunması için transdüserin doğru seviyede olması ve sıfırlanması gerekir. Önce sayının doğru olduğundan emin olun, sonra hedefini tartışın.</p>
+        <p class="src">Kaynaklar: <a href="https://clinicaltrials.gov/study/NCT05403697" target="_blank" rel="noopener">ClinicalTrials.gov kaydı (NCT05403697)</a> · <a href="https://artofanesthesia.substack.com/p/does-a-child-need-a-breathing-tube" target="_blank" rel="noopener">İkincil özet (Art of Anesthesia)</a></p>
+      </div>
+    </article>
+
+    <aside class="wanted" aria-label="Aranıyor afişi">
+      <p class="w-sub">Ölü ya da diri değil, sadece</p>
+      <div class="w-title">ARANIYOR</div>
+      <div class="portrait">
+        <svg viewBox="0 0 200 150" aria-hidden="true">
+          <g fill="none" stroke="#2a2018" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 40 L186 40" stroke="#1f4e5f" stroke-dasharray="8 6"/>
+            <text x="100" y="30" text-anchor="middle" font-family="Special Elite, Courier New, monospace" font-size="11" fill="#1f4e5f" stroke="none">kalp seviyesi</text>
+            <rect x="70" y="92" width="60" height="30" rx="6" fill="#efe4c8"/>
+            <path d="M70 107 L30 107 M130 107 L176 107"/>
+            <path d="M100 92 L100 80" />
+            <circle cx="100" cy="76" r="5" fill="#d6c39c"/>
+            <g fill="#2a2018" stroke="none"><circle cx="88" cy="104" r="3"/><circle cx="112" cy="104" r="3"/></g>
+            <path d="M90 116 Q100 111 110 116"/>
+            <path d="M100 48 L100 70" stroke="#9b2d20"/>
+            <path d="M94 62 L100 72 L106 62" stroke="#9b2d20"/>
+            <text x="150" y="80" font-family="Special Elite, Courier New, monospace" font-size="10" fill="#9b2d20" stroke="none">çok aşağıda!</text>
+          </g>
+        </svg>
+      </div>
+      <div class="w-name">“Firari Transdüser”</div>
+      <p class="w-crime"><b>Suçu:</b> Hasta yatağı yükseltildiğinde kalp seviyesinin altında kalıp arter basıncını olduğundan yüksek göstermek. Masa her hareket ettiğinde yerini değiştirdiği, sıfırlanmadan çalışmaya devam ettiği ihbar edildi. Hasta oturur pozisyondaysa beyne ulaşan basıncı da yanlış tahmin ettiriyor.</p>
+      <div class="bounty">Ödül<b>Doğru seviyede bir transdüser ve sıfırlamayı unutmayan bir asistan</b></div>
+      <div class="w-foot">Görüldüğü yer: kol tahtasının altı, serum askısının dibi.</div>
+    </aside>
+  </section>
+
+  <!-- ===== Journals ===== -->
+  <div class="sec-h"><h3>Dergilerden Kesikler</h3></div>
+  <section class="clips">
+    <article class="clip">
+      <div class="journal"><span>Pediatri dergisi · derleme</span><span>13 Kasım 2026 haberi</span></div>
+      <h4>Opioidsiz anestezi: yetişkin ve çocuk cerrahisinde kanıt nerede?</h4>
+      <p>Opioidsiz anestezi ve multimodal analjeziyi ele alan anlatı derlemesi deksmedetomidin ve ketamin gibi ilaçları, solunum depresyonu ve bulantı gibi sonuçları tartışıyor. Haber özetine göre yetişkin çalışmalarında intraoperatif opioidi tamamen çıkarmak postoperatif ağrıyı tutarlı biçimde daha iyi kontrol etmiyor. Ayrıntıları doğrulayamadık, tam metne bakın.</p>
+      <p class="why">Neden önemli: “Opioidsiz” bir protokol önerildiğinde kanıtın daha çok bulantı tarafında olduğunu, ağrı tarafında ise karışık olduğunu bilmek gerekir.</p>
+      <span class="tag">Derleme</span><span class="tag">Analjezi</span>
+      <p class="src"><a href="https://bioengineer.org/review-evaluates-opioid-free-anesthesia-evidence-across-adult-and-pediatric-surgery/" target="_blank" rel="noopener">Haber →</a></p>
+    </article>
+    <article class="clip">
+      <div class="journal"><span>Nöromonitörizasyon</span><span>11 Kasım 2026 haberi</span></div>
+      <h4>Propofol altında alın korteksinin bağlantısı fNIRS ile izlendi</h4>
+      <p>78 cerrahi hastada istirahat durumu yakın kızılötesi spektroskopisi (fNIRS) ile ölçüm yapılan çalışmada propofol anestezisi sırasında frontal ağ verimliliğinin azaldığı bildirildi. Yöntemin klinik kullanıma hazır olup olmadığını doğrulayamadık.</p>
+      <p class="why">Neden önemli: Bu haftanın konusu monitörizasyon. Anestezi derinliği izleminde EEG dışı yöntemler araştırılıyor ama henüz araştırma aşamasında.</p>
+      <span class="tag">Monitörizasyon</span><span class="tag">Propofol</span>
+      <p class="src"><a href="https://bioengineer.org/intraoperative-fnirs-detects-reduced-frontal-cortical-connectivity-under-propofol-anesthesia/" target="_blank" rel="noopener">Haber →</a></p>
+    </article>
+    <article class="clip">
+      <div class="journal"><span>Meta-analiz</span><span>7 Kasım 2026 haberi</span></div>
+      <h4>Yaşlı cerrahi hastada perioperatif deksmedetomidin ve deliryum</h4>
+      <p>22 randomize çalışmayı (4.161 yaşlı hasta) birleştiren meta-analizde deksmedetomidinin postoperatif deliryumu ve bulantıyı azalttığı, istenmeyen etki olarak bradikardi ve hipotansiyon yaptığı bildirildi. Etki büyüklüklerini doğrulayamadık, tam metne bakın.</p>
+      <p class="why">Neden önemli: Deliryum azalırken hemodinamik bedel ödenebilir. Bradikardisi olan ya da beta bloker kullanan yaşlı hastada dikkat.</p>
+      <span class="tag">Geriatri</span><span class="tag">Meta-analiz</span>
+      <p class="src"><a href="https://bioengineer.org/perioperative-dexmedetomidine-reduces-postoperative-delirium-in-older-surgical-patients/" target="_blank" rel="noopener">Haber →</a></p>
+    </article>
+    <article class="clip">
+      <div class="journal"><span>Meta-analiz · onkoloji</span><span>9 Kasım 2026 haberi</span></div>
+      <h4>Kanser cerrahisinde propofollü TİVA sağkalımı uzatmıyor</h4>
+      <p>Propofol temelli total intravenöz anesteziyi inceleyen meta-analizde perioperatif komplikasyonlar daha az bulundu ama sağkalım yararı gösterilemedi. Rakamları doğrulayamadık, tam metne bakın.</p>
+      <p class="why">Neden önemli: “Kanser hastasında mutlaka TİVA” sorusu sık gelir. Bu veriye göre sağkalım gerekçesi zayıf, diğer gerekçeler ayrıca tartışılmalı.</p>
+      <span class="tag">TİVA</span><span class="tag">Onkoloji</span>
+      <p class="src"><a href="https://bioengineer.org/propofol-anesthesia-shows-no-survival-benefit-in-cancer-surgery/" target="_blank" rel="noopener">Haber →</a></p>
+    </article>
+    <article class="clip">
+      <div class="journal"><span>Meta-analiz</span><span>9 Kasım 2026 haberi</span></div>
+      <h4>Uzak iskemik koşullama postoperatif bilişsel sorunları önlemedi</h4>
+      <p>Perioperatif uzak iskemik koşullamanın postoperatif deliryum ya da postoperatif bilişsel disfonksiyon üzerinde koruyucu etkisi bulunmadı. Dahil edilen çalışma sayısını doğrulayamadık.</p>
+      <p class="why">Neden önemli: Kol manşonunu birkaç kez şişirip indirmek ucuz ve kolay bir fikir gibi görünüyor ama beyin koruması için şu an kanıt yok.</p>
+      <span class="tag">Nörokognitif</span><span class="tag">Meta-analiz</span>
+      <p class="src"><a href="https://bioengineer.org/remote-ischemic-conditioning-fails-to-prevent-postoperative-cognitive-complications-in-meta-analysis/" target="_blank" rel="noopener">Haber →</a></p>
+    </article>
+    <article class="clip">
+      <div class="journal"><span>Kohort · preoperatif</span><span>7 Kasım 2026 haberi</span></div>
+      <h4>Hemoglobin glikasyon indeksi kalp dışı cerrahide komplikasyonla ilişkili</h4>
+      <p>Retrospektif kohortta preoperatif hemoglobin glikasyon indeksinin genel anestezi altında kalp dışı cerrahi sonrası komplikasyonlarla bağımsız ilişkili olduğu bildirildi. Hasta sayısını ve eşik değerleri doğrulayamadık.</p>
+      <p class="why">Neden önemli: Preoperatif değerlendirmede HbA1c'yi kan şekeriyle birlikte yorumlamak yeni risk göstergeleri doğurabilir. Retrospektif veri, neden-sonuç göstermez.</p>
+      <span class="tag">Preop</span><span class="tag">Diyabet</span>
+      <p class="src"><a href="https://bioengineer.org/preoperative-glycation-index-predicts-non-cardiac-surgical-complications-in-major-study/" target="_blank" rel="noopener">Haber →</a></p>
+    </article>
+  </section>
+
+  <!-- ===== Topic of the week ===== -->
+  <div class="sec-h"><h3>Haftanın Konusu · Hafta 3</h3></div>
+  <section class="topic">
+    <article class="body">
+      <div class="kicker">Kitaptan · Morgan &amp; Mikhail, 7. baskı, Bölüm 5 ve 6 · Basics of Anesthesia, 6. baskı, Bölüm 20</div>
+      <h2>Ekrandaki Altı Satır: Standart Monitörizasyon</h2>
+      <p class="deck">Her vakada bağladığımız kablolar neyi ölçer, neyi kaçırır, ne zaman yalan söyler?</p>
+
+      <p>Monitör tedavi etmez; dikkatimizi güçlendirir ve kötü gidişi kalıcı hasar oluşmadan fark ettirir. Basics'teki karşılaştırmaya göre ameliyat sırasındaki kazaların çoğu bir ölçüde pulse oksimetre ya da kapnografla yakalanabilir. İnvaziv monitörde ise riski yararla tartarız.</p>
+
+      <h5>ASA temel monitörizasyon standartları</h5>
+      <p><b>Standart I:</b> Genel anestezi, rejyonel anestezi ve monitörize anestezi bakımı boyunca nitelikli anestezi personeli odada bulunur. <b>Standart II:</b> Oksijenasyon, ventilasyon, dolaşım ve vücut ısısı anestezi boyunca düzenli ve sık aralıklarla (<i>continual</i>) değerlendirilir. EKG gibi bazı maddelerde ise kesintisiz (<i>continuous</i>) izlem istenir.</p>
+      <div class="tbl-wrap">
+        <table class="cmp">
+          <tr><th>Alan</th><th>Standart ne istiyor?</th></tr>
+          <tr><td>Oksijenasyon</td><td>Makineyle verilen her genel anestezide devrede düşük oksijen alarmı açık bir oksijen analizörü bulunur. Her anestezide kantitatif bir yöntem kullanılır (pulse oksimetre). Nabız tonu ve alarmı duyulmalıdır.</td></tr>
+          <tr><td>Ventilasyon</td><td>Klinik bulgulara (göğüs hareketi, balon, oskültasyon) bakılır. Tüp ya da laringeal maskenin yeri klinik değerlendirmeyle ve ekspiratuvar CO₂ ile doğrulanır. Çıkarılıncaya kadar kantitatif ETCO₂ izlenir. Mekanik ventilasyonda sesli bağlantı kopması alarmı bulunur. Orta ve derin sedasyonda da ekspiratuvar CO₂ izlenir.</td></tr>
+          <tr><td>Dolaşım</td><td>EKG, anestezinin başından hasta salondan çıkarılmaya hazırlanana kadar sürekli ekranda kalır. Kan basıncı ve kalp hızı <b>en az 5 dakikada bir</b> ölçülüp değerlendirilir. Genel anestezide ayrıca en az bir yöntemle (nabız palpasyonu, kalp sesi, arter trasesi, pletismografi/oksimetri vb.) dolaşım izlenir.</td></tr>
+          <tr><td>Isı</td><td>Vücut ısısında klinik olarak anlamlı bir değişiklik amaçlanıyor, bekleniyor ya da düşünülüyorsa ısı ölçülür. Morgan'a göre çok kısa anesteziler dışında hep ölçülmelidir.</td></tr>
+        </table>
+      </div>
+      <p>Yıldızlı maddelerden zorunlu durumda vazgeçilirse gerekçe dosyaya yazılır.</p>
+
+      <h5>EKG: hangi derivasyon?</h5>
+      <p><b>D II</b> atriyal eksene paraleldir ve en büyük P dalgasını verir. Bu yüzden aritmi ve inferior iskemi için en iyisidir. <b>V5</b> (5. interkostal aralık, ön aksiller çizgi) anterior ve lateral iskemiyi yakalamak için iyi bir uzlaşmadır. İdeali D II ile V5'i birlikte izlemektir. Üç kablolu monitörde sol kol elektrodu V5 noktasına konur ve monitörde D I seçilirse modifiye V5 (CS5) elde edilir. Basics'e göre V5 tek başına iskemi ataklarının %75'ini, II + V4 + V5 birlikte %96'sını yakalar.</p>
+      <p>İskemi tanısı için EKG "diagnostik modda" olmalıdır, çünkü artefakt filtreleri ST segmentini bozar. Ölçüt, J noktasından 80 ms sonra 1 mm'yi aşan düz ya da aşağı eğimli ST çökmesidir; T inversiyonu da eşlik ediyorsa daha anlamlıdır. Sivri T ile birlikte ST yükselmesi de iskemi olabilir. WPW, dal blokları, pacemaker ve digoksin ST yorumunu bozar.</p>
+
+      <h5>Noninvaziv kan basıncı ve manşet</h5>
+      <p>Çoğu vakada 3–5 dakikada bir ölçüm yeterlidir. Standart cihazlar osilometriktir: osilasyonun en büyük olduğu basınç <b>ortalama arter basıncıdır (OAB)</b>, sistolik ve diyastolik değerler algoritmayla hesaplanır. AF gibi aritmilerde güvenilmez olabilir. Basics'e göre otomatik cihazlarda diyastolik değer, arter kanülüyle ölçülenden genellikle 10 mmHg kadar yüksektir. Manşetin balonu ekstremitenin en az yarısını sarmalı, genişliği ise ekstremite çapından %20–50 fazla olmalıdır (Basics: kol çevresinin %40'ı). <b>Dar manşet basıncı yüksek gösterir</b>, geniş manşet düşük. %20 dar manşetin hatası, %20 geniş manşetinkinden büyüktür. Diyaliz şantı ya da damar yolu olan kola manşet takmayın.</p>
+
+      <h5>İnvaziv arter basıncı</h5>
+      <p><b>Endikasyonlar:</b> var olan ya da beklenen hipotansiyon, büyük basınç dalgalanmaları, vurudan vuruya kontrol gerektiren organ hastalığı ve sık kan gazı ihtiyacı. Radiyal arter yüzeyel olduğu ve kollateral akım iyi olduğu için ilk tercihtir, ama hastaların %5'inde palmar ark tamamlanmamıştır. <b>Allen testinde</b> hasta yumruk yapar, radiyal ve ulnar arterler bastırılır, el gevşetilir ve ulnar bası kaldırılır. Başparmağın rengi 5 saniye içinde dönmelidir. 5–10 saniye şüpheli, 10 saniyenin üstü yetersiz kollaterali gösterir. Ancak test güvenilir değildir ve birçok klinisyen artık yapmamaktadır. Kollateral akım, işbirliği gerektirmeyen palpasyon, Doppler ya da pulse oksimetreyle de gösterilebilir. Aynı taraftaki radiyal girişim başarısız olduysa ulnar arter genellikle denenmez.</p>
+      <p><b>Sistemin dinamiği:</b> Hortum, fazla musluk ve hava kabarcığı sistemin doğal frekansını düşürür. <b>Aşırı sönümlü</b> sistem sistolik basıncı düşük gösterir. <b>Az sönümlü</b> sistem ise yanlış yüksek bir sistolik tepe çizer. İdeal sönümleme katsayısı 0,6–0,7'dir. Hortumu kısa ve sert tutun, gereksiz muslukları çıkarın, havayı temizleyin.</p>
+      <p><b>Sıfırlama ve seviye:</b> Transdüser genellikle orta aksiller çizgi hizasında atmosfere açılarak sıfırlanır. Masa yükselir ya da alçalırsa transdüser de birlikte taşınır ya da yeniden sıfırlanır. Oturur hastada beyin basıncı için sıfır noktası kulak hizasıdır (Willis poligonu). 1 cmH₂O 0,74 mmHg'ye eşittir. Basics'e göre transdüserin her 15 cm kayması okumayı 10 mmHg değiştirir. Distale gidildikçe sistolik basınç ve nabız basıncı artar, OAB ise yaklaşık aynı kalır. Solunumla belirgin dalga değişimi hipovolemiyi ya da yüksek tidal volümü düşündürür.</p>
+
+      <h5>Santral venöz basınç (CVP)</h5>
+      <p>Kateter ucu süperior vena kava ile sağ atriyum birleşkesinde ya da hemen üstünde olmalı, kalp boşluklarına girmemelidir. CVP ekspiryum sonunda okunur. Normali yaklaşık 2–7 mmHg'dir (Basics). Çok düşük CVP hipovolemiyi düşündürür, ama orta ya da yüksek bir değer hacim fazlalığını da, ventrikülün sertliğini de gösterebilir. Tek değerden çok sıvıya verdiği yanıta bakın. Dalgalar: <b>a</b> atriyal kasılmadır ve AF'de kaybolur, kavşak (junctional) ritminde ve AV dissosiyasyonda ise dev "top" a dalgası olur. <b>c</b> triküspit kapağın sağ atriyuma kabarmasıdır. <b>v</b> kapak kapalıyken atriyumun dolmasıdır. Tamponadda y inişi kaybolur. Girişte ultrason kullanın; teli ilerletmeden önce venöz basıncı uzatma hortumuyla doğrulayın, kanın rengi ve pulsasyonu yanıltıcıdır.</p>
+
+      <h5>PA kateteri ve kalp debisi, kısaca</h5>
+      <p>PA kateteri 110 cm uzunluğunda ve 7,5F kalınlığındadır, balonu 1,5 mL hava alır. İnternal juguler yoldan girildiğinde uç yaklaşık 15 cm'de sağ atriyuma ulaşır. Sağ ventrikülde sistolik, pulmoner artere girişte (35–45 cm) diyastolik basınç aniden yükselir. Balon tam şişirilmeden kama trasesi geliyorsa kateter fazla ilerlemiştir (overwedge) ve PA rüptürü riski vardır. Sol dal bloğu göreceli kontrendikasyondur. Büyük gözlemsel çalışmalarda PA kateteriyle yönetilen hastaların sonuçları daha kötü bulunmuş, diğer çalışmalar da belirgin bir yarar göstermemiştir. Termodilüsyonda sağ atriyuma verilen soğuk sıvının (2,5, 5 ya da 10 mL) oluşturduğu sıcaklık değişimi debiyle ters orantılıdır. Triküspit yetersizliği ve şantlar ölçümü geçersiz kılar. Pulse kontur cihazlarında pozitif basınçlı ventilasyon sırasında %12–13'ün üzerindeki nabız basıncı değişkenliği sıvı yanıtını düşündürür. Aritmide güvenilmezdir.</p>
+
+      <h5>Pulse oksimetri ve tuzakları</h5>
+      <p>Orta sedasyon dahil her anestezide zorunludur. Oksihemoglobin kızılötesini (940 nm), deoksihemoglobin kırmızı ışığı (660 nm) daha çok emer. Disosiyasyon eğrisine göre %90 SpO₂, 65 mmHg'nin altında bir PaO₂ anlamına gelebilir. Siyanoz genellikle %80'in altında fark edilir. Ana bronş entübasyonu çoğunlukla SpO₂'ye yansımaz. Yanıltan durumlar şunlardır:</p>
+      <ul>
+        <li><b>Karbonmonoksit:</b> COHb de 660 nm'de oksihemoglobin gibi emer, bu yüzden SpO₂ yanlış yüksek okunur.</li>
+        <li><b>Methemoglobin:</b> İki dalga boyunu eşit emer. Okuma <b>%85'e</b> yaklaşır: gerçek satürasyon %85'in üstündeyse yanlış düşük, altındaysa yanlış yüksek okunur.</li>
+        <li><b>Boyalar:</b> Metilen mavisi SpO₂'yi %65 civarına düşürür. İndigo karmin ve indosiyanin yeşili de yanlış düşüş yapar.</li>
+        <li><b>Diğerleri:</b> Düşük perfüzyon (düşük debi, ağır anemi, hipotermi, yüksek damar direnci), hareket, ortam ışığı, sarkan ekstremitede venöz pulsasyon, kötü yerleşmiş prob ve optik şant. Okuma gecikmelidir ve düşük değerlerde daha az doğrudur.</li>
+      </ul>
+
+      <h5>Kapnografi</h5>
+      <p>Kapnografi özofagus entübasyonunu hızla ve güvenilir biçimde gösterir, ama <b>ana bronş entübasyonunu güvenilir biçimde göstermez</b>. Midedeki CO₂ birkaç solukta kaybolur. Normalde PaCO₂ ile ETCO₂ arasındaki fark 2–5 mmHg'dir ve alveoler ölü boşluğu yansıtır. Emboli, düşük debi ya da hipotansiyon bu farkı açar. ETCO₂'nin hızla düşmesi hava embolisi için duyarlı bir bulgudur. CO₂'nin ekspiryumda aniden kaybolması bağlantı kopmasını düşündürür. Malign hipertermide ETCO₂ belirgin biçimde yükselir. İnspiryumda eğri sıfıra inmiyorsa ekspiratuvar valfi ya da tükenmiş absorberi düşünün. Faz III'teki çentik spontan solunum çabasıdır.</p>
+
+      <h5>Sıcaklık, nöromüsküler blok, BIS, idrar</h5>
+      <p><b>Isı:</b> Basics'e göre çekirdek ısı indüksiyondan sonraki ilk saatte 1–1,5 °C düşer. Morgan'a göre ekonomi, doğruluk ve güvenlik açısından en iyi denge özofagus probudur. Prob, trakeal gazları ölçmemek için özofagusun alt üçte birinde, kalbin arkasında durmalıdır. PA kateteri termistörü ve timpanik membran çekirdek ısıyı gösterir. Rektal prob geç yanıt verir, cilt şeritleri yetersizdir.</p>
+      <p><b>Nöromüsküler monitör:</b> Orta ya da uzun etkili kas gevşetici alan her hastada zorunludur. Elektrotlar kasın değil sinirin üzerine konur. Dörtlü uyarı (TOF) 2 saniyede verilen 4 uyarıdır (2 Hz). 4. yanıtın kaybolması %75, 3.'nün %80, 2.'nin %90 bloğa karşılık gelir. Cerrahi gevşeme için genellikle %75–95 blok gerekir. 50 ya da 100 Hz'lik tetanide 5 saniye süren kasılma yeterli ama tam olmayabilen bir derlenmeyi gösterir. Sönmeyi (fade) gözle seçmede çift patlama (DBS) TOF'tan duyarlıdır. Diyafram, larenks kasları ve orbikularis okuli, adduktor pollisisten önce derlenir. Rezidüel blok için kantitatif monitör önerilir.</p>
+      <p><b>BIS:</b> 0 (kortikal sessizlik) ile 100 (uyanık) arasında boyutsuz bir sayıdır. Morgan genel anestezi için 40–65, sedasyon için 65–85 verir; Basics rutin vakada 45–60 önerir. Farkındalığı önlediğine dair kanıt sınırlıdır; BIS 65'in altındayken de farkındalık görülmüştür. Anestezik dozunu yalnızca BIS'e bakarak azaltmayın.</p>
+      <p><b>İdrar:</b> En güvenilir ölçüm sonda ile yapılır. Oligüri sıklıkla 0,5 mL/kg/saatin altındaki çıkış olarak tanımlanır, ama bu keyfî bir sınırdır. İdrar, böbrek perfüzyonunun ve hacmin kusurlu bir göstergesidir.</p>
+
+      <p class="src">Kaynak: Butterworth JF, Mackey DC, Wasnick JD (ed). <i>Morgan &amp; Mikhail's Clinical Anesthesiology</i>, 7. baskı, McGraw Hill, 2022. Bölüm 5 (Cardiovascular Monitoring) ve Bölüm 6 (Noncardiovascular Monitoring). Miller RD, Pardo MC (ed). <i>Basics of Anesthesia</i>, 6. baskı, Elsevier Saunders, 2011. Bölüm 20 (Anesthetic Monitoring) ve Ek B (ASA Standards for Basic Anesthetic Monitoring). Özet kendi cümlelerimizle hazırlanmıştır.</p>
+    </article>
+
+    <aside>
+      <div class="chart">
+        <svg viewBox="0 0 360 260" role="img" aria-label="Normal kapnogramın şematik çizimi: faz I ölü boşluk, faz II hızlı yükseliş, faz III alveoler plato ve sonunda ETCO2 noktası, ardından inspiryumda sıfıra iniş; yanında platosu olmayan KOAH eğrisi">
+          <g font-family="Special Elite, Courier New, monospace" font-size="10" fill="#5a4a38">
+            <rect x="32" y="40" width="53" height="164" fill="#efe4c8"/>
+            <rect x="85" y="40" width="28" height="164" fill="#d6c39c" opacity=".6"/>
+            <rect x="113" y="40" width="84" height="164" fill="#efe4c8"/>
+            <path d="M30 28 L30 206 L345 206" fill="none" stroke="#2a2018" stroke-width="2"/>
+            <text x="8" y="34">CO₂</text>
+            <text x="20" y="208">0</text>
+            <text x="58" y="56" text-anchor="middle" fill="#2a2018" font-size="12">I</text>
+            <text x="99" y="56" text-anchor="middle" fill="#2a2018" font-size="12">II</text>
+            <text x="155" y="56" text-anchor="middle" fill="#2a2018" font-size="12">III</text>
+            <path d="M30 204 L85 204 C95 204 98 112 115 100 L196 90 L208 204 L236 204" fill="none" stroke="#1f4e5f" stroke-width="3"/>
+            <circle cx="196" cy="90" r="4" fill="#9b2d20"/>
+            <text x="200" y="80" fill="#9b2d20">ETCO₂</text>
+            <path d="M216 150 L206 176" stroke="#1f4e5f" stroke-width="1.5"/>
+            <path d="M203 168 L206 177 L212 171" fill="none" stroke="#1f4e5f" stroke-width="1.5"/>
+            <text x="214" y="144" fill="#1f4e5f">inspiryum</text>
+            <path d="M236 204 L254 204 C266 188 282 128 330 96 L338 204" fill="none" stroke="#9b2d20" stroke-width="2.5" stroke-dasharray="6 4"/>
+            <text x="300" y="62" text-anchor="middle" fill="#9b2d20">KOAH:</text>
+            <text x="300" y="75" text-anchor="middle" fill="#9b2d20">plato yok</text>
+            <text x="58" y="222" text-anchor="middle">ölü boşluk</text>
+            <text x="99" y="234" text-anchor="middle">karışım</text>
+            <text x="155" y="222" text-anchor="middle">alveoler plato</text>
+            <text x="345" y="250" text-anchor="end">zaman →</text>
+          </g>
+        </svg>
+        <p class="cap">Şematik çizim, ölçeksiz. Morgan'a göre ekspiryumun üç fazı vardır: I ölü boşluk gazı, II ölü boşluk ile alveol gazının karışımı, III alveoler plato. Platonun sonu ETCO₂ değeridir; inspiryumda eğri sıfıra iner. Basics aynı eğriyi inspiratuvar taban ve inspiratuvar iniş dahil dört bölüme ayırır. Kesikli eğri ağır KOAH'tır: sonraki inspiryuma kadar plato oluşmaz ve ETCO₂ ile PaCO₂ arasındaki fark açılır.</p>
+      </div>
+
+      <div class="pearls">
+        <div class="kicker">Ameliyathaneye taşınacak 5 not</div>
+        <ul>
+          <li><b>Kapnograf özofagusu yakalar, ana bronşu yakalamaz.</b> Tüpü ETCO₂ dalgasıyla doğrulayın, iki taraflı ventilasyonu dinleyerek.</li>
+          <li><b>Masa oynadıysa transdüser de oynasın.</b> Ya birlikte taşıyın ya yeniden sıfırlayın. Basics'in kuralı: 15 cm fark, 10 mmHg hata.</li>
+          <li><b>Dar manşet yüksek okur.</b> Beklenmedik bir yüksek değeri tedavi etmeden önce manşetin boyuna bakın.</li>
+          <li><b>SpO₂ %85'e takıldıysa methemoglobini düşünün.</b> Karbonmonoksit zehirlenmesinde normal görünen SpO₂'ye güvenmeyin.</li>
+          <li><b>Dört yanıt görmek tam derlenme demek değildir.</b> Sönmeyi elle ve gözle seçmek zordur. Mümkünse kantitatif monitör kullanın.</li>
+        </ul>
+      </div>
+    </aside>
+  </section>
+
+  <!-- ===== News ===== -->
+  <div class="sec-h"><h3>Limandan Haberler</h3></div>
+  <section class="news">
+    <div class="wire">
+      <article>
+        <div class="dateline">APSF · 9 Kasım 2026</div>
+        <h4>Büyük aort cerrahisinde ameliyathanede ekstübasyon</h4>
+        <p>APSF'nin literatür köşesi, <i>Journal of Cardiothoracic and Vascular Anesthesia</i>'da yayımlanan tek merkezli gözlemsel bir çalışmayı özetledi. 2014–2025 arasında aort cerrahisi geçiren 658 erişkinin 191'i (%29) ameliyathanede, 467'si (%71) yoğun bakımda ekstübe edildi. Ameliyathanede ekstübe edilenlerde uzamış yoğun bakım yatışı %35'ten %8'e indi, medyan yoğun bakım süresi 75,0 yerine 65,7 saat oldu. Yazarlar güvenliğin bozulmadığını söylüyor, ama komplikasyon verisinin tamamını doğrulayamadık. Seçilmiş hastalarda yapılmış, randomize olmayan bir çalışma.</p>
+        <p class="src"><a href="https://www.apsf.org/in-the-literature/operating-room-extubation-in-major-aortic-surgery/" target="_blank" rel="noopener">APSF özeti →</a></p>
+      </article>
+      <article>
+        <div class="dateline">İlaç · FDA başvurusu · 9 Kasım 2026</div>
+        <h4>Yeni analjezik sefranopadol için FDA'ya ruhsat başvurusu</h4>
+        <p>Adneuris Therapeutics, orta ve şiddetli akut ağrı tedavisi için sefranopadolle (cebranopadol) ABD Gıda ve İlaç Dairesi'ne (FDA) yeni ilaç başvurusu yaptığını duyurdu. Bu bir şirket açıklaması. Başvuru onay anlamına gelmez, karar süreci aylar sürer.</p>
+        <p class="src"><a href="https://globenewswire.com/news-release/2026/11/09/3398339/0/en/adneuris-therapeutics-reaches-key-regulatory-milestone-with-fda-submission-of-new-drug-application-for-cebranopadol-in-moderate-to-severe-acute-pain.html" target="_blank" rel="noopener">Şirket duyurusu →</a></p>
+      </article>
+      <article>
+        <div class="dateline">İlaç geliştirme · 8 Kasım 2026 haberi</div>
+        <h4>Etomidat benzeri yeni hipnotik ET-26 böbrek yetmezliğinde denendi</h4>
+        <p>Etomidat analoğu ET-26 ile yapılan faz I çalışmada hafif ve orta böbrek yetmezliğinde böbreğe özgü bir güvenlik sinyali görülmedi. Ağır böbrek yetmezliği ve diyaliz hastaları çalışmaya alınmadı. İlaç henüz klinik kullanımda değil.</p>
+        <p class="src"><a href="https://bioengineer.org/new-anesthetic-et-26-shows-stable-dosing-in-renal-impairment/" target="_blank" rel="noopener">Haber →</a></p>
+      </article>
+      <article>
+        <div class="dateline">Yapay zekâ köşesi</div>
+        <h4>Bu hafta ağrı servisinde</h4>
+        <p>Son yedi günde anestezi pratiğini doğrudan ilgilendiren yeni bir yapay zekâ çalışması olarak, bakımevlerinde bilişsel bozukluğu olan sakinlerde ağrıyı değerlendiren bir aracı bulduk. Ayrıntısı Algoloji ekinin küpürlerinde.</p>
+      </article>
+    </div>
+
+    <aside class="yerel">
+      <div class="kicker">Türkiye'den</div>
+      <h4>Resmî Gazete'de yeni diyaliz yönetmeliği, TARK 2026 geride kaldı</h4>
+      <p><b>13 Kasım 2026 Resmî Gazete:</b> Sağlık Bakanlığı'nın Diyaliz Merkezleri Hakkında Yönetmeliği yayımlandı. Haberlere göre merkezlerin açılışı, ruhsatlandırılması, personeli ve hasta takibi yeniden düzenleniyor. Diyaliz hastalarının ayda en az bir kez ilgili uzman hekimce değerlendirilmesi gerekiyor. Metni Resmî Gazete'den okuyun.</p>
+      <p class="src"><a href="https://mansethaber.com/haber/13-kasim-2026-resmi-gazete-kararlari-yayimlandi" target="_blank" rel="noopener">Haber →</a></p>
+      <p><b>TARK 2026:</b> Derneğin 60. ulusal kongresi 5–8 Kasım'da Antalya'da yapıldı. 9 Kasım'da Ankara'da TARD Beyin Ölümü ve Organ Bağışı Sempozyumu düzenlendi.</p>
+      <p class="src"><a href="https://tard.org.tr/haberler/2962" target="_blank" rel="noopener">TARK 2026 →</a> · <a href="https://doktorclub.com/kongreler/tard-beyin-olumu-ve-organ-bagisi-sempozyumu-2026" target="_blank" rel="noopener">Sempozyum →</a></p>
+      <p><b>Asistan notu:</b> Kasım'ın kalanında TARD-YEK Modül-3 (21–22 Kasım, İstanbul) ve Havayolu Yönetimi ve Mekanik Ventilasyon Kursu (28–29 Kasım, İstanbul) takvimde. Tarihleri derneğin sitesinden teyit edin.</p>
+    </aside>
+  </section>
+
+  <!-- ===== Drug + quiz ===== -->
+  <div class="sec-h"><h3>Kaptanın Seyir Defteri</h3></div>
+  <section class="bottom">
+    <article class="box">
+      <span class="tape" aria-hidden="true"></span>
+      <div class="kicker">Haftanın İlacı</div>
+      <h4>Metilen mavisi (ve diğer damar içi boyalar)</h4>
+      <p>Bu hafta bir ilacı tedavi gücüyle değil, monitörü nasıl şaşırttığıyla tanıyoruz:</p>
+      <ul>
+        <li>Damar içine verilen boyalar pulse oksimetrinin ölçtüğü ışık emilimini bozar ve satürasyonu yalancı biçimde düşük gösterir.</li>
+        <li><i>Basics of Anesthesia</i>'ya göre metilen mavisi ölçülen satürasyonu yaklaşık %65'e kadar çekebilir. İndigo karmin ve indosiyanin yeşili de daha hafif yalancı düşüşler yapar.</li>
+        <li>Ameliyatta cerrah boya verdikten hemen sonra SpO₂ birden düşerse, hastaya bakmadan önce “boya verildi mi?” diye sorun. Ama yine de hastaya bakın: solunum, kapnografi ve kan gazıyla doğrulayın.</li>
+        <li>Methemoglobinemide ise oksimetre %85 civarına kilitlenir. Gerçek satürasyon bunun üstündeyse yalancı düşük, altındaysa yalancı yüksek okur.</li>
+      </ul>
+      <p class="src">Kaynak: Basics of Anesthesia 6. baskı, Bölüm 20; Morgan &amp; Mikhail 7. baskı, Bölüm 6. Doz ve endikasyonlar için kurumunuzdaki protokole ve prospektüse bakın.</p>
+    </article>
+
+    <article class="box quiz">
+      <span class="tape" aria-hidden="true"></span>
+      <div class="kicker">Sınav Köşesi · TUS / EDAIC</div>
+      <h4>Kapnogram sıfıra inmiyor</h4>
+      <p>Genel anestezi altında, döngü sistemiyle mekanik ventilasyon uygulanan bir hastada kapnogramın inspiratuvar bölümü sıfıra inmiyor ve inspire edilen CO₂ giderek artıyor. En olası neden hangisidir?</p>
+      <ol type="A">
+        <li>Ana bronş entübasyonu</li>
+        <li>Ekspiratuvar tek yönlü valfin yetersizliği ya da tükenmiş CO₂ absorberi</li>
+        <li>Pulmoner tromboemboli</li>
+        <li>Kas gevşeticinin etkisinin geçmesiyle başlayan spontan solunum çabası</li>
+      </ol>
+      <details>
+        <summary>Cevabı göster</summary>
+        <div class="ans">
+          <p><b>Doğru cevap: B.</b> Tek yönlü valf arızası ya da tükenmiş absorber, inspire edilen gazda CO₂ bulunmasıyla kendini gösterir ve eğri taban çizgisine inmez. Emboli ETCO₂'yi düşürür. Spontan solunum çabası plato fazında çentik yapar. Ana bronş entübasyonu kapnografla güvenilir biçimde saptanmaz.</p>
+          <p>Geçen haftanın konusuyla bağlantı: absorberdeki granüllerin rengine ve valflerin hareketine bakın.</p>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <!-- ===== EK 1: Yoğun Bakım ===== -->
+  <section class="ek yb" id="yogun-bakim" aria-labelledby="yb-title">
+    <header class="ek-mast">
+      <div>
+        <div class="ek-tag">Ek sayfa · Yoğun Bakım Servisi · YB Hafta 2</div>
+        <h2 id="yb-title">Yoğun Bakım Nöbet Defteri</h2>
+      </div>
+      <p class="ek-sub">Yoğun bakıma yeni başlayan asistan için her hafta bir konu, bir araç ve bu haftanın yoğun bakım literatürü.</p>
+    </header>
+
+    <div class="ek-grid">
+      <article class="body">
+        <div class="kicker">Kitaptan · The ICU Book (Marino), 5. baskı, Bölüm 27–28</div>
+        <h3 class="t">Ventilatörü Kurmak, Basınçları Okumak</h3>
+        <p>Pozitif basınçlı ventilasyonun yüzlerce modu var. Marino'ya göre bunlardan yalnızca biri sonucu iyileştirdi: düşük tidal volümlü akciğer koruyucu ventilasyon. O da desteği azalttığı için işe yaradı. Bu yüzden ilke basit: <b>az olan iyidir</b>. Birkaç temel mod ve iki basınç, hastaların neredeyse tamamı için yeterli.</p>
+
+        <h5>Hacim mi, basınç mı?</h5>
+        <div class="tbl-wrap">
+          <table class="cmp">
+            <tr><th>Mod</th><th>Ne ayarlanır, nasıl çalışır?</th><th>Artı / eksi</th></tr>
+            <tr><td>Hacim kontrollü (VCV)</td><td>Vt sabit, akım sabit. Pik basınç akciğer ve göğüs duvarının mekaniğine göre oluşur.</td><td>Mekanik değişse de Vt sabit kalır; koruyucu ventilasyonun temeli budur. İnspiryum kısa, akım sınırlı; solunum dürtüsü yüksek hastada yetmeyebilir.</td></tr>
+            <tr><td>Basınç kontrollü (PCV)</td><td>İnspiratuar basınç sabit, akım başta yüksek ve giderek azalan. İnspiryum süresini siz ayarlarsınız.</td><td>Hasta daha iyi uyum sağlar, asenkroni azalır. Direnç ya da elastans değişince Vt değişir; aşırı gerilme riski doğar.</td></tr>
+            <tr><td>Basınç ayarlı hacim kontrol (PRVC)</td><td>Ventilatör kompliyansı izler, hedef Vt'yi en düşük basınçla verir.</td><td>Sabit Vt ile basınç sınırını birleştirir. Dürtüsü yüksek hastada akım yetmeyip asenkroni olabilir.</td></tr>
+          </table>
+        </div>
+
+        <h5>İki basıncı ayırın: pik ve plato</h5>
+        <p>VCV'de inspiryum sonunda devreyi kısa süre kapatırsanız (inspiratuar duraklatma) basınç önce düşer, sonra bir platoda sabitlenir. Akım olmadığı için plato basıncı alveol basıncına eşittir.</p>
+        <div class="formula">Ppik = Pdirenç + Pelastik<br>Pplato = Palveol = Pelastik<br>Ppik − Pplato = Pdirenç<br>Hedef: Pplato ≤ 30 cmH₂O (alveol rüptürü riski bunun altında ihmal edilebilir)</div>
+        <p>Alveolü zorlayan pik basınç değil, plato basıncıdır. VCV'de pik basıncın PCV'dekinden yüksek olması tek başına risk değildir. PEEP kullanılıyorsa gerçek alveol basıncı için plato basıncından PEEP çıkarılır.</p>
+        <div class="formula">Statik kompliyans (VCV): Cstat = Vt / (Pplato − PEEPtoplam)<br>PCV'de: Cstat = ekspiratuar Vt / (inspiryum sonu basınç − PEEPtoplam)<br>Driving pressure = Pplato − PEEP<br>Normal 50–80 mL/cmH₂O · ödem/ARDS'de genellikle &lt; 25 mL/cmH₂O</div>
+        <p>Ölçüm tuzakları: Pasif ventilasyonda toplam kompliyansın %35'e varan kısmı göğüs duvarından gelir, hasta kas kastıkça bu pay artar. Bu yüzden ölçümü solunum çabası olmayan hastada ve hep aynı Vt ile yapın. Devre hortumları da yaklaşık 3 mL/cmH₂O hacim yutar. Vt 500 mL ve pik 40 cmH₂O ise 120 mL hortumda kalır, hastaya giden 380 mL'dir.</p>
+
+        <h5>Tetik ve mod: A/C, SIMV, basınç desteği</h5>
+        <ul>
+          <li><b>Asist-kontrol (A/C):</b> Hasta tetiklerse ventilatör tam soluk verir. Tetiklemezse soluklar ayarlanan hızda, zamanla tetiklenir. Soluklar hacim ya da basınç hedefli olabilir.</li>
+          <li><b>Tetik:</b> Basınç tetiğinde hasta 2–3 cmH₂O negatif basınç oluşturmalı; çabaların yaklaşık üçte biri soluk başlatamaz. Bugün standart akım tetiğidir (genellikle 1–10 L/dk). Asıl sorunu, sistem kaçaklarının yaptığı oto-tetiklemedir.</li>
+          <li><b>SIMV:</b> Ventilatör soluklarının arasında hasta spontan solur, makine soluğu hastanın soluğuyla eş zamanlanır. Başlangıçta 10/dk verilip dakika ventilasyonuna göre ayarlanabilir. Spontan dönemlerde devre direnci solunum işini artırdığı için bu dönemlerde rutin olarak 10 cmH₂O <b>basınç desteği</b> verilir. SIMV sol ventrikül ard yükünü artırıp sol ventrikül disfonksiyonunda kalp debisini düşürebilir. Bu nedenle solunum kası güçsüzlüğü ve sol kalp yetmezliğinde önerilmez. Asıl endikasyonu, A/C'de hızlı soluyup ekspiryumu tamamlayamayan hastadır.</li>
+        </ul>
+
+        <h5>Entübasyon sonrası ilk ayarlar</h5>
+        <ol>
+          <li><b>Mod:</b> A/C ile başlayın. Hacim kontrolünün bir biçimini (VCV ya da PRVC) seçin; Vt'yi kontrol etmeden koruyucu ventilasyon olmaz.</li>
+          <li><b>Vt:</b> Boydan hesaplanan öngörülen vücut ağırlığına (PBW) göre 8 mL/kg ile başlayın, 2 saat içinde 1 mL/kg adımlarla 6 mL/kg'a inin.</li>
+        </ol>
+        <div class="formula">Erkek PBW (kg) = 50 + 2,3 × (boy[inç] − 60)<br>Kadın PBW (kg) = 45,5 + 2,3 × (boy[inç] − 60)<br>boy[inç] = boy[cm] / 2,54<br>Örnek: erkek 175 cm → 68,9 inç → PBW 70,5 kg → 6 mL/kg ≈ 423 mL</div>
+        <ol start="3">
+          <li><b>PEEP 5–8 cmH₂O, FiO₂</b> SpO₂ %88–95'i sağlayan en düşük değer.</li>
+          <li><b>İnspiratuar akım:</b> Sakin soluyan ya da spontan solumayan hastada 60 L/dk. Solunum sıkıntısı ya da yüksek dakika ventilasyonu (≥10 L/dk) varsa ≥80 L/dk.</li>
+          <li><b>I:E en az 1:2.</b> Kısaysa akımı artırın, Vt'yi azaltın ya da mümkünse hızı düşürün.</li>
+          <li><b>Hız:</b> Spontan solunum yoksa entübasyon öncesi tahmini dakika ventilasyonunu sağlayacak hız, en fazla 35/dk. Hasta her soluğu tetikliyorsa makine hızı hastanın hızının hemen altında. 30 dakika sonra PaCO₂'ye bakıp düzeltin.</li>
+          <li><b>Plato &gt; 30 cmH₂O</b> ise Vt'yi 1 mL/kg adımlarla, en düşük 4 mL/kg'a kadar azaltın. pH 7,15–7,30 ise hızı pH &gt; 7,30 ya da 35/dk olana kadar artırın. Hedef: Vt 6 mL/kg, plato ≤ 30, SpO₂ %88–95, pH 7,30–7,45.</li>
+        </ol>
+
+        <h5>PEEP ve “en iyi PEEP”</h5>
+        <p>5–10 cmH₂O PEEP distal hava boşluklarının kapanmasını önler. 10–20 cmH₂O kapanmış alveolleri açabilir (alveoler açılma). Yüksek PEEP sağlıklı bölgeleri ise aşırı gerebilir (volütravma). PEEP'i kademeli artırırken kompliyans yükseliyor ve driving pressure düşüyorsa açılma, tersi oluyorsa aşırı gerilme ağır basıyordur; dönüm noktası “en iyi PEEP”tir. PaO₂/FiO₂ artışı tek başına yetmez: DO₂ = KD × CaO₂ olduğundan PEEP kalp debisini düşürürse doku oksijen sunumu iyileşmeyebilir. Kalp debisi izlenmiyorsa santral venöz O₂ satürasyonu vekil ölçüttür. Oksijenasyon için toksik FiO₂ (&gt;%60) gerekiyorsa PEEP artırılabilir.</p>
+
+        <h5>Gizli (oto-) PEEP</h5>
+        <p>Akciğer tam boşalmadan yeni soluk gelirse alveol basıncı ekspiryum sonunda pozitif kalır, ama hava yolu basıncı sıfır görünür. Astım ve KOAH'ta neredeyse her zaman vardır; ARDS'de de düşük düzeyde (≤3 cmH₂O) sıktır. Venöz dönüşü ve debiyi düşürür, solunum işini artırır, volütravma ve barotravma riskini yükseltir, CVP'yi yalancı yüksek gösterir.</p>
+        <ul>
+          <li><b>Görmek kolay:</b> Akım eğrisi ekspiryum sonunda sıfıra dönmüyorsa vardır.</li>
+          <li><b>Ölçmek zor:</b> Ekspiryum sonu oklüzyonda basınç aniden yükselir. Bu ölçüm yalnız spontan solumayan hastada güvenilirdir.</li>
+          <li><b>Tedavi:</b> Ekspiryuma zaman tanıyın: Vt'yi azaltın, akımı artırın, PCV'de inspiryum süresini kısaltın, mümkünse hızı düşürün. Olmazsa gizli PEEP'in hemen altında dış PEEP eklenebilir. Marino bunun pek zahmete değmeyebileceğini de not eder.</li>
+        </ul>
+
+        <h5>Basınç yükseldiğinde ya da hasta kötüleştiğinde</h5>
+        <ul>
+          <li><b>Duraklatma yapın, iki basınca bakın.</b> Pik artmış, plato aynıysa artan şey dirençtir (hava yolu, tüp, sekresyon). Plato da artmışsa elastik bileşen artmıştır (sert akciğer ya da oto-PEEP).</li>
+          <li><b>Sekresyon:</b> Görünür sekresyon, oskültasyon bulgusu ya da akım eğrisinde testere dişi görünüm aspirasyon endikasyonudur. Rutin aspirasyon ve rutin serum fizyolojik verilmesi önerilmez.</li>
+          <li><b>Tüp yeri:</b> Uç, baş nötraldeyken karinanın 3–5 cm üstünde (grafide T4–T5) olmalı. Göç riskini azaltmak için dişlerden en fazla kadında 21, erkekte 23 cm. Distale kayan tüp genellikle sağ ana bronşa girer.</li>
+          <li><b>Kaf:</b> Basınç 25 mmHg'yi geçmesin (kitapta bir yerde 25 cmH₂O olarak da geçiyor). Kaçakta hastayı ayırıp balonla solutun. Pilot balon doluysa tüpü yeniden yerleştirin, boşsa ve şişmiyorsa tüpü değiştirin.</li>
+          <li><b>Açıklanamayan hipoksemi ya da hipotansiyon:</b> Tansiyon pnömotoraksını düşünün. Sırtüstü hastada hava apekste değil, bazallerde ve önde toplanır. USG'de kayma varsa pnömotoraks dışlanır, “akciğer noktası” tanı koydurur. Dekompresyon: 5. aralıkta, orta aksiller çizginin hemen önünden 14G, 8 cm kateter; ardından 8,5–14 F ince göğüs tüpü.</li>
+        </ul>
+        <p class="src">Kaynak: Marino PL. <i>The ICU Book</i>, 5. baskı, Bölüm 27 “Conventional Mechanical Ventilation” ve Bölüm 28 “The Ventilator-Dependent Patient” (s. 480–513); PBW formülü Tablo 27.1 (s. 492), inç–cm çevrimi Ek 1 (s. 870). Özet kendi cümlelerimizle hazırlanmıştır.</p>
+      </article>
+
+      <aside>
+        <div class="abg vent" id="vent-tool">
+          <div class="kicker">Nöbet aracı · yeni</div>
+          <h4>Ventilatör Başlangıç Hesaplayıcısı</h4>
+          <p class="hint">Cinsiyet ve boydan öngörülen vücut ağırlığını ve tidal volüm aralığını hesaplar. Pik, plato ve PEEP girerseniz direnç, driving pressure ve statik kompliyansı da verir. Yalnızca Marino'daki formülleri kullanır. Eğitim amaçlıdır, klinik değerlendirmenin yerini tutmaz.</p>
+          <form class="abg-form vent-form" id="vent-form" autocomplete="off">
+            <label for="vent-sex">Cinsiyet<select id="vent-sex"><option value="E" selected>Erkek</option><option value="K">Kadın</option></select></label>
+            <label for="vent-height">Boy cm<input id="vent-height" inputmode="decimal" value="175"></label>
+            <label for="vent-vt">Vt mL (isteğe bağlı)<input id="vent-vt" inputmode="decimal" value=""></label>
+            <label for="vent-ppeak">Pik cmH₂O<input id="vent-ppeak" inputmode="decimal" value=""></label>
+            <label for="vent-pplat">Plato cmH₂O<input id="vent-pplat" inputmode="decimal" value=""></label>
+            <label for="vent-peep">Toplam PEEP<input id="vent-peep" inputmode="decimal" value=""></label>
+          </form>
+          <div class="vent-presets" aria-label="Örnek hastalar">
+            <button class="btn" type="button" data-v="E;175;;;;">Örnek: erkek 175 cm</button>
+            <button class="btn" type="button" data-v="K;160;320;34;28;10">Örnek: ARDS</button>
+            <button class="btn" type="button" data-v="E;180;550;42;22;5">Örnek: direnç artışı</button>
+            <button class="btn" type="button" data-v="K;160;500;40;30;10">Örnek: Vt fazla</button>
+          </div>
+          <div class="abg-out" id="vent-out" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="abg" id="abgTool">
+          <div class="kicker">Nöbet aracı</div>
+          <h4>Kan Gazı Çözücü</h4>
+          <p class="hint">Değerleri girin, adım adım yorumu görün. Marino'nun kurallarını izler. Eğitim amaçlıdır, klinik değerlendirmenin yerini tutmaz.</p>
+          <form class="abg-form" id="abgForm" autocomplete="off">
+            <label for="abg-ph">pH<input id="abg-ph" inputmode="decimal" value="7.26"></label>
+            <label for="abg-pco2">PaCO₂ mmHg<input id="abg-pco2" inputmode="decimal" value="23"></label>
+            <label for="abg-hco3">HCO₃ mEq/L<input id="abg-hco3" inputmode="decimal" value="10"></label>
+            <label for="abg-na">Na (isteğe bağlı)<input id="abg-na" inputmode="decimal" value="138"></label>
+            <label for="abg-cl">Cl (isteğe bağlı)<input id="abg-cl" inputmode="decimal" value="110"></label>
+            <label for="abg-alb">Albümin g/dL<input id="abg-alb" inputmode="decimal" value="2.5"></label>
+          </form>
+          <div class="abg-presets" aria-label="Örnek vakalar">
+            <button class="btn" type="button" data-p="7.26,23,10,138,110,2.5">Örnek: sepsis</button>
+            <button class="btn" type="button" data-p="7.41,60,37,140,96,4.0">Örnek: KOAH + diüretik</button>
+            <button class="btn" type="button" data-p="7.43,20,13,,,">Örnek: karışık</button>
+            <button class="btn" type="button" data-p="7.25,60,26,,,">Örnek: akut hipoventilasyon</button>
+          </div>
+          <div class="abg-out" id="abgOut" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="pearls" style="background:var(--sea)">
+          <div class="kicker">Viziteye taşınacak 4 not</div>
+          <ul>
+            <li><b>Alveolü anlatan pik değil plato basıncıdır.</b> Hedef ≤ 30 cmH₂O. Pik ile plato arasındaki fark direnci gösterir.</li>
+            <li><b>Vt'yi tartıdan değil boydan hesaplayın.</b> PBW ile 8 mL/kg başlayın, 2 saatte 6 mL/kg'a inin.</li>
+            <li><b>Ekspiryum sonu akım sıfıra inmiyorsa gizli PEEP vardır.</b> Önce ekspiryuma zaman tanıyın: Vt ↓, akım ↑, hız ↓.</li>
+            <li><b>Ventile hastada açıklanamayan hipoksemi ya da hipotansiyon tansiyon pnömotoraksı olabilir.</b> Sırtüstü grafide havayı bazallerde ve önde arayın.</li>
+          </ul>
+        </div>
+
+        <div class="mini-clips">
+          <article>
+            <div class="journal">BMC Pulmonary Medicine · 9 Kasım haberi</div>
+            <h4>Süregelen oksijenasyon ve basınç yükü ventile hastada ölümle ilişkili</h4>
+            <p>MIMIC-IV verisiyle yapılan çalışmada oksijenasyon bozukluğunun ve plato basıncı yükünün ne kadar uzun sürdüğünün hastane içi ölümle ilişkili olduğu bildirildi. Retrospektif bir analiz, eşikleri doğrulayamadık. Bu haftanın konusuyla birebir ilgili: platoyu bir kez değil, her gün ölçün.</p>
+            <p class="src"><a href="https://bioengineer.org/sustained-oxygenation-and-pressure-burdens-linked-to-higher-mortality-in-ventilated-icu-patients/" target="_blank" rel="noopener">Haber →</a></p>
+          </article>
+          <article>
+            <div class="journal">BMC Anesthesiology · 12 Kasım haberi</div>
+            <h4>VİP tanısında immatür trombosit fraksiyonu ve 28 günlük ölüm</h4>
+            <p>Ventilatörle ilişkili pnömoni tanısı anında yüksek immatür trombosit fraksiyonunun 28 günlük mortaliteyle ilişkili olduğu bildirildi. Hasta sayısını ve kesme değerini doğrulayamadık, tam metne bakın.</p>
+            <p class="src"><a href="https://bioengineer.org/higher-immature-platelet-fraction-at-pneumonia-diagnosis-linked-to-icu-mortality/" target="_blank" rel="noopener">Haber →</a></p>
+          </article>
+          <article>
+            <div class="journal">BMC Pulmonary Medicine · 13 Kasım haberi</div>
+            <h4>Pulmoner embolide erken düşük klorür ve mortalite</h4>
+            <p>Yoğun bakıma yatan pulmoner emboli hastalarında ilk günlerdeki düşük serum klorürünün 28 günlük ölümle ilişkili olduğu bildirildi. İlişki neden-sonuç göstermez. Geçen haftanın kan gazı konusunu hatırlayın: klorür, asit-baz yorumunun bir parçası.</p>
+            <p class="src"><a href="https://bioengineer.org/low-early-icu-chloride-linked-to-higher-pulmonary-embolism-mortality-risk/" target="_blank" rel="noopener">Haber →</a></p>
+          </article>
+        </div>
+      </aside>
+    </div>
+
+    <div class="cal-note" style="margin-top:18px"><b>Yoğun bakım konu sırası:</b></div>
+    <ol class="ek-cal">
+      <li>1 · Kan gazı ve asit-baz</li><li class="now">2 · Mekanik ventilasyonun temelleri</li><li>3 · Sepsis ve septik şok</li><li>4 · Sıvılar ve vazopresörler</li><li>5 · Oksijen tedavisi, YAKO, NIV</li><li>6 · ARDS</li><li>7 · Analjezi, sedasyon, deliryum</li><li>8 · Ventilatörden ayırma</li><li>9 · Sodyum ve potasyum</li><li>10 · Akut böbrek hasarı</li><li>11 · Santral kateter</li><li>12 · VİP ve antibiyotik</li><li>13 · Beslenme</li><li>14 · Transfüzyon</li><li>15 · Kardiyak arrest</li><li>16 · Laktik asidoz ve DKA</li>
+    </ol>
+  </section>
+
+  <!-- ===== EK 2: Algoloji ===== -->
+  <section class="ek ag" id="algoloji" aria-labelledby="ag-title">
+    <header class="ek-mast">
+      <div>
+        <div class="ek-tag">Ek sayfa · Algoloji · Ağrı Hafta 2</div>
+        <h2 id="ag-title">Ağrı Kesiciler Kulübü</h2>
+      </div>
+      <p class="ek-sub">Akut ve kronik ağrı: fizyoloji, ilaçlar, bloklar ve bu haftanın ağrı literatürü.</p>
+    </header>
+
+    <div class="ek-grid">
+      <article class="body">
+        <div class="kicker">Kitaptan · Morgan &amp; Mikhail, Bölüm 47 · Basics of Anesthesia, Bölüm 40 ve 43</div>
+        <h3 class="t">Ağrıyı Ölçmek: Sayı, Çizgi ve Kelime</h3>
+        <p>Ağrı özneldir. Psikolojik, sosyal ve kültürel etkenler onu biçimlendirir. Bu yüzden laboratuvar değeri gibi “okunmaz”, hastaya sorularak ölçülür. Tek bir sayı da yetmez: Ağrının tipi, şiddeti ve hastanın hayatına etkisi birlikte değerlendirilir.</p>
+
+        <h5>Değerlendirmenin iskeleti</h5>
+        <p>Morgan'a göre her ağrılı hastanın değerlendirmesinde şu öğeler bulunmalıdır: ağrının <b>yeri, başlangıcı ve niteliği</b>, onu <b>artıran ve azaltan etkenler</b>, daha önce denenen tedaviler ve belirtilerin zaman içindeki seyri. Anketler, ağrı diyagramları ve skalalar hastanın ağrısını ve yaşam kalitesine etkisini anlatmasını kolaylaştırır. Neden için düz grafi, BT, MR ve kemik sintigrafisi yardımcı olur. Tedaviye ancak bu kapsamlı değerlendirmeden sonra karar verilir.</p>
+        <p>Bel ağrısında Basics bazı öykü bulgularını <b>“kırmızı bayrak”</b> olarak sayar: travma sonrası yeni başlayan ya da kötüleşen bel ağrısı, enfeksiyon ve kanser öyküsü. İlerleyici nörolojik defisit (artan uyuşma ya da güçsüzlük) veya bağırsak ya da mesane işlev bozukluğu varsa, bası yapan bir lezyonu dışlamak için hemen görüntüleme gerekir.</p>
+
+        <h5>Akut mu, kronik mi?</h5>
+        <p>Akut ağrı yaralanmayı izler ve doku iyileşince genellikle geçer. Kalp hızında artış gibi otonom bulgular sıklıkla eşlik eder, ama her zaman değil. Kronik ağrı ise iyileşme için beklenen süreyi aşan ağrıdır. Kitaplar bu süreyi farklı verir: Morgan tipik olarak <b>1–6 ay</b> der. Basics, IASP tanımına dayanarak <b>3 ay</b> sınırını kullanır. Bel ağrısında da 3 aydan kısa süren ağrı akut, daha uzun süren kronik sayılır.</p>
+        <p>Nosiseptif ağrıyı nöropatik ağrıdan ayırmak da tedaviyi belirler. Nöropatik ağrıyı saplanıcı ya da yanıcı nitelik ve iki muayene bulgusu düşündürür: <b>hiperaljezi</b> (iğne batması gibi hafif ağrılı bir uyarana şiddetli ağrı) ve <b>allodini</b> (hafif dokunma gibi normalde ağrısız bir uyarana ağrı).</p>
+
+        <h5>Şiddeti ölçen skalalar</h5>
+        <p>En sık kullanılan araçlar sayısal derecelendirme ölçeği (NRS), Wong-Baker FACES ölçeği, görsel analog skala (VAS) ve McGill Ağrı Anketi'dir (MPQ). İlk üçü tek boyutludur: Ağrının şiddetini ölçer, niteliğini söylemez.</p>
+        <div class="tbl-wrap">
+          <table class="cmp">
+            <tr><th>Araç</th><th>Nasıl uygulanır?</th><th>Akılda kalsın</th></tr>
+            <tr><td>NRS (0–10)</td><td>Hasta ağrısına bir sayı verir. 0 ağrı yok, 10 olabilecek en kötü ağrıdır.</td><td>Hızlıdır, kâğıt gerektirmez.</td></tr>
+            <tr><td>VAS</td><td>10 cm'lik yatay çizginin bir ucunda “ağrı yok”, öbür ucunda “hayal edilebilecek en kötü ağrı” yazar. Hasta ağrısının yerini çizgi üzerinde işaretler.</td><td>“Ağrı yok” ucundan işarete kadar olan mesafe skoru verir. Basit ve pratiktir, diğer güvenilir yöntemlerle iyi uyum gösterir.</td></tr>
+            <tr><td>Wong-Baker FACES</td><td>Hasta, gülen yüzden çok mutsuz yüze uzanan bir dizi yüz ifadesinden birini gösterir.</td><td>3 yaş ve üzeri çocuklar için tasarlanmıştır. İletişim güçlüğü olan hastada da işe yarar.</td></tr>
+            <tr><td>McGill (MPQ)</td><td>Hasta 20 kelime setinden ağrısına uyanları seçer ve her setteki en uygun kelimeyi işaretler.</td><td>Çok boyutludur. Şiddetin yanında niteliği de tarif eder.</td></tr>
+          </table>
+        </div>
+
+        <h5>McGill: ağrının üç boyutu</h5>
+        <p>MPQ ağrıyı üç ana boyutta tanımlamaya çalışır. <b>Duyusal–ayırt edici</b> boyut nosiseptif yollara, <b>motivasyonel–duygusal</b> boyut retiküler ve limbik yapılara, <b>bilişsel–değerlendirici</b> boyut serebral kortekse karşılık gelir. 20 kelime seti dört gruba ayrılır: 10 duyusal, 5 duygusal, 1 değerlendirici ve 4 çeşitli.</p>
+
+        <h5>Psikososyal değerlendirme</h5>
+        <p>Psikososyal değerlendirme üç durumda özellikle yararlıdır: tıbbi değerlendirme belirgin bir neden bulamadığında, ağrının şiddeti, özellikleri ya da süresi hastalık veya yaralanmayla orantısız olduğunda ve psikolojik ya da sosyal sorunlar açıkça göze çarptığında. En sık kullanılan iki test <b>Minnesota Çok Yönlü Kişilik Envanteri (MMPI)</b> ve <b>Beck Depresyon Envanteri</b>'dir. MMPI psikolojik etkenlerin rolüne dair klinik izlenimi doğrular, ama “organik” ağrıyı “fonksiyonel” ağrıdan güvenilir biçimde ayıramaz. Kronik ağrıda çok sık görülen majör depresyonu saptamada Beck envanteri yararlıdır. İşlev kaybı ve yaşam kalitesi için Çok Boyutlu Ağrı Envanteri (MPI), SF-36, Ağrı Özürlülük İndeksi (PDI) ve Oswestry Özürlülük İndeksi (ODI) kullanılır. Ağrı ve duygusal sıkıntı birlikte tedavi edilmelidir.</p>
+        <p>Basics bu nedenle kronik ağrıyı ekip işi olarak görür: Multidisipliner ekibin çekirdeğinde bir hekim, bir psikolog ve bir fizyoterapist bulunur.</p>
+
+        <h5>Ameliyat sonrası ağrıyı öngörmek</h5>
+        <p>Postoperatif ağrının daha şiddetli olacağını düşündüren etkenler şunlardır: ameliyat öncesi opioid kullanımı, anksiyete, depresyon, ameliyat öncesi ağrı düzeyi ve ameliyatın süresi. Hasta yaşı ve cerrahın deneyimi ise ağrı şiddetiyle ters ilişkilidir. Kötü kontrol edilen akut ağrı, hastaların %10–65'inde görülen kronik postcerrahi ağrının önemli bir öngördürücüsü olabilir.</p>
+        <p class="src">Kaynak: Butterworth JF, Mackey DC, Wasnick JD. <i>Morgan &amp; Mikhail's Clinical Anesthesiology</i>, 7. baskı, Bölüm 47 “Chronic Pain Management” (Pain Measurement, Psychosocial Evaluation). Pardo MC, Miller RD. <i>Basics of Anesthesia</i>, 6. baskı, Bölüm 40 “Perioperative Pain Management” ve Bölüm 43 “Chronic Pain Management”. Özet kendi cümlelerimizle hazırlanmıştır.</p>
+      </article>
+
+      <aside>
+        <div class="pathway">
+          <svg class="ag-sema" viewBox="0 0 340 380" role="img" aria-label="Ağrı ölçüm şeması: üstte 0'dan 10'a sayısal derecelendirme ölçeği üzerinde gidip gelen bir işaretçi, ortada uçlarında ağrı yok ve hayal edilebilecek en kötü ağrı yazan 10 cm'lik görsel analog skala çizgisi ve aynı noktayı izleyen hasta işareti, altta McGill Ağrı Anketi'nin duyusal, duygusal ve değerlendirici boyutları etrafında atan halkalar">
+            <g font-family="Special Elite, Courier New, monospace" font-size="10" fill="#2a2018">
+              <text x="16" y="20" font-size="11">NRS · SAYISAL ÖLÇEK</text>
+              <rect x="30" y="48" width="280" height="16" fill="#efe4c8" stroke="#2a2018" stroke-width="1.5"/>
+              <rect x="30" y="48" width="280" height="16" fill="#9b2d20" opacity=".08"/>
+              <g stroke="#2a2018" stroke-width="1.2">
+                <line x1="30" y1="48" x2="30" y2="64"/><line x1="58" y1="54" x2="58" y2="64"/><line x1="86" y1="54" x2="86" y2="64"/><line x1="114" y1="54" x2="114" y2="64"/><line x1="142" y1="54" x2="142" y2="64"/><line x1="170" y1="50" x2="170" y2="64"/><line x1="198" y1="54" x2="198" y2="64"/><line x1="226" y1="54" x2="226" y2="64"/><line x1="254" y1="54" x2="254" y2="64"/><line x1="282" y1="54" x2="282" y2="64"/><line x1="310" y1="48" x2="310" y2="64"/>
+              </g>
+              <g text-anchor="middle" font-size="9.5">
+                <text x="30" y="78">0</text><text x="58" y="78">1</text><text x="86" y="78">2</text><text x="114" y="78">3</text><text x="142" y="78">4</text><text x="170" y="78">5</text><text x="198" y="78">6</text><text x="226" y="78">7</text><text x="254" y="78">8</text><text x="282" y="78">9</text><text x="310" y="78">10</text>
+              </g>
+              <text x="30" y="92" font-size="8.5">ağrı yok</text>
+              <text x="310" y="92" font-size="8.5" text-anchor="end">olabilecek en kötü</text>
+              <g class="ag-imlec">
+                <path d="M190 30 L 206 30 L 198 46 Z" fill="#9b2d20"/>
+                <line x1="198" y1="46" x2="198" y2="64" stroke="#9b2d20" stroke-width="2"/>
+              </g>
+
+              <line x1="16" y1="108" x2="324" y2="108" stroke="#d6c39c" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="16" y="128" font-size="11">VAS · 10 cm ÇİZGİ</text>
+              <line x1="30" y1="152" x2="310" y2="152" stroke="#1f4e5f" stroke-width="3"/>
+              <line x1="30" y1="142" x2="30" y2="162" stroke="#1f4e5f" stroke-width="3"/>
+              <line x1="310" y1="142" x2="310" y2="162" stroke="#1f4e5f" stroke-width="3"/>
+              <text x="30" y="176" font-size="8.5" fill="#1f4e5f">ağrı yok</text>
+              <text x="310" y="176" font-size="8.5" fill="#1f4e5f" text-anchor="end">hayal edilebilecek en kötü ağrı</text>
+              <g class="ag-imlec">
+                <line x1="192" y1="140" x2="204" y2="164" stroke="#9b2d20" stroke-width="2.6"/>
+                <line x1="204" y1="140" x2="192" y2="164" stroke="#9b2d20" stroke-width="2.6"/>
+              </g>
+              <g class="ag-olcu">
+                <line x1="30" y1="190" x2="198" y2="190" stroke="#9b2d20" stroke-width="1.6"/>
+                <line x1="30" y1="185" x2="30" y2="195" stroke="#9b2d20" stroke-width="1.6"/>
+                <line x1="198" y1="185" x2="198" y2="195" stroke="#9b2d20" stroke-width="1.6"/>
+              </g>
+              <text x="30" y="208" font-size="8.5" fill="#9b2d20">“ağrı yok” ucundan işarete mesafe = skor</text>
+
+              <line x1="16" y1="222" x2="324" y2="222" stroke="#d6c39c" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="16" y="242" font-size="11">MPQ · ÜÇ BOYUT</text>
+              <path d="M170 272 L 82 334 L 258 334 Z" fill="none" stroke="#d6c39c" stroke-width="1.5"/>
+              <circle class="ag-don" cx="170" cy="312" r="22" fill="none" stroke="#1f4e5f" stroke-width="1.4" stroke-dasharray="5 6"/>
+              <text x="170" y="310" text-anchor="middle" font-size="9">20 set</text>
+              <text x="170" y="321" text-anchor="middle" font-size="8">+4 çeşitli</text>
+              <circle class="ag-nabiz" cx="170" cy="272" r="12" fill="none" stroke="#9b2d20" stroke-width="1.5"/>
+              <circle cx="170" cy="272" r="12" fill="#efe4c8" stroke="#9b2d20" stroke-width="1.5"/>
+              <text x="170" y="276" text-anchor="middle" font-size="10" fill="#9b2d20">10</text>
+              <text x="190" y="262" font-size="8.5" fill="#9b2d20">duyusal–ayırt edici</text>
+              <text x="190" y="273" font-size="8" fill="#9b2d20">nosiseptif yollar</text>
+              <circle class="ag-nabiz ag-g2" cx="82" cy="334" r="12" fill="none" stroke="#1f4e5f" stroke-width="1.5"/>
+              <circle cx="82" cy="334" r="12" fill="#efe4c8" stroke="#1f4e5f" stroke-width="1.5"/>
+              <text x="82" y="338" text-anchor="middle" font-size="10" fill="#1f4e5f">5</text>
+              <text x="16" y="360" font-size="8.5" fill="#1f4e5f">motivasyonel–duygusal</text>
+              <text x="16" y="371" font-size="8" fill="#1f4e5f">retiküler + limbik</text>
+              <circle class="ag-nabiz ag-g3" cx="258" cy="334" r="12" fill="none" stroke="#2a2018" stroke-width="1.5"/>
+              <circle cx="258" cy="334" r="12" fill="#d6c39c" stroke="#2a2018" stroke-width="1.5"/>
+              <text x="258" y="338" text-anchor="middle" font-size="10">1</text>
+              <text x="324" y="360" font-size="8.5" text-anchor="end">bilişsel–değerlendirici</text>
+              <text x="324" y="371" font-size="8" text-anchor="end">serebral korteks</text>
+            </g>
+          </svg>
+          <p class="cap">Şematik çizim. Üstte NRS, ortada 10 cm'lik VAS: İşaretçi ve hasta işareti aynı şiddeti gösterir, ölçülen mesafe skoru verir. Altta McGill anketinin üç boyutu ve her boyuttaki kelime seti sayısı.</p>
+        </div>
+
+        <div class="pearls" style="background:var(--wax)">
+          <div class="kicker" style="color:#f6dca6">Servise taşınacak 4 not</div>
+          <ul>
+            <li><b>Skoru hastaya sorun, monitöre değil.</b> Akut ağrıya taşikardi sıklıkla eşlik eder ama her zaman değil. Ağrı öznel bir deneyimdir.</li>
+            <li><b>VAS'ta skor, “ağrı yok” ucundan hastanın işaretine olan mesafedir.</b> Çizgi 10 cm'dir. İletişim güçlüğü olan hastada ve 3 yaş üstü çocukta yüz ifadeli ölçek bir seçenektir.</li>
+            <li><b>Yanıcı, saplanıcı ağrı ve allodini nöropatik ağrıyı düşündürür.</b> Şiddet skoru bunu söylemez, nitelik sorusu söyler.</li>
+            <li><b>Ameliyat öncesi opioid kullanımı, anksiyete ve depresyonu not edin.</b> Bu hastalarda postoperatif ağrı daha şiddetlidir ve plan baştan yapılmalıdır.</li>
+          </ul>
+        </div>
+
+        <div class="mini-clips">
+          <article>
+            <div class="journal">Klinik çalışma · 11 Kasım haberi</div>
+            <h4>Kronik ağrıda “haksızlığa uğrama” algısı sıkıntıyla ilişkili</h4>
+            <p>Kronik ağrılı hastalarda algılanan haksızlığın ağrı şiddeti ya da ağrının yerinden çok psikolojik sıkıntı ve sosyal etkenlerle ilişkili olduğu bildirildi. Bu haftanın konusuyla bağlantılı: ağrı yalnızca bir sayı değildir, psikososyal değerlendirme şarttır.</p>
+            <p class="src"><a href="https://bioengineer.org/chronic-pain-patients-relate-perceived-injustice-to-psychological-distress-over-physical-symptoms/" target="_blank" rel="noopener">Haber →</a></p>
+          </article>
+          <article>
+            <div class="journal">Yapay zekâ · 11 Kasım haberi</div>
+            <h4>Bakımevinde ağrıyı yapay zekâ destekli araçla değerlendirmek</h4>
+            <p>Bilişsel bozukluğu olan bakımevi sakinlerinde ağrıyı değerlendiren yapay zekâ destekli bir araç denendi. Ön-son tasarımlı çalışmada 65 hemşire uygulamadan önce ve 12 hafta sonra anketle değerlendirildi. Başlığa göre değerlendirmelerin beşte birinde ağrı saptandı. Ayrıntıları doğrulayamadık.</p>
+            <p class="src"><a href="https://bioengineer.org/ai-tool-identified-pain-in-twenty-percent-of-long-term-care-assessments/" target="_blank" rel="noopener">Haber →</a></p>
+          </article>
+          <article>
+            <div class="journal">Kohort · 11 Kasım haberi</div>
+            <h4>Burst spinal kord stimülasyonu sonrası ağrı felaketleştirmesi azaldı</h4>
+            <p>İki yıllık kohort çalışmasında burst spinal kord stimülasyonu sonrasında ağrı felaketleştirme skorları belirgin azaldı. Başlangıçtaki psikolojik skorlar implantasyon sonrası sonuçları öngörmedi. Kontrol grubu olmayan bir çalışma.</p>
+            <p class="src"><a href="https://bioengineer.org/pain-catastrophizing-decreased-following-burst-spinal-cord-stimulation-in-cohort-study/" target="_blank" rel="noopener">Haber →</a></p>
+          </article>
+        </div>
+      </aside>
+    </div>
+
+    <div class="cal-note" style="margin-top:18px"><b>Algoloji konu sırası:</b></div>
+    <ol class="ek-cal">
+      <li>1 · Ağrı yolları ve nosisepsiyon</li><li class="now">2 · Ağrı değerlendirmesi ve skalalar</li><li>3 · Santral sensitizasyon ve modülasyon</li><li>4 · Multimodal analjezi ve ERAS</li><li>5 · Parasetamol, NSAİİ, metamizol</li><li>6 · Opioidler ve HKA</li><li>7 · Adjuvanlar: ketamin, lidokain, gabapentinoid</li><li>8 · Postoperatif epidural analjezi</li><li>9 · Fasyal plan blokları</li><li>10 · Opioid toleranslı hastada akut ağrı</li><li>11 · Kronik postoperatif ağrı</li><li>12 · Nöropatik ağrı</li><li>13 · Kanser ağrısı</li><li>14 · Bel ağrısı ve girişimler</li><li>15 · KBAS (CRPS)</li><li>16 · Baş ağrısı ve yüz ağrısı</li>
+    </ol>
+  </section>
+
+  <!-- ===== Crossword ===== -->
+  <div class="sec-h"><h3>Bulmaca Köşesi</h3></div>
+  <p class="cal-note" style="margin:-6px 0 16px;text-align:center">Bu bulmaca geçen haftanın üç konusundan: Anestezi makinesi ve sabah kontrolü (ana gazete), kan gazı ve asit-baz (Yoğun Bakım eki), ağrı yolları ve nosisepsiyon (Algoloji eki). Hücreye tıklayıp yazın. Aynı hücreye ikinci kez tıklarsanız yön değişir.</p>
+  <section class="puzzle">
+    <div>
+      <div class="cw-wrap" id="cwWrap">
+        <div class="cw" id="cw" aria-label="Bulmaca ızgarası"></div>
+      </div>
+      <div class="cw-actions">
+        <button class="btn" id="cwCheck" type="button">Kontrol et</button>
+        <button class="btn" id="cwReveal" type="button">Cevapları göster</button>
+        <button class="btn" id="cwClear" type="button">Temizle</button>
+      </div>
+      <div class="cw-status" id="cwStatus" role="status"></div>
+    </div>
+    <div class="clues">
+      <h5>Soldan sağa</h5>
+      <ol id="cluesA"></ol>
+      <h5>Yukarıdan aşağı</h5>
+      <ol id="cluesD"></ol>
+    </div>
+  </section>
+
+  <div class="box quiz" style="margin-top:34px">
+    <span class="tape" aria-hidden="true"></span>
+    <div class="kicker">Geçen haftadan 5 soru · TUS / EDAIC</div>
+    <h4>Anestezi makinesi, kan gazı ve ağrı yolları tekrarı</h4>
+
+    <p><b>1.</b> Santral oksijen hattı yaklaşık 50 psig ile gelirken, yedek E-tüpünün regülatörü basıncı neden yaklaşık 45 psig'e düşürür?</p>
+    <ol type="A">
+      <li>Tüpteki oksijenin daha nemli olması için</li>
+      <li>Tüp açık unutulsa bile makinenin önce santral gazı kullanması için</li>
+      <li>Vaporizatörün sıcaklık düzeltmesinin çalışması için</li>
+      <li>Oksijen flaşının akımını sınırlamak için</li>
+    </ol>
+    <details>
+      <summary>Cevabı göster</summary>
+      <div class="ans"><p><b>Doğru cevap: B.</b> Tüp basıncı santral basınçtan biraz düşük ayarlandığı için santral sistem çalıştığı sürece makine tüpten gaz çekmez. Tüp yalnızca santral basınç düştüğünde devreye girer.</p></div>
+    </details>
+
+    <p style="margin-top:14px"><b>2.</b> Mekanik ventilasyondaki hastada oksijen flaş valfine hangi anda basmak barotravma açısından en tehlikelidir?</p>
+    <ol type="A">
+      <li>Ekspiryum sırasında</li>
+      <li>Ventilatörün inspiryum fazında</li>
+      <li>Spontan solunumda APL tamamen açıkken</li>
+      <li>Hasta devreden ayrılmışken</li>
+    </ol>
+    <details>
+      <summary>Cevabı göster</summary>
+      <div class="ans"><p><b>Doğru cevap: B.</b> Flaş valfi dakikada 35–75 L oksijen verir. İnspiryumda spill valf kapalı ve APL devre dışı olduğu için bu basınç doğrudan akciğere gider.</p></div>
+    </details>
+
+    <p style="margin-top:14px"><b>3.</b> Kurumuş CO₂ absorbanı en çok hangi volatil ajanla karbonmonoksit oluşturur?</p>
+    <ol type="A">
+      <li>Sevofluran</li>
+      <li>Desfluran</li>
+      <li>Nitröz oksit</li>
+      <li>Halotan</li>
+    </ol>
+    <details>
+      <summary>Cevabı göster</summary>
+      <div class="ans"><p><b>Doğru cevap: B.</b> Kuru absorbent volatil ajanları parçalayıp CO oluşturabilir. Bu en çok desfluranla olur. Sevofluran ise absorbentle compound A oluşturur.</p></div>
+    </details>
+
+    <p style="margin-top:14px"><b>4.</b> (Yoğun bakım) pH 7,26, PaCO₂ 23 mmHg, HCO₃ 10 mEq/L. Solunumsal kompansasyon için hangisi doğrudur?</p>
+    <ol type="A">
+      <li>Beklenen PaCO₂ yaklaşık 23 mmHg'dir; kompansasyon yeterlidir</li>
+      <li>Beklenen PaCO₂ yaklaşık 33 mmHg'dir; eşlik eden solunumsal asidoz vardır</li>
+      <li>Beklenen PaCO₂ yaklaşık 40 mmHg'dir; kompansasyon yoktur</li>
+      <li>Primer bozukluk solunumsal alkalozdur</li>
+    </ol>
+    <details>
+      <summary>Cevabı göster</summary>
+      <div class="ans"><p><b>Doğru cevap: A.</b> pH ve PaCO₂ aynı yönde düşmüş, primer bozukluk metabolik asidoz. Marino'nun formülüyle beklenen PaCO₂ = 40 − 1,2 × (24 − 10) = 23,2 mmHg. Ölçülen değer ±2 içinde, kompansasyon beklenen düzeyde.</p></div>
+    </details>
+
+    <p style="margin-top:14px"><b>5.</b> (Algoloji) Lamina V'teki geniş dinamik aralıklı nöronların aynı uyarı tekrarlandıkça giderek daha fazla ateşlenmesine ne ad verilir?</p>
+    <ol type="A">
+      <li>Lewis'in üçlü yanıtı</li>
+      <li>Wind-up</li>
+      <li>Yansıyan ağrı</li>
+      <li>Primer hiperaljezi</li>
+    </ol>
+    <details>
+      <summary>Cevabı göster</summary>
+      <div class="ans"><p><b>Doğru cevap: B.</b> Wind-up santral sensitizasyonun ilk basamağıdır. Lewis'in üçlü yanıtı nörojenik inflamasyonu, primer hiperaljezi ise hasarlı dokudaki nosiseptör eşiğinin düşmesini anlatır.</p></div>
+    </details>
+  </div>
+
+  <!-- ===== Calendar ===== -->
+  <div class="sec-h"><h3>Konu Takvimi</h3></div>
+  <ol class="cal">
+    <li><span class="wk">Hafta 1</span>Farmakokinetik ve farmakodinamik temelleri</li>
+    <li><span class="wk">Hafta 2</span>Anestezi makinesi ve sabah kontrolü</li>
+    <li class="now"><span class="wk">Hafta 3 · bu sayı</span>Standart monitörizasyon</li>
+    <li><span class="wk">Hafta 4</span>Havayolu değerlendirmesi ve yönetimi</li>
+    <li><span class="wk">Hafta 5</span>Preoperatif değerlendirme ve ASA sınıflaması</li>
+    <li><span class="wk">Hafta 6</span>IV anestezikler: propofol, ketamin, etomidat</li>
+    <li><span class="wk">Hafta 7</span>Benzodiazepinler ve sedasyon</li>
+    <li><span class="wk">Hafta 8</span>İnhalasyon anestezikleri ve MAC</li>
+    <li><span class="wk">Hafta 9</span>Opioidler</li>
+    <li><span class="wk">Hafta 10</span>Nöromüsküler blokerler ve reversal</li>
+    <li><span class="wk">Hafta 11</span>Lokal anestezikler ve LAST</li>
+    <li><span class="wk">Hafta 12</span>Spinal ve epidural anestezi</li>
+    <li><span class="wk">Hafta 13</span>Sıvı tedavisi ve kan ürünleri</li>
+    <li><span class="wk">Hafta 14</span>Otonom sinir sistemi ve vazoaktif ilaçlar</li>
+    <li><span class="wk">Hafta 15</span>Derlenme ünitesi ve PONV</li>
+    <li><span class="wk">Hafta 16</span>Kriz yönetimi: malign hipertermi, anafilaksi</li>
+  </ol>
+  <p class="cal-note">Ana kaynaklar <i>Basics of Anesthesia</i> ile <i>Morgan &amp; Mikhail's Clinical Anesthesiology</i>. İleri konularda <i>Barash</i>, <i>Stoelting</i> ve <i>Hadzic</i> kullanılacak. Yoğun Bakım ekinde <i>The ICU Book</i> (Marino), Algoloji ekinde <i>Morgan &amp; Mikhail</i> ve <i>Hadzic</i> kullanılıyor.</p>
+
+  <footer class="foot">
+    <p>Uyku Denizi Postası her hafta güncel anestezi literatürünü ve meslek haberlerini derler. Her haberin altında orijinal kaynağı var. Klinik karar vermeden önce makalenin tam metnini okuyun.</p>
+    <p><a href="../pdf/Uyku-Denizi-Postasi-Sayi-03.pdf">Bu sayının PDF'i</a> · <a href="https://drive.google.com/drive/folders/1WLb7wsgtTvobZ1eUeQVM9sErPkPokLhe" target="_blank" rel="noopener">Eski sayılar (Drive arşivi)</a></p>
+    <p class="fine">Bu sayıdaki makale ve haber özetlerinin çoğu arama sonuçlarındaki ikincil haber özetlerinden hazırlandı; bu hafta dergi sayfalarının tam metnine erişemedik. “Doğrulanamadı” notu olan bulgular birincil yayından kontrol edilmelidir. Bu hafta BJA, Anaesthesia, RAPM ve Turkish Journal of Anaesthesiology and Reanimation'da son yedi güne ait, bağlantısını doğrulayabildiğimiz yeni bir yayın tespit edemedik. · Sayı 3 · 13.11.2026</p>
+  </footer>
+</div>
+
+<script>
+/* Ventilatör başlangıç hesaplayıcısı — Marino, The ICU Book 5. baskı
+   Formüller: PBW (Tablo 27.1, s.492; Tablo 24.5, s.437), 1 inç = 2,54 cm (Ek 1, s.870),
+   Ppeak = Pres + Pel, Pplato = Pel, Ppeak − Pplato = Pres (Denk. 27.1–27.3, s.482),
+   Cstat = VT / (Pplato − PEEPtoplam) (Denk. 27.4, s.485), driving pressure = Pplato − PEEP (s.490),
+   devre kompliyansı ≈ 3 mL/cmH2O (s.486), Pplato ≤ 30 cmH2O (s.483, s.492–493).
+   Eğitim amaçlıdır, klinik değerlendirmenin yerini tutmaz. */
+(function(){
+  "use strict";
+
+  var CM_PER_INCH = 2.54;          /* s.870 */
+  var TUBING_ML_PER_CMH2O = 3;     /* s.486 */
+  var PPLAT_LIMIT = 30;            /* s.483, s.493 */
+
+  function num(v){
+    if(v===null || v===undefined) return null;
+    if(typeof v==="number") return isFinite(v) ? v : NaN;
+    var s=String(v).replace(",",".").replace(/\s+/g,"");
+    if(s==="") return null;
+    var n=parseFloat(s);
+    return (isFinite(n) && /^[-+]?\d*\.?\d+$/.test(s)) ? n : NaN;
+  }
+
+  function cmToInch(cm){ return cm / CM_PER_INCH; }
+
+  /* Tablo 27.1: Erkek PBW = 50 + 2,3 × (boy[inç] − 60); Kadın PBW = 45,5 + 2,3 × (boy[inç] − 60) */
+  function pbw(sex, heightCm){
+    var base = sex==="K" ? 45.5 : (sex==="E" ? 50 : NaN);
+    return base + 2.3 * (cmToInch(heightCm) - 60);
+  }
+
+  function vtForPbw(pbwKg, mlPerKg){ return pbwKg * mlPerKg; }
+
+  function drivingPressure(pplat, peep){ return pplat - peep; }
+
+  /* Denk. 27.4: Cstat = VT / (Pplato − PEEPtoplam) */
+  function staticCompliance(vt, pplat, peep){
+    var dp = pplat - peep;
+    return dp > 0 ? vt / dp : NaN;
+  }
+
+  /* Denk. 27.3: Pres = Ppeak − Pplato */
+  function resistivePressure(ppeak, pplat){ return ppeak - pplat; }
+
+  /* s.486: devreye kaybolan hacim ≈ 3 mL/cmH2O × tepe basınç */
+  function tubingLoss(ppeak){ return TUBING_ML_PER_CMH2O * ppeak; }
+
+  /* Tüm girdileri değerlendirip sayısal sonuç ve mesaj listesi döndürür (DOM'dan bağımsız). */
+  function evaluate(inp){
+    var r = { ok:false, errors:[], notes:[], warn:[] };
+    var sex = inp.sex, h = num(inp.heightCm);
+    var vt = num(inp.vt), ppeak = num(inp.ppeak), pplat = num(inp.pplat), peep = num(inp.peep);
+
+    if(sex!=="E" && sex!=="K") r.errors.push("Cinsiyet seçin.");
+    if(h===null) r.errors.push("Boy girin (cm).");
+    else if(isNaN(h) || h < 120 || h > 230) r.errors.push("Boy 120–230 cm arasında bir sayı olmalı.");
+    [["Vt",vt],["Pik basınç",ppeak],["Plato basıncı",pplat],["PEEP",peep]].forEach(function(p){
+      if(p[1]!==null && (isNaN(p[1]) || p[1] < 0)) r.errors.push(p[0]+" geçerli, negatif olmayan bir sayı olmalı.");
+    });
+    if(r.errors.length) return r;
+
+    r.ok = true;
+    r.heightIn = cmToInch(h);
+    r.pbw = pbw(sex, h);
+    r.vt4 = vtForPbw(r.pbw, 4);
+    r.vt6 = vtForPbw(r.pbw, 6);
+    r.vt8 = vtForPbw(r.pbw, 8);
+    if(h < 60 * CM_PER_INCH) r.notes.push("Boy 152,4 cm'nin (60 inç) altında; formüldeki parantez negatife döner ve PBW taban değerin altına iner.");
+
+    if(vt!==null){
+      r.vtPerKg = vt / r.pbw;
+      if(r.vtPerKg > 8) r.warn.push("Vt, 8 mL/kg PBW başlangıç değerinin üstünde.");
+    }
+
+    if(ppeak!==null && pplat!==null){
+      if(pplat > ppeak) r.warn.push("Plato basıncı pik basınçtan yüksek olamaz; ölçümleri kontrol edin.");
+      else r.pres = resistivePressure(ppeak, pplat);
+    }
+    if(pplat!==null){
+      if(pplat > PPLAT_LIMIT) r.warn.push("Plato basıncı 30 cmH₂O'nun üstünde: alveol rüptürü riski. Protokole göre Vt, 4 mL/kg alt sınırına kadar 1 mL/kg adımlarla azaltılır.");
+      if(peep!==null){
+        if(peep >= pplat) r.warn.push("PEEP, plato basıncına eşit ya da büyük; driving pressure ve kompliyans hesaplanamaz.");
+        else {
+          r.dp = drivingPressure(pplat, peep);
+          if(vt!==null){
+            r.cstat = staticCompliance(vt, pplat, peep);
+            if(ppeak!==null && ppeak >= pplat){
+              r.tubing = tubingLoss(ppeak);
+              r.vtCorr = vt - r.tubing;
+              r.cstatCorr = r.vtCorr > 0 ? staticCompliance(r.vtCorr, pplat, peep) : NaN;
+            }
+          }
+        }
+      }
+    }
+    return r;
+  }
+
+  function cstatBand(c){
+    if(!isFinite(c)) return "";
+    if(c < 25) return "25 mL/cmH₂O altı: infiltratif akciğer hastalığında (ödem, ARDS) görülen düzey.";
+    if(c >= 50 && c <= 80) return "Normal akciğerler için verilen 50–80 mL/cmH₂O aralığında.";
+    if(c > 80) return "50–80 mL/cmH₂O normal aralığının üstünde; ölçümü kontrol edin.";
+    return "Normal (50–80) ile infiltratif hastalık (<25) arasında.";
+  }
+
+  var api = { cmToInch:cmToInch, pbw:pbw, vtForPbw:vtForPbw, drivingPressure:drivingPressure,
+              staticCompliance:staticCompliance, resistivePressure:resistivePressure,
+              tubingLoss:tubingLoss, evaluate:evaluate, cstatBand:cstatBand, num:num };
+  if(typeof module!=="undefined" && module.exports){ module.exports = api; }
+
+  if(typeof document==="undefined") return;
+  var out = document.getElementById("vent-out");
+  var form = document.getElementById("vent-form");
+  if(!out || !form) return;
+  var ids = ["sex","height","vt","ppeak","pplat","peep"], el = {}, i;
+  for(i=0;i<ids.length;i++){ el[ids[i]] = document.getElementById("vent-"+ids[i]); if(!el[ids[i]]) return; }
+
+  function f(n,d){ return n.toFixed(d===undefined?0:d).replace(".",","); }
+  function step(tag,html){ return '<div class="step"><b>'+tag+'</b><span>'+html+'</span></div>'; }
+
+  function run(){
+    var r = evaluate({ sex:el.sex.value, heightCm:el.height.value, vt:el.vt.value,
+                       ppeak:el.ppeak.value, pplat:el.pplat.value, peep:el.peep.value });
+    if(!r.ok){ out.innerHTML = '<div class="warn">'+r.errors.join(" ")+'</div>'; return; }
+    var h = [];
+    h.push('<div class="dx">PBW '+f(r.pbw,1)+' kg · Vt '+f(r.vt6)+'–'+f(r.vt8)+' mL</div>');
+    h.push(step("PBW", f(r.heightIn,1)+' inç → '+(el.sex.value==="E"?"50":"45,5")+' + 2,3 × ('+f(r.heightIn,1)+' − 60) = <b>'+f(r.pbw,1)+' kg</b>'));
+    h.push(step("Vt", 'Başlangıç 8 mL/kg = <b>'+f(r.vt8)+' mL</b>; 2 saat içinde 6 mL/kg = <b>'+f(r.vt6)+' mL</b> hedefi. Plato yüksek kalırsa alt sınır 4 mL/kg = '+f(r.vt4)+' mL.'));
+    if(r.vtPerKg!==undefined) h.push(step("Girilen Vt", f(r.vtPerKg,1)+' mL/kg PBW.'));
+    if(r.pres!==undefined) h.push(step("Pik − plato", '<b>'+f(r.pres,1)+' cmH₂O</b>: hava yolu direncine harcanan basınç (Pres). Plato ise elastik geri çekilmeyi (Pel) gösterir. Basınç yükseldiğinde pik artıp plato aynı kalıyorsa sorun dirençte, plato da artıyorsa akciğer/göğüs duvarı sertliğinde ya da oto-PEEP\'tedir.'));
+    if(r.dp!==undefined) h.push(step("Driving P", 'Plato − PEEP = <b>'+f(r.dp,1)+' cmH₂O</b>. PEEP artırılırken düşüyorsa alveol açılması, yükseliyorsa aşırı gerilme ağır basıyor (kitap sayısal bir eşik vermez).'));
+    if(r.cstat!==undefined){
+      var c = 'Vt / (Plato − PEEP) = <b>'+f(r.cstat,1)+' mL/cmH₂O</b>. '+cstatBand(r.cstat);
+      if(r.vtCorr!==undefined) c += ' Devre kaybı (3 × '+f(num(el.ppeak.value),0)+' = '+f(r.tubing)+' mL) düşülünce '+(isFinite(r.cstatCorr)?f(r.cstatCorr,1)+' mL/cmH₂O':'hesaplanamaz')+'.';
+      h.push(step("Cstat", c));
+    }
+    if(r.pres===undefined && r.dp===undefined) h.push(step("İpucu","Pik, plato ve PEEP girerseniz direnç, driving pressure ve kompliyans hesaplanır. PEEP olarak toplam (uygulanan + gizli) PEEP'i girin."));
+    var w = r.warn.concat(r.notes);
+    out.innerHTML = h.join("") + (w.length ? '<div class="warn">'+w.join(" ")+'</div>' : "");
+  }
+
+  for(i=0;i<ids.length;i++){ el[ids[i]].addEventListener("input",run); el[ids[i]].addEventListener("change",run); }
+  form.addEventListener("submit",function(e){ e.preventDefault(); });
+  var btns = document.querySelectorAll(".vent-presets .btn");
+  for(i=0;i<btns.length;i++){
+    btns[i].addEventListener("click",function(){
+      var p = (this.getAttribute("data-v")||"").split(";");
+      for(var k=0;k<ids.length;k++){ el[ids[k]].value = p[k]!==undefined ? p[k] : ""; }
+      run();
+    });
+  }
+  run();
+})();
+</script>
+
+<script>
+/* Kan gazı çözücü — Marino, The ICU Book 5. baskı, Bölüm 31 kuralları */
+(function(){
+  var ids=["ph","pco2","hco3","na","cl","alb"], el={};
+  ids.forEach(function(k){ el[k]=document.getElementById("abg-"+k); });
+  var out=document.getElementById("abgOut");
+  if(!out) return;
+  function num(k){ var v=(el[k].value||"").replace(",",".").trim(); if(v==="") return null; var n=parseFloat(v); return isFinite(n)?n:NaN; }
+  function f(n,d){ return n.toFixed(d===undefined?0:d).replace(".",","); }
+  function step(tag,html){ return '<div class="step"><b>'+tag+'</b><span>'+html+'</span></div>'; }
+  function run(){
+    var ph=num("ph"), pc=num("pco2"), hc=num("hco3"), na=num("na"), cl=num("cl"), alb=num("alb");
+    if([ph,pc,hc].some(function(x){return x===null||isNaN(x);})){ out.innerHTML='<div class="warn">pH, PaCO₂ ve HCO₃ değerlerini girin.</div>'; return; }
+    if(ph<6.8||ph>7.8||pc<5||pc>150||hc<2||hc>60){ out.innerHTML='<div class="warn">Değerler fizyolojik aralığın dışında görünüyor. Birimleri kontrol edin (PaCO₂ mmHg, HCO₃ mEq/L).</div>'; return; }
+    var lines=[], dx=[], warn="";
+    var hCalc=24*pc/hc, phCalc=9-Math.log10(hCalc);
+    if(Math.abs(phCalc-ph)>0.03) warn='<div class="warn">Uyumsuzluk: Girilen değerlerden hesaplanan pH ≈ '+f(phCalc,2)+'. Değerler aynı örnekten mi?</div>';
+    var phS = ph<7.36?-1:(ph>7.44?1:0), pcS = pc<36?-1:(pc>44?1:0), hcS = hc<22?-1:(hc>26?1:0);
+    var primary=null, mixed=false;
+    if(phS!==0 && pcS!==0){
+      if(phS===pcS){ primary = phS<0?"MA":"MAlk"; lines.push(step("Adım 1","pH ve PaCO₂ aynı yönde değişmiş, yani primer bozukluk metabolik. pH "+(phS<0?"düşük: <b>metabolik asidoz</b>.":"yüksek: <b>metabolik alkaloz</b>."))); }
+      else { primary = pcS>0?"RA":"RAlk"; lines.push(step("Adım 1","pH ve PaCO₂ zıt yönde değişmiş, yani primer bozukluk solunumsal: <b>"+(pcS>0?"solunumsal asidoz":"solunumsal alkaloz")+"</b>.")); }
+    } else if(phS===0 && pcS!==0){
+      mixed=true;
+      if(pcS>0){ dx.push("Solunumsal asidoz + metabolik alkaloz"); lines.push(step("Adım 1","PaCO₂ yüksek ama pH normal. Kompansasyon pH'yi tam düzeltmez, dolayısıyla bu <b>karışık</b> bir tablo: solunumsal asidoz ile metabolik alkaloz birlikte.")); }
+      else { dx.push("Solunumsal alkaloz + metabolik asidoz"); lines.push(step("Adım 1","PaCO₂ düşük ama pH normal. Bu <b>karışık</b> bir tablo: solunumsal alkaloz ile metabolik asidoz birlikte.")); }
+      lines.push(step("Adım 2","Karışık bozukluk zaten saptandığı için kompansasyon hesabı gerekmiyor."));
+    } else if(phS!==0 && pcS===0){
+      primary = phS<0?"MA":"MAlk";
+      lines.push(step("Adım 1","pH anormal, PaCO₂ normal. Primer bozukluk metabolik: <b>"+(phS<0?"metabolik asidoz":"metabolik alkaloz")+"</b>. Solunum yanıtı yetersiz olabilir, Adım 2'ye bakın."));
+    } else {
+      if(hcS===0){ out.innerHTML=warn+'<div class="dx">Asit-baz dengesi normal görünüyor.</div>'+step("Not","pH, PaCO₂ ve HCO₃ normal aralıkta. Klinik şüphe varsa anyon açığına yine de bakın; karşıt bozukluklar birbirini gizleyebilir."); return; }
+      lines.push(step("Adım 1","pH ve PaCO₂ normal, HCO₃ anormal. Metabolik asidoz ile metabolik alkalozun birlikte olabileceği karışık bir tablo düşünün ve anyon açığına bakın."));
+      dx.push("Olası karışık metabolik asidoz + alkaloz");
+    }
+    var metAcid = primary==="MA" || dx.some(function(d){return d.indexOf("metabolik asidoz")>=0;});
+    if(primary==="MA"){
+      var exp=40-1.2*(24-hc); dx.push("Metabolik asidoz");
+      var t="Beklenen PaCO₂ = 40 − 1,2 × (24 − "+f(hc,1)+") = <b>"+f(exp,1)+" mmHg</b> (±2). Ölçülen "+f(pc,1)+". ";
+      if(pc>exp+2){ t+="Beklenenden yüksek: <b>eşlik eden solunumsal asidoz</b> var."; dx.push("ek solunumsal asidoz"); }
+      else if(pc<exp-2){ t+="Beklenenden düşük: <b>eşlik eden solunumsal alkaloz</b> var."; dx.push("ek solunumsal alkaloz"); }
+      else t+="Kompansasyon beklenen düzeyde.";
+      lines.push(step("Adım 2",t));
+    }
+    if(primary==="MAlk"){
+      var e2=40+0.7*(hc-24); dx.push("Metabolik alkaloz");
+      var t2="Beklenen PaCO₂ = 40 + 0,7 × ("+f(hc,1)+" − 24) = <b>"+f(e2,1)+" mmHg</b> (±2). Ölçülen "+f(pc,1)+". ";
+      if(pc>e2+2){ t2+="Beklenenden yüksek: <b>eşlik eden solunumsal asidoz</b> var."; dx.push("ek solunumsal asidoz"); }
+      else if(pc<e2-2){ t2+="Beklenenden düşük: <b>eşlik eden solunumsal alkaloz</b> var."; dx.push("ek solunumsal alkaloz"); }
+      else t2+="Kompansasyon beklenen düzeyde.";
+      lines.push(step("Adım 2",t2));
+    }
+    if(primary==="RA"||primary==="RAlk"){
+      var d=Math.abs(pc-40), acute, chronic, t3;
+      if(primary==="RA"){ acute=24+0.1*d; chronic=24+0.4*d; dx.push("Solunumsal asidoz"); }
+      else { acute=24-0.2*d; chronic=24-0.4*d; dx.push("Solunumsal alkaloz"); }
+      t3="Beklenen HCO₃: akutsa ≈ <b>"+f(acute,1)+"</b>, kronikse ≈ <b>"+f(chronic,1)+"</b> mEq/L (±2). Ölçülen "+f(hc,1)+". ";
+      var lo=Math.min(acute,chronic)-2, hi=Math.max(acute,chronic)+2;
+      if(primary==="RA"){
+        if(hc<acute-2){ t3+="Akut değerden bile düşük: <b>eşlik eden metabolik asidoz</b>."; dx.push("ek metabolik asidoz"); metAcid=true; }
+        else if(hc>chronic+2){ t3+="Kronik değerden de yüksek: <b>eşlik eden metabolik alkaloz</b>."; dx.push("ek metabolik alkaloz"); }
+        else if(Math.abs(hc-acute)<=2) t3+="Akut tabloyla uyumlu.";
+        else if(Math.abs(hc-chronic)<=2) t3+="Kronik (kompanse) tabloyla uyumlu.";
+        else t3+="Akut ile kronik arasında: kısmen kompanse.";
+      } else {
+        if(hc>acute+2){ t3+="Akut değerden yüksek: <b>eşlik eden metabolik alkaloz</b>."; dx.push("ek metabolik alkaloz"); }
+        else if(hc<chronic-2){ t3+="Kronik değerden de düşük: <b>eşlik eden metabolik asidoz</b>."; dx.push("ek metabolik asidoz"); metAcid=true; }
+        else if(Math.abs(hc-acute)<=2) t3+="Akut tabloyla uyumlu.";
+        else if(Math.abs(hc-chronic)<=2) t3+="Kronik (kompanse) tabloyla uyumlu.";
+        else t3+="Akut ile kronik arasında: kısmen kompanse.";
+      }
+      lines.push(step("Adım 2",t3));
+    }
+    if(na!==null&&cl!==null&&!isNaN(na)&&!isNaN(cl)){
+      var ag=na-(cl+hc), agc=ag, t4="Anyon açığı = "+f(na)+" − ("+f(cl)+" + "+f(hc,1)+") = <b>"+f(ag,1)+"</b>. ";
+      if(alb!==null&&!isNaN(alb)){ agc=ag+2.5*(4.5-alb); t4+="Albümine göre düzeltilmiş: <b>"+f(agc,1)+"</b>. "; }
+      if(agc>12){
+        t4+="Yüksek anyon açığı: laktat, keton, toksik alkol, salisilat ve böbrek yetmezliğini düşünün.";
+        if(hc<24){ var dd=(agc-12)/(24-hc); t4+=" Delta oranı = <b>"+f(dd,2)+"</b>: ";
+          if(dd<0.9){ t4+="1'in altında, eşlik eden <b>hiperkloremik (normal AG) asidoz</b> var."; dx.push("ek hiperkloremik asidoz"); }
+          else if(dd>1.1){ t4+="1'in üstünde, eşlik eden <b>metabolik alkaloz</b> var."; dx.push("ek metabolik alkaloz"); }
+          else t4+="yaklaşık 1, saf yüksek anyon açıklı asidozla uyumlu."; }
+      } else if(metAcid){ t4+="Normal anyon açığı: hiperkloremik asidoz. Salin infüzyonu, ishal, RTA ve asetazolamidi düşünün."; }
+      else t4+="Normal aralıkta.";
+      lines.push(step("Adım 3",t4));
+    } else if(metAcid){ lines.push(step("Adım 3","Metabolik asidozun nedenini ayırmak için Na ve Cl girin. Anyon açığı ve delta oranı hesaplanacak.")); }
+    var uniq=dx.filter(function(x,i){return dx.indexOf(x)===i;});
+    out.innerHTML=warn+'<div class="dx">'+(uniq.length?uniq.join(" · "):"Yorum")+'</div>'+lines.join("");
+  }
+  ids.forEach(function(k){ el[k].addEventListener("input",run); });
+  document.getElementById("abgForm").addEventListener("submit",function(e){e.preventDefault();});
+  document.querySelectorAll(".abg-presets .btn").forEach(function(b){
+    b.addEventListener("click",function(){ var p=b.dataset.p.split(","); ids.forEach(function(k,i){ el[k].value=(p[i]||""); }); run(); });
+  });
+  run();
+})();
+</script>
+
+<script>
+(function(){
+  var W = 13, H = 18;
+  var words = [
+    {n:1, w:"TALAMUS", r:0, c:1, d:"A", q:"Spinotalamik traktusun ulaştığı, üçüncü nöronun başladığı istasyon"},
+    {n:2, w:"MAPLESON", r:0, c:5, d:"D", q:"Basit, hafif devre ailesi; geri solumayı yalnızca yüksek taze gaz akımı önler"},
+    {n:3, w:"ABSORBER", r:0, c:10, d:"D", q:"Döngü sisteminde CO₂'i tutan bölüm; kaçak en sık taban plakasında olur"},
+    {n:4, w:"ANYONAÇIĞI", r:0, c:12, d:"D", q:"Na − (Cl + HCO₃); albümin düşükse düzeltilmesi gerekir"},
+    {n:5, w:"KOMPLİYANS", r:2, c:1, d:"D", q:"Plato basıncının yansıttığı akciğer–göğüs duvarı özelliği"},
+    {n:6, w:"DESFLURAN", r:4, c:4, d:"A", q:"Oda sıcaklığında neredeyse kaynadığı için elektrikle ısıtılan özel vaporizatör ister"},
+    {n:7, w:"LAKTAT", r:4, c:8, d:"D", q:"Yüksek anyon açıklı asidozun yoğun bakımdaki en sık nedenlerinden biri"},
+    {n:8, w:"NOSİSEPTÖR", r:8, c:3, d:"D", q:"Zararlı uyaranı algılayan periferik sinir ucu"},
+    {n:9, w:"VAPORİZATÖR", r:9, c:0, d:"A", q:"Ajana özgü, değişken baypaslı; taze gazın küçük bir kısmını buharlaşma odasına yollar"},
+    {n:10, w:"SODAKİRECİ", r:12, c:3, d:"A", q:"Büyük kısmı kalsiyum hidroksit olan CO₂ absorbanı; tükenince mora döner"},
+    {n:11, w:"ROTAMETRE", r:15, c:1, d:"A", q:"Akımölçer; oksijeninki en sağda, yani akım yönünde en sondadır"},
+    {n:12, w:"KÖRÜK", r:17, c:1, d:"A", q:"Ventilatörde bağlantı kopunca çöktüğü için yükselen tipi tercih edilir"}
+  ];
+  var sol = {}, nums = {}, cellWords = {};
+  words.forEach(function(o,idx){
+    var chars = Array.from(o.w);
+    o.cells = [];
+    chars.forEach(function(ch,i){
+      var r = o.r + (o.d==="D"?i:0), c = o.c + (o.d==="A"?i:0), k = r+","+c;
+      sol[k] = ch; o.cells.push(k);
+      (cellWords[k] = cellWords[k] || {})[o.d] = idx;
+    });
+    nums[o.r+","+o.c] = o.n;
+  });
+
+  var grid = document.getElementById("cw"), inputs = {}, dir = "A", cur = null;
+  for (var r=0;r<H;r++) for (var c=0;c<W;c++){
+    var k = r+","+c, div = document.createElement("div");
+    if (!sol[k]) { div.className="blk"; grid.appendChild(div); continue; }
+    div.className="cell"; div.dataset.k=k;
+    if (nums[k]) { var s=document.createElement("span"); s.className="n"; s.textContent=nums[k]; div.appendChild(s); }
+    var inp=document.createElement("input");
+    inp.id="cw-"+r+"-"+c; inp.maxLength=1; inp.autocomplete="off"; inp.setAttribute("autocapitalize","characters");
+    inp.setAttribute("aria-label","Satır "+(r+1)+", sütun "+(c+1));
+    inp.dataset.k=k; div.appendChild(inp); grid.appendChild(div); inputs[k]=inp;
+  }
+
+  function activeWord(k){ var cw=cellWords[k]; if(!cw) return null; return cw[dir]!==undefined?cw[dir]:cw[dir==="A"?"D":"A"]; }
+  function highlight(k){
+    document.querySelectorAll(".cw .cell.hl").forEach(function(e){e.classList.remove("hl");});
+    document.querySelectorAll(".clues li.on").forEach(function(e){e.classList.remove("on");});
+    var wi=activeWord(k); if(wi===null) return;
+    dir=words[wi].d;
+    words[wi].cells.forEach(function(x){inputs[x].parentNode.classList.add("hl");});
+    var li=document.getElementById("clue-"+wi); if(li) li.classList.add("on");
+  }
+  function step(k,delta){
+    var wi=activeWord(k); if(wi===null) return;
+    var cells=words[wi].cells, i=cells.indexOf(k)+delta;
+    if(i>=0&&i<cells.length) inputs[cells[i]].focus();
+  }
+  Object.keys(inputs).forEach(function(k){
+    var inp=inputs[k];
+    inp.addEventListener("mousedown",function(){ if(cur===k){ var cw=cellWords[k]; if(cw.A!==undefined&&cw.D!==undefined){ dir=dir==="A"?"D":"A"; highlight(k);} } });
+    inp.addEventListener("focus",function(){ cur=k; highlight(k); inp.select(); });
+    inp.addEventListener("input",function(){
+      var v=Array.from(inp.value.toLocaleUpperCase("tr-TR")).pop()||"";
+      inp.value=v; inp.parentNode.classList.remove("ok","bad");
+      if(v) step(k,1);
+      markDone();
+    });
+    inp.addEventListener("keydown",function(e){
+      var p=k.split(",").map(Number), nk=null;
+      if(e.key==="Backspace"&&!inp.value){ e.preventDefault(); step(k,-1); return; }
+      if(e.key==="ArrowRight") nk=p[0]+","+(p[1]+1), dir="A";
+      if(e.key==="ArrowLeft")  nk=p[0]+","+(p[1]-1), dir="A";
+      if(e.key==="ArrowDown")  nk=(p[0]+1)+","+p[1], dir="D";
+      if(e.key==="ArrowUp")    nk=(p[0]-1)+","+p[1], dir="D";
+      if(nk!==null){ e.preventDefault(); if(inputs[nk]) inputs[nk].focus(); else highlight(k); }
+    });
+  });
+
+  ["A","D"].forEach(function(d){
+    var ol=document.getElementById(d==="A"?"cluesA":"cluesD");
+    words.forEach(function(o,idx){
+      if(o.d!==d) return;
+      var li=document.createElement("li"); li.id="clue-"+idx;
+      li.innerHTML="<b>"+o.n+".</b>"+o.q+" <span class='src'>("+Array.from(o.w).length+")</span>";
+      li.addEventListener("click",function(){ dir=o.d; inputs[o.cells[0]].focus(); });
+      ol.appendChild(li);
+    });
+  });
+
+  function markDone(){
+    words.forEach(function(o,idx){
+      var full=o.cells.every(function(x){return inputs[x].value===sol[x];});
+      document.getElementById("clue-"+idx).classList.toggle("done",full);
+    });
+  }
+  var status=document.getElementById("cwStatus");
+  function stamp(){
+    if(document.querySelector(".stamp")) return;
+    var s=document.createElement("div"); s.className="stamp"; s.textContent="Tebrikler!";
+    document.getElementById("cwWrap").appendChild(s);
+  }
+  document.getElementById("cwCheck").addEventListener("click",function(){
+    var right=0,wrong=0,empty=0;
+    Object.keys(inputs).forEach(function(k){
+      var cell=inputs[k].parentNode; cell.classList.remove("ok","bad");
+      if(!inputs[k].value){empty++;return;}
+      if(inputs[k].value===sol[k]){cell.classList.add("ok");right++;} else {cell.classList.add("bad");wrong++;}
+    });
+    markDone();
+    if(!wrong&&!empty){ status.textContent="Hepsi doğru. Bu hafta konuya hâkimsiniz."; stamp(); }
+    else status.textContent=right+" doğru, "+wrong+" yanlış, "+empty+" boş hücre.";
+  });
+  document.getElementById("cwReveal").addEventListener("click",function(){
+    Object.keys(inputs).forEach(function(k){ inputs[k].value=sol[k]; inputs[k].parentNode.classList.remove("bad"); });
+    markDone(); status.textContent="Cevaplar gösterildi.";
+  });
+  document.getElementById("cwClear").addEventListener("click",function(){
+    Object.keys(inputs).forEach(function(k){ inputs[k].value=""; inputs[k].parentNode.classList.remove("ok","bad"); });
+    var s=document.querySelector(".stamp"); if(s) s.remove();
+    markDone(); status.textContent="";
+  });
+})();
+</script>
+
+</body>
+</html>
