@@ -1,0 +1,27 @@
+{
+ "sayilar": [
+  {
+   "sayi": 1,
+   "tarih": "2026-11-12",
+   "tarih_yazi": "12 Kasım 2026",
+   "html": "sayilar/sayi-01.html",
+   "pdf": "pdf/Uyku-Denizi-Postasi-Sayi-01.pdf",
+   "manset": "Asistan Eli, Video Gözü: 1.001 Hastalık VILARE Çalışması Yayımlandı",
+   "konu": "Farmakokinetik ve farmakodinamik temelleri",
+   "yogun_bakim": "",
+   "algoloji": ""
+  },
+  {
+   "sayi": 2,
+   "tarih": "2026-11-12",
+   "tarih_yazi": "12 Kasım 2026",
+   "html": "sayilar/sayi-02.html",
+   "pdf": "pdf/Uyku-Denizi-Postasi-Sayi-02.pdf",
+   "manset": "Sugammadeks mi, Neostigmin mi? SNaPP Tartışması BJA Sayfalarında Sürüyor",
+   "konu": "Anestezi makinesi ve sabah kontrolü",
+   "yogun_bakim": "Kan gazı ve asit-baz",
+   "algoloji": "Ağrı yolları ve nosisepsiyon"
+  }
+ ],
+ "guncelleme": "2026-11-13T10:51:15Z"
+}

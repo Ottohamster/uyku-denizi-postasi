@@ -1,0 +1,26 @@
+# Bulut rutini ana dala doğrudan yazamazsa kendi "claude/..." dalına yazar.
+# Bu iş akışı o dalı ana dala birleştirir; GitHub Pages ana daldan yayınlanır.
+name: Yeni sayıyı yayına al
+on:
+  push:
+    branches: ["claude/**"]
+permissions:
+  contents: write
+concurrency:
+  group: yayinla
+  cancel-in-progress: false
+jobs:
+  birlestir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Dalı ana dala birleştir
+        run: |
+          git config user.name "uyku-denizi-bot"
+          git config user.email "uyku-denizi-bot@users.noreply.github.com"
+          git fetch origin "${GITHUB_REF_NAME}"
+          git merge --no-edit -X theirs "origin/${GITHUB_REF_NAME}"
+          git push origin main
