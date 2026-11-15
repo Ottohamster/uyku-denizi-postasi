@@ -1,7 +1,7 @@
 /* Uyku Denizi Postası - servis çalışanı.
    Sayfalar ve sayı listesi: önce ağ (hep son sayı gelsin), ağ yoksa önbellek (çevrimdışı okuma).
    Yazı tipleri ve simgeler: önce önbellek. */
-var SURUM = "udp-v2";
+var SURUM = "udp-v3";
 var KABUK = ["./", "index.html", "uygulama.js", "defter.html", "defter.js", "manifest.webmanifest", "sayilar.json",
              "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];
 

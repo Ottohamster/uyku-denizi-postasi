@@ -70,6 +70,7 @@
     ".udp-lis a.udp-pdf{align-self:center;flex:none;padding:8px 10px;border:1px solid #1f4e5f;border-radius:6px;color:#1f4e5f;text-decoration:none;font:700 .75rem/1 'Special Elite','Courier New',monospace}" +
     ".udp-yeni{position:fixed;left:50%;top:calc(10px + env(safe-area-inset-top));transform:translateX(-50%);z-index:9000;max-width:92vw;padding:10px 16px;border:2px solid #2a2018;" +
     "border-radius:999px;background:#1f4e5f;color:#f6ead0;font:700 14px/1.2 Georgia,serif;text-decoration:none;box-shadow:0 4px 14px rgba(42,32,24,.35)}" +
+    ".udp-gorunum{margin:0 12px 6px;padding:9px 10px;border:1px dashed #2a2018;border-radius:8px;background:transparent;color:#2a2018;font:700 .8rem/1.2 'Special Elite','Courier New',monospace;cursor:pointer}" +
     "@media (min-width:720px){.udp-cek{left:auto;right:18px;bottom:18px;width:440px;border:2px solid #2a2018;border-radius:14px}}" +
     // tıklanır sorular
     "li.udp-sik{cursor:pointer;border-radius:4px;padding:2px 6px;margin-left:-6px;transition:background .15s}" +
@@ -112,7 +113,48 @@
     "html.udp-gece .udp-lis a.udp-pdf{color:#8cc4d4;border-color:#8cc4d4}html.udp-gece .udp-lis li{border-color:rgba(236,201,143,.25)}" +
     "html.udp-gece .udp-ay{background:#3a2f22;color:#f0c27a;border-color:#ecc98f}" +
     "}" +
-    "@media (prefers-reduced-motion:reduce){.udp-cek,.udp-ort{transition:none}}" +
+    // ---- telefonda sayfa sayfa gazete ----
+    "html.udp-sayfali,html.udp-sayfali body{height:100%;overflow:hidden;overscroll-behavior:none}" +
+    "html.udp-sayfali body{padding:0!important;margin:0}" +
+    "html.udp-sayfali .sheet{max-width:none!important;margin:0!important;padding:0!important;height:100vh;height:100dvh;box-shadow:none!important}" +
+    ".udp-sayfalar{display:flex;height:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}" +
+    ".udp-sayfalar::-webkit-scrollbar{display:none}" +
+    ".udp-sayfa{flex:0 0 100%;width:100%;height:100%;overflow-y:auto;overflow-x:hidden;scroll-snap-align:start;scroll-snap-stop:always;position:relative;" +
+    "padding:0 max(14px,env(safe-area-inset-right)) calc(96px + env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));background:inherit;" +
+    "box-shadow:inset 14px 0 16px -14px rgba(60,40,20,.55),inset -14px 0 16px -14px rgba(60,40,20,.55);font-size:15px;line-height:1.46}" +
+    ".udp-sayfa p{hyphens:auto;-webkit-hyphens:auto}" +
+    ".udp-sayfa:first-child{padding-top:calc(10px + env(safe-area-inset-top))}" +
+    ".udp-sayfa > .sec-h:first-of-type,.udp-sayfa > .udp-folyo + .sec-h{margin-top:6px}" +
+    ".udp-sayfa .ek{margin-top:4px!important}" +
+    ".udp-folyo{position:sticky;top:0;z-index:6;display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:0 0 12px;" +
+    "padding:calc(8px + env(safe-area-inset-top)) 0 6px;border-bottom:3px double var(--ink);background:var(--paper);" +
+    "font-family:var(--f-type);font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}" +
+    ".udp-folyo b{font-family:var(--f-mast);font-weight:400;font-size:1.05rem;letter-spacing:0;text-transform:none;color:var(--ink)}" +
+    ".udp-folyo span{overflow:hidden;text-overflow:ellipsis}" +
+    ".udp-sayfa .wire{display:block!important;column-count:2;column-gap:16px;column-rule:1px solid rgba(42,32,24,.35)}" +
+    ".udp-sayfa .wire article{break-inside:avoid;font-size:.9rem}.udp-sayfa .wire h4{font-size:1.05rem;line-height:1.2}" +
+    ".udp-on-mansey{border-bottom:1px solid rgba(42,32,24,.45);padding-bottom:12px;margin-bottom:12px}" +
+    ".udp-on-mansey h2{font-family:var(--f-head);font-weight:700;font-size:1.9rem;line-height:1.05;margin:.15em 0 .3em;text-wrap:balance}" +
+    ".udp-on-mansey .deck{font-family:var(--f-head);font-style:italic;color:var(--ink-soft);margin:0 0 8px;font-size:1.02rem;line-height:1.35}" +
+    ".udp-devam{display:inline-block;font-family:var(--f-type);font-size:.78rem;color:var(--wax);text-decoration:none;border-bottom:1px dashed var(--wax);background:none;border-top:0;border-left:0;border-right:0;padding:0;cursor:pointer}" +
+    ".udp-icindekiler h3{font-family:var(--f-head);font-size:.95rem;letter-spacing:.18em;text-transform:uppercase;text-align:center;margin:0 0 6px;padding:4px 0;border-top:3px double var(--ink);border-bottom:1px solid var(--ink)}" +
+    ".udp-icindekiler ol{list-style:none;margin:0;padding:0;columns:2;column-gap:14px;column-rule:1px solid rgba(42,32,24,.35)}" +
+    ".udp-icindekiler li{break-inside:avoid;border-bottom:1px dotted rgba(42,32,24,.4)}" +
+    ".udp-icindekiler button{display:flex;justify-content:space-between;align-items:baseline;gap:6px;width:100%;padding:7px 0;border:0;background:none;color:var(--ink);" +
+    "font:700 .86rem/1.2 var(--f-head);text-align:left;cursor:pointer}" +
+    ".udp-icindekiler button span{font-family:var(--f-type);font-weight:400;font-size:.72rem;color:var(--wax);white-space:nowrap}" +
+    ".udp-mini-baslik{font-family:var(--f-head);font-size:1.15rem;line-height:1.15;margin:0 0 10px;color:var(--ink-soft);font-style:italic}" +
+    ".udp-gosterge{position:fixed;left:calc(12px + env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom));z-index:9000;display:flex;align-items:center;" +
+    "border:2px solid #2a2018;border-radius:999px;background:#e9dcbf;color:#2a2018;box-shadow:0 4px 14px rgba(42,32,24,.35);font:700 13px/1 'Special Elite','Courier New',monospace}" +
+    ".udp-gosterge button{border:0;background:none;color:inherit;font-size:16px;width:36px;height:40px;cursor:pointer}.udp-gosterge button:disabled{opacity:.3}" +
+    ".udp-gosterge span{min-width:44px;text-align:center}" +
+    ".udp-cevir-ipucu{position:fixed;left:50%;top:45%;transform:translate(-50%,-50%);z-index:9003;padding:12px 18px;border:2px solid #2a2018;border-radius:12px;background:#f3e8cf;color:#2a2018;" +
+    "font:700 15px/1.3 Georgia,serif;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.35);pointer-events:none;animation:udpIpucu 3.2s ease forwards}" +
+    "@keyframes udpIpucu{0%{opacity:0}12%{opacity:1}80%{opacity:1}100%{opacity:0}}" +
+    "@media screen{html.udp-gece .udp-gosterge{background:#241d16;color:#ecc98f;border-color:#ecc98f}html.udp-gece .udp-sayfa{box-shadow:inset 14px 0 16px -14px rgba(0,0,0,.8),inset -14px 0 16px -14px rgba(0,0,0,.8)}" +
+    "html.udp-gece .udp-gorunum{color:#ecc98f;border-color:#ecc98f}html.udp-gece .udp-cevir-ipucu{background:#241d16;color:#ecc98f;border-color:#ecc98f}html.udp-gece .udp-sayfa .wire{column-rule-color:rgba(236,201,143,.3)}}" +
+    "@media print{html.udp-sayfali,html.udp-sayfali body{height:auto;overflow:visible}.udp-sayfalar{display:block;height:auto;overflow:visible}.udp-sayfa{height:auto;overflow:visible;box-shadow:none}.udp-folyo,.udp-gosterge,.udp-icindekiler{display:none!important}}" +
+    "@media (prefers-reduced-motion:reduce){.udp-cek,.udp-ort{transition:none}.udp-cevir-ipucu{animation:none;opacity:0}}" +
     "@media print{.udp-dug,.udp-ort,.udp-cek,.udp-yeni,.udp-tekrar,.udp-not,.udp-ipucu{display:none!important}}";
   var st = el("style"); st.textContent = css;
   (document.head || document.documentElement).appendChild(st);
@@ -304,7 +346,7 @@
         var mk = el("mark", "udp-mark");
         try { r.surroundContents(mk); } catch (e) { continue; }
         var d = mk.closest("details"); if (d) d.open = true;
-        setTimeout(function () { mk.scrollIntoView({ block: "center" }); }, 300);
+        setTimeout(function () { if (!hedefeGit(mk)) mk.scrollIntoView({ block: "center" }); }, 300);
         return;
       }
     }
@@ -352,7 +394,14 @@
       if (s.pdf) { var p = el("a", "udp-pdf", "PDF"); p.href = KOK + s.pdf; p.target = "_blank"; p.rel = "noopener"; p.setAttribute("aria-label", "Sayı " + s.sayi + " PDF"); li.appendChild(p); }
       lis.appendChild(li);
     });
-    cek.appendChild(bas); cek.appendChild(nav); cek.appendChild(lis);
+    cek.appendChild(bas); cek.appendChild(nav);
+    if (sayiNo() && window.matchMedia && window.matchMedia("(max-width: 760px)").matches) {
+      var kapali = oku(SAYFA_KAPALI, false);
+      var gb = el("button", "udp-gorunum", kapali ? "⇆ Sayfa sayfa okumaya geç" : "↕ Kesintisiz (tek parça) okumaya geç"); gb.type = "button";
+      gb.addEventListener("click", function () { yaz(SAYFA_KAPALI, !kapali); location.reload(); });
+      cek.appendChild(gb);
+    }
+    cek.appendChild(lis);
     document.body.appendChild(dug); document.body.appendChild(ort); document.body.appendChild(cek);
 
     function ac() { ort.classList.add("acik"); cek.classList.add("acik"); kapat.focus(); }
@@ -370,15 +419,161 @@
       .catch(function () { return fetch(KOK + "sayilar.json").then(function (r) { return r.json(); }); });
   }
 
+  // ---------- telefonda sayfa sayfa gazete ----------
+  var SAYFA_KAPALI = "udp-sayfali-kapali";
+  var pager = null, sayfalar = [];
+  function sayfaliOlmali() {
+    return !!sayiNo() && !oku(SAYFA_KAPALI, false) && window.matchMedia && window.matchMedia("(max-width: 760px)").matches &&
+           !!document.querySelector(".sheet > .mast");
+  }
+  function sayfayaGit(i, yumusak) {
+    if (!pager) return;
+    i = Math.max(0, Math.min(sayfalar.length - 1, i));
+    pager.scrollTo({ left: sayfalar[i].offsetLeft, behavior: yumusak ? "smooth" : "auto" });
+    if (!yumusak && gostergeGuncelle) setTimeout(gostergeGuncelle, 30);
+  }
+  var gostergeGuncelle = null;
+  function hedefeGit(hedef) {
+    if (!pager || !hedef) return false;
+    var s = hedef.closest(".udp-sayfa"); if (!s) return false;
+    sayfayaGit(sayfalar.indexOf(s), false);
+    var f = s.querySelector(".udp-folyo"), ust = f ? f.offsetHeight : 0;
+    s.scrollTop = Math.max(0, hedef.getBoundingClientRect().top - s.getBoundingClientRect().top + s.scrollTop - ust - 8);
+    return true;
+  }
+  function sayfala() {
+    if (!sayfaliOlmali()) return;
+    var sheet = document.querySelector(".sheet");
+    var cocuklar = Array.prototype.slice.call(sheet.children);
+    var mast = sheet.querySelector(":scope > .mast"), front = sheet.querySelector(":scope > section.front");
+    var tarih = "";
+    var rib = mast.querySelector(".ribbon span"); if (rib) tarih = rib.textContent.replace(/\s+/g, " ").trim();
+    var gruplar = [];                       // {ad, dugumler[]}
+    // 1) ön sayfa: künye + manşet başlığı + içindekiler
+    var on = { ad: "Ön Sayfa", dugumler: [mast], on: true };
+    gruplar.push(on);
+    var lead = front && front.querySelector(".lead");
+    var manset = null;
+    if (lead) {
+      manset = el("div", "udp-on-mansey");
+      ["kicker", null, "deck"].forEach(function (sinif) {
+        var d = sinif ? lead.querySelector(":scope > ." + sinif) : lead.querySelector(":scope > h2");
+        if (d) manset.appendChild(d);
+      });
+      on.dugumler.push(manset);
+    }
+    // 2) manşetin devamı
+    if (front) {
+      var bas = manset && manset.querySelector("h2");
+      if (bas) { var mb = el("p", "udp-mini-baslik", bas.textContent.replace(/\s+/g, " ").trim()); front.insertBefore(mb, front.firstChild); }
+      gruplar.push({ ad: "Manşet", dugumler: [front] });
+    }
+    // 3) geri kalanlar: her .sec-h ve her .ek yeni sayfa açar
+    var simdiki = null;
+    cocuklar.forEach(function (c) {
+      if (c === mast || c === front) return;
+      if (c.classList.contains("sec-h") || c.classList.contains("ek")) {
+        var ad = c.classList.contains("ek") ? ((c.querySelector("h2") || {}).textContent || "Ek") : ((c.querySelector("h3") || {}).textContent || "");
+        simdiki = { ad: ad.replace(/\s+/g, " ").replace(/\s*·\s*Hafta\s*\d+\s*$/i, "").trim(), dugumler: [] };
+        gruplar.push(simdiki);
+      } else if (!simdiki) { simdiki = { ad: "", dugumler: [] }; gruplar.push(simdiki); }
+      simdiki.dugumler.push(c);
+    });
+    gruplar = gruplar.filter(function (g) { return g.dugumler.length; });
+    var N = gruplar.length;
+    pager = el("div", "udp-sayfalar");
+    pager.setAttribute("aria-label", "Gazete sayfaları");
+    sayfalar = gruplar.map(function (g, i) {
+      var s = el("section", "udp-sayfa"); s.setAttribute("aria-label", "Sayfa " + (i + 1) + (g.ad ? ": " + g.ad : ""));
+      if (!g.on) {
+        var f = el("div", "udp-folyo"); f.setAttribute("aria-hidden", "true");
+        f.appendChild(el("b", null, "Uyku Denizi Postası"));
+        f.appendChild(el("span", null, tarih.split(",")[0]));
+        f.appendChild(el("span", null, "Sayfa " + (i + 1)));
+        s.appendChild(f);
+      }
+      g.dugumler.forEach(function (d) { s.appendChild(d); });
+      pager.appendChild(s);
+      return s;
+    });
+    // ön sayfaya "devamı" ve içindekiler
+    if (manset) {
+      var dv = el("button", "udp-devam", "Haberin devamı Sayfa 2 →"); dv.type = "button";
+      dv.addEventListener("click", function () { sayfayaGit(1, true); });
+      manset.appendChild(dv);
+    }
+    var ic = el("nav", "udp-icindekiler"); ic.setAttribute("aria-label", "İçindekiler");
+    ic.appendChild(el("h3", null, "Bu sayıda"));
+    var ol = el("ol");
+    gruplar.forEach(function (g, i) {
+      if (i === 0 || !g.ad) return;
+      var li = el("li"), b = el("button"); b.type = "button";
+      b.appendChild(document.createTextNode(g.ad)); b.appendChild(el("span", null, "s." + (i + 1)));
+      b.addEventListener("click", function () { sayfayaGit(i, true); });
+      li.appendChild(b); ol.appendChild(li);
+    });
+    ic.appendChild(ol);
+    sayfalar[0].appendChild(ic);
+    sheet.appendChild(pager);
+    document.documentElement.classList.add("udp-sayfali");
+
+    // sayfa göstergesi
+    var gos = el("div", "udp-gosterge");
+    var geri = el("button", null, "◀"); geri.type = "button"; geri.setAttribute("aria-label", "Önceki sayfa");
+    var no = el("span", null, "1/" + N); no.setAttribute("aria-live", "polite");
+    var ileri = el("button", null, "▶"); ileri.type = "button"; ileri.setAttribute("aria-label", "Sonraki sayfa");
+    gos.appendChild(geri); gos.appendChild(no); gos.appendChild(ileri);
+    document.body.appendChild(gos);
+    function aktif() { return Math.round(pager.scrollLeft / Math.max(1, pager.clientWidth)); }
+    function guncelle() {
+      var i = aktif(); no.textContent = (i + 1) + "/" + N; geri.disabled = i === 0; ileri.disabled = i === N - 1;
+      try { sessionStorage.setItem("udp-sayfa-" + sayiNo(), String(i)); } catch (e) {}
+    }
+    gostergeGuncelle = guncelle;
+    var zm = null;
+    pager.addEventListener("scroll", function () { clearTimeout(zm); zm = setTimeout(guncelle, 80); }, { passive: true });
+    geri.addEventListener("click", function () { sayfayaGit(aktif() - 1, true); });
+    ileri.addEventListener("click", function () { sayfayaGit(aktif() + 1, true); });
+    window.addEventListener("resize", function () { var i = Number(no.textContent.split("/")[0]) - 1; sayfayaGit(i, false); });
+    // sayfa içi bağlantılar (#farmakoloji gibi)
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a || a.getAttribute("href").length < 2 || /^#ara=/.test(a.getAttribute("href"))) return;
+      var h = document.getElementById(decodeURIComponent(a.getAttribute("href").slice(1)));
+      if (h && hedefeGit(h)) e.preventDefault();
+    });
+    // açılışta: hash hedefi ya da (geri dönüldüyse) son okunan sayfa
+    var acilis = 0;
+    try { var kayit = sessionStorage.getItem("udp-sayfa-" + sayiNo()); if (kayit) acilis = parseInt(kayit, 10) || 0; } catch (e) {}
+    var hh = location.hash && !/^#ara=/.test(location.hash) ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+    requestAnimationFrame(function () { if (!(hh && hedefeGit(hh))) sayfayaGit(acilis, false); guncelle(); });
+    if (!oku("udp-cevir-ipucu", false)) {
+      yaz("udp-cevir-ipucu", true);
+      var ip = el("div", "udp-cevir-ipucu", "Sayfayı çevirmek için yana kaydırın  ⇆"); document.body.appendChild(ip);
+      setTimeout(function () { ip.remove(); }, 3400);
+    }
+  }
+
   window.UDP = { KOK: KOK, oku: oku, yaz: yaz, el: el, norm: norm, sayiNo: sayiNo, karne: karne, karneKaydet: karneKaydet,
                  sorulariBul: sorulariBul, incileriBul: incileriBul, soruCiz: soruCiz, tekrarListesi: tekrarListesi,
                  sayilariGetir: sayilariGetir, GUN: GUN, HARF: HARF };
 
   function basla() {
+    try { sayfala(); } catch (e) { if (window.console) console.warn("udp sayfala", e); }
     try { sayfaSorulari(); } catch (e) { if (window.console) console.warn("udp sorular", e); }
     try { tekrarKosesi(); } catch (e) { if (window.console) console.warn("udp tekrar", e); }
     try { aramaVurgula(); } catch (e) { if (window.console) console.warn("udp ara", e); }
     sayilariGetir().then(kur).catch(function () { kur({ sayilar: [] }); });
+    window.addEventListener("hashchange", function () {
+      if (/^#ara=/.test(location.hash)) {
+        var eski = document.querySelector("mark.udp-mark");
+        if (eski) eski.replaceWith(document.createTextNode(eski.textContent));
+        aramaVurgula();
+      } else if (location.hash.length > 1) {
+        var h = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (h && !hedefeGit(h)) h.scrollIntoView();
+      }
+    });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", basla); else basla();
 })();
