@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1f4e5f">
+<title>Uyku Denizi Defteri</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Uyku Denizi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap">
+<style>
+:root{
+  --paper:#e9dcbf;--paper-2:#f3e8cf;--paper-dark:#d6c39c;--ink:#2a2018;--ink-soft:#5a4a38;--sea:#1f4e5f;--wax:#9b2d20;--tape:rgba(214,196,140,.75);
+  --f-mast:"Pirata One",Georgia,serif;--f-head:"Old Standard TT",Georgia,"Times New Roman",serif;--f-body:"Libre Caslon Text",Georgia,"Times New Roman",serif;--f-type:"Special Elite","Courier New",monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#3b3026;background-image:radial-gradient(ellipse at 50% 0%,#55463a 0%,#2e251d 70%);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;
+  padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 96px max(16px,env(safe-area-inset-left))}
+a{color:var(--sea);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px dashed var(--wax);outline-offset:3px}
+.sheet{max-width:880px;margin:0 auto;background-color:var(--paper);
+  background-image:radial-gradient(ellipse at 15% 10%,rgba(255,250,235,.55),transparent 55%),radial-gradient(ellipse at 90% 95%,rgba(150,110,60,.28),transparent 50%);
+  box-shadow:0 30px 60px rgba(0,0,0,.45),inset 0 0 90px rgba(120,85,40,.35);padding:clamp(16px,4vw,36px)}
+.mast{text-align:center;border-bottom:3px double var(--ink);padding-bottom:10px}
+.mast .ust{font-family:var(--f-type);font-size:.78rem;color:var(--ink-soft);letter-spacing:.06em;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.mast h1{font-family:var(--f-mast);font-weight:400;font-size:clamp(2.3rem,9vw,4.2rem);line-height:1;margin:6px 0 2px}
+.mast p{margin:0;font-family:var(--f-head);font-style:italic;color:var(--ink-soft)}
+.sekme{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:16px 0 18px}
+.sekme button{font-family:var(--f-type);font-size:.85rem;border:2px solid var(--ink);background:var(--paper-2);color:var(--ink);padding:9px 4px;cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
+.sekme button[aria-selected="true"]{background:var(--ink);color:var(--paper-2)}
+.kicker{font-family:var(--f-type);font-size:.78rem;letter-spacing:.08em;color:var(--wax);text-transform:uppercase}
+h2.t{font-family:var(--f-head);font-size:clamp(1.4rem,4vw,1.9rem);line-height:1.1;margin:2px 0 6px}
+.aciklama{color:var(--ink-soft);margin:0 0 14px;font-size:.95rem}
+.box{border:2px solid var(--ink);padding:16px;background:rgba(243,232,207,.6);position:relative;margin:0 0 18px}
+.box .tape{position:absolute;top:-12px;width:90px;height:24px;background:var(--tape);left:24px;transform:rotate(-4deg);box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.box h3{font-family:var(--f-head);font-size:1.3rem;margin:2px 0 8px;line-height:1.15}
+.quiz ol{padding-left:1.4em;margin:8px 0 12px}
+.durum{font-family:var(--f-type);font-size:.82rem;color:var(--ink-soft);margin:6px 0}
+input,select{font-family:var(--f-head);font-size:1.05rem;padding:7px 9px;border:1.5px solid var(--ink);background:#fbf5e6;color:var(--ink);width:100%;min-width:0;border-radius:0}
+label{display:block;font-family:var(--f-type);font-size:.78rem;letter-spacing:.04em;color:var(--ink-soft);margin-bottom:3px}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:12px}
+.btn{font-family:var(--f-type);font-size:.88rem;border:2px solid var(--ink);background:var(--paper-2);color:var(--ink);padding:8px 14px;cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
+.btn.ana{background:var(--sea);color:#f3e8cf}.btn.kirmizi{background:var(--wax);color:#f3e8cf}
+.btn:disabled{opacity:.5;cursor:default}
+.sonuclar{list-style:none;margin:0;padding:0}
+.sonuclar li{border-bottom:1px dashed rgba(42,32,24,.35);padding:10px 2px}
+.sonuclar a{text-decoration:none;color:inherit;display:block}
+.sonuclar .yer{font-family:var(--f-type);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--wax)}
+.sonuclar .par{display:block;margin-top:3px;font-size:.93rem;line-height:1.4}
+mark{background:#f0c27a;color:#2a2018;padding:0 1px}
+.ozet{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:14px}
+.ozet div{border:1px solid rgba(42,32,24,.5);padding:10px 8px;text-align:center;background:rgba(243,232,207,.55)}
+.ozet b{display:block;font-family:var(--f-head);font-size:1.7rem;line-height:1}
+.ozet span{font-family:var(--f-type);font-size:.72rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em}
+.cubuk{display:grid;grid-template-columns:minmax(90px,1.2fr) 2fr auto;gap:8px;align-items:center;margin:6px 0;font-size:.9rem}
+.cubuk .bar{height:12px;border:1px solid var(--ink);background:var(--paper-2);position:relative}
+.cubuk .bar i{position:absolute;inset:0 auto 0 0;background:var(--sea)}
+.cubuk .yuzde{font-family:var(--f-type);font-size:.8rem;white-space:nowrap}
+.sayilist{list-style:none;padding:0;margin:0}
+.sayilist li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed rgba(42,32,24,.35);padding:8px 2px;font-size:.92rem}
+.sayilist li span:last-child{font-family:var(--f-type);font-size:.8rem;color:var(--ink-soft);text-align:right}
+.udp-soru + .udp-soru{margin-top:16px;padding-top:12px;border-top:1px dashed rgba(42,32,24,.4)}
+.udp-soru .udp-kaynak{font-family:var(--f-type);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--wax)}
+.filtre{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.filtre button{font-family:var(--f-type);font-size:.78rem;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:4px 10px;border-radius:999px;cursor:pointer}
+.filtre button[aria-pressed="true"]{background:var(--ink);color:var(--paper-2)}
+.kart{border:2px solid var(--ink);background:var(--paper-2);padding:22px 18px;min-height:190px;display:flex;flex-direction:column;gap:12px;box-shadow:4px 5px 0 rgba(31,78,95,.35)}
+.kart .yer{font-family:var(--f-type);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--wax)}
+.kart .on{font-family:var(--f-head);font-size:1.3rem;line-height:1.3;font-weight:700}
+.kart .arka{font-size:1rem;line-height:1.5;border-top:1px dashed rgba(42,32,24,.45);padding-top:10px}
+.kart .dugmeler{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.kart .dugmeler .btn{flex:1;min-width:120px}
+.cikti{background:var(--paper-2);border-left:4px solid var(--sea);padding:10px 12px;font-size:.95rem}
+.cikti table{border-collapse:collapse;width:100%;font-size:.9rem}
+.cikti th,.cikti td{border:1px solid rgba(42,32,24,.45);padding:5px 7px;text-align:left;vertical-align:top}
+.cikti th{background:rgba(214,195,156,.55);font-family:var(--f-head)}
+.tbl{overflow-x:auto}
+.buyuk{font-family:var(--f-head);font-size:1.35rem;font-weight:700}
+.uyari{font-family:var(--f-type);font-size:.76rem;color:var(--wax);margin:10px 0 0}
+.kaynak{font-size:.8rem;color:var(--ink-soft);margin:8px 0 0}
+.gizli{display:none}
+@media (max-width:520px){.ozet b{font-size:1.4rem}.sekme button{font-size:.76rem}}
+@media screen{
+  html.udp-gece .sekme button,html.udp-gece .btn,html.udp-gece .kart,html.udp-gece .cikti,html.udp-gece .ozet div{background:#241d16;color:var(--ink);border-color:rgba(236,201,143,.55)}
+  html.udp-gece .sekme button[aria-selected="true"],html.udp-gece .filtre button[aria-pressed="true"]{background:var(--ink);color:#1c1712}
+  html.udp-gece .btn.ana{background:var(--sea);color:#f3e8cf}html.udp-gece .btn.kirmizi{background:#7a2a1d;color:#f3e8cf}
+  html.udp-gece .cikti th{background:rgba(236,201,143,.13)}html.udp-gece .cikti th,html.udp-gece .cikti td,html.udp-gece .sonuclar li,html.udp-gece .sayilist li{border-color:rgba(236,201,143,.3)}
+  html.udp-gece .cubuk .bar{background:#241d16;border-color:rgba(236,201,143,.55)}html.udp-gece .cubuk .bar i{background:#4f8fa3}
+  html.udp-gece .filtre button{color:var(--ink);border-color:rgba(236,201,143,.55)}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header class="mast">
+    <div class="ust"><span>Uyku Denizi Postası</span><span id="ustBilgi">Kaptanın defteri</span></div>
+    <h1>Kaptanın Defteri</h1>
+    <p>Arşivde arama, soru karnesi, inci destesi ve nöbet alet çantası</p>
+  </header>
+
+  <div class="sekme" role="tablist" aria-label="Defter bölümleri">
+    <button role="tab" id="t-ara" aria-controls="p-ara" aria-selected="true" type="button">⌕ Ara</button>
+    <button role="tab" id="t-karne" aria-controls="p-karne" aria-selected="false" type="button">✎ Karne</button>
+    <button role="tab" id="t-deste" aria-controls="p-deste" aria-selected="false" type="button">❖ Deste</button>
+    <button role="tab" id="t-alet" aria-controls="p-alet" aria-selected="false" type="button">⚓ Alet</button>
+  </div>
+
+  <!-- ARA -->
+  <section id="p-ara" role="tabpanel" aria-labelledby="t-ara">
+    <div class="kicker">Arşivde ara</div>
+    <h2 class="t">Hangi sayıda geçmişti?</h2>
+    <p class="aciklama">Bütün sayıların metninde arar: konular, ekler, inciler, sorular, haberler. Büyük-küçük harf ve Türkçe karakter fark etmez. Sonuca dokununca sayı o yerde açılır.</p>
+    <input id="araKutu" type="search" placeholder="ör. sugammadeks, plato basıncı, wind-up" autocomplete="off" enterkeyhint="search" aria-label="Arama">
+    <p class="durum" id="araDurum" role="status"></p>
+    <ul class="sonuclar" id="araSonuc"></ul>
+  </section>
+
+  <!-- KARNE -->
+  <section id="p-karne" role="tabpanel" aria-labelledby="t-karne" class="gizli">
+    <div class="kicker">Soru karnesi</div>
+    <h2 class="t">Nerede güçlüsün, nerede açık var?</h2>
+    <p class="aciklama">Sayılardaki sorulara verdiğin ilk cevaplar burada toplanır. Yanlış yaptıkların 1, 3 ve 7 gün arayla tekrar sorulur; üç kez doğru bilince listeden çıkar.</p>
+    <div class="ozet" id="karneOzet"></div>
+    <div class="box"><span class="tape" aria-hidden="true"></span><h3>Bölümlere göre</h3><div id="karneBolum"></div></div>
+    <div class="box quiz" id="karneTekrarKutu"><span class="tape" aria-hidden="true"></span><h3 id="karneTekrarBaslik">Tekrar zamanı gelenler</h3><div id="karneTekrar"></div></div>
+    <div class="box"><span class="tape" aria-hidden="true"></span><h3>Sayılara göre</h3><p class="durum" id="karneSayiDurum"></p><ul class="sayilist" id="karneSayi"></ul></div>
+    <button class="btn kirmizi" id="karneSifirla" type="button">Karneyi sıfırla</button>
+  </section>
+
+  <!-- DESTE -->
+  <section id="p-deste" role="tabpanel" aria-labelledby="t-deste" class="gizli">
+    <div class="kicker">İnci destesi · aralıklı tekrar</div>
+    <h2 class="t">Bugünün kartları</h2>
+    <p class="aciklama">Her sayının klinik incileri ("taşınacak notlar") kart olur. Bildiğin kart giderek seyrek gelir (1, 3, 7, 14, 30, 60 gün); bilmediğin hemen sona eklenir. Her gün en çok seçtiğin sayıda yeni kart açılır.</p>
+    <div class="filtre" id="desteFiltre" aria-label="Bölüm süzgeci"></div>
+    <div class="form" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+      <div><label for="desteLimit">Günlük yeni kart</label><select id="desteLimit"><option>5</option><option selected>10</option><option>20</option><option>40</option></select></div>
+    </div>
+    <p class="durum" id="desteDurum" role="status"></p>
+    <div id="desteKart"></div>
+  </section>
+
+  <!-- ALET -->
+  <section id="p-alet" role="tabpanel" aria-labelledby="t-alet" class="gizli">
+    <div class="kicker">Nöbet alet çantası</div>
+    <h2 class="t">Hızlı hesaplar</h2>
+    <p class="aciklama">Eğitim amaçlıdır; klinik değerlendirmenin, kurum protokolünün ve prospektüsün yerini tutmaz. Her sonucu ilacı hazırlamadan önce ikinci kez kontrol edin.</p>
+
+    <div class="box" id="abgKart"><span class="tape" aria-hidden="true"></span>
+      <h3>Kan gazı çözücü</h3>
+      <p style="margin:0">Her sayının Yoğun Bakım ekinde duruyor. <a id="abgLink" href="#">Son sayıdaki çözücüyü aç →</a></p>
+    </div>
+
+    <div class="box"><span class="tape" aria-hidden="true"></span>
+      <h3>Boy-kilo: ideal kilo ve tidal volüm</h3>
+      <div class="form">
+        <div><label for="kCins">Cinsiyet</label><select id="kCins"><option value="E">Erkek</option><option value="K">Kadın</option></select></div>
+        <div><label for="kBoy">Boy (cm)</label><input id="kBoy" type="number" inputmode="decimal" min="100" max="230" placeholder="175"></div>
+        <div><label for="kKg">Kilo (kg)</label><input id="kKg" type="number" inputmode="decimal" min="20" max="350" placeholder="80"></div>
+      </div>
+      <div class="cikti" id="kCikti" role="status">Boy ve kilo girin.</div>
+      <p class="kaynak">Öngörülen vücut ağırlığı (PBW) ve 6 mL/kg hedefi: Marino, The ICU Book 5. baskı, Tablo 27.1 (ARDSNet). Yağsız kilo (Janmahasatian), düzeltilmiş kilo (PBW + 0,4 × fazla kilo) ve vücut yüzey alanı (Mosteller) standart formüllerdir.</p>
+    </div>
+
+    <div class="box"><span class="tape" aria-hidden="true"></span>
+      <h3>Lokal anestezik üst sınırı</h3>
+      <div class="form">
+        <div><label for="laIlac">İlaç</label><select id="laIlac"></select></div>
+        <div><label for="laTip">Uygulama</label><select id="laTip"><option value="blok">Büyük sinir bloğu</option><option value="epidural">Epidural</option><option value="infiltrasyon">İnfiltrasyon</option></select></div>
+        <div><label for="laEpi">Adrenalin</label><select id="laEpi"><option value="0">Adrenalinsiz</option><option value="1">Adrenalinli</option></select></div>
+        <div><label for="laKg">Kilo (kg)</label><input id="laKg" type="number" inputmode="decimal" min="1" max="300" placeholder="70"></div>
+        <div><label for="laYuzde">Konsantrasyon (%)</label><input id="laYuzde" type="number" inputmode="decimal" step="0.05" min="0.05" max="5" placeholder="0,5"></div>
+      </div>
+      <div class="cikti" id="laCikti" role="status">İlaç, kilo ve konsantrasyon girin.</div>
+      <p class="kaynak">Mutlak tavanlar (mg, 70 kg erişkin): Miller's Anesthesia 9. baskı, Bölüm 29, Tablo 29.4 (infiltrasyon), 29.6 (büyük sinir blokları) ve 29.7 (epidural). mg/kg sınırları yaygın öğretilen değerlerdir; kitap metinlerinde mg/kg tablosu bulunmadığı için kurum protokolünüzle karşılaştırın. Yenidoğan ve küçük süt çocuğu notu: Hadzic.</p>
+    </div>
+
+    <div class="box"><span class="tape" aria-hidden="true"></span>
+      <h3>Çocuk hesapları</h3>
+      <div class="form">
+        <div><label for="cYas">Yaş (yıl; 6 ay = 0,5)</label><input id="cYas" type="number" inputmode="decimal" step="0.1" min="0" max="18" placeholder="4"></div>
+        <div><label for="cKg">Kilo (kg)</label><input id="cKg" type="number" inputmode="decimal" step="0.1" min="0.5" max="120" placeholder="16"></div>
+        <div><label for="cPre">Prematüre yenidoğan</label><select id="cPre"><option value="0">Hayır</option><option value="1">Evet</option></select></div>
+      </div>
+      <div class="cikti" id="cCikti" role="status">Yaş ve kilo girin.</div>
+      <p class="kaynak">Morgan &amp; Mikhail's Clinical Anesthesiology 7. baskı, Bölüm 42 (Pediatric Anesthesia): tüp formülü, 4-2-1 kuralı, kan hacimleri, glukoz ihtiyacı ve tablodaki dozlar. Tavanlar kitapta yazılı olduğu yerde uygulanmıştır.</p>
+    </div>
+
+    <div class="box"><span class="tape" aria-hidden="true"></span>
+      <h3>İnfüzyon hızı</h3>
+      <div class="form">
+        <div><label for="iMg">Torbadaki ilaç (mg)</label><input id="iMg" type="number" inputmode="decimal" placeholder="4"></div>
+        <div><label for="iMl">Toplam hacim (mL)</label><input id="iMl" type="number" inputmode="decimal" placeholder="50"></div>
+        <div><label for="iKg">Kilo (kg)</label><input id="iKg" type="number" inputmode="decimal" placeholder="70"></div>
+        <div><label for="iBirim">Doz birimi</label><select id="iBirim"><option value="mcg/kg/dk">mcg/kg/dk</option><option value="mcg/kg/sa">mcg/kg/sa</option><option value="mg/kg/sa">mg/kg/sa</option><option value="mcg/dk">mcg/dk</option><option value="mg/sa">mg/sa</option></select></div>
+        <div><label for="iDoz">Doz</label><input id="iDoz" type="number" inputmode="decimal" step="any" placeholder="0,1"></div>
+        <div><label for="iHiz">Hız (mL/sa)</label><input id="iHiz" type="number" inputmode="decimal" step="any" placeholder="—"></div>
+      </div>
+      <div class="cikti" id="iCikti" role="status">Doz ya da hız alanından birini doldurun; diğeri hesaplanır.</div>
+      <p class="kaynak">Yalnızca birim dönüşümüdür: hız (mL/sa) = saatlik doz ÷ konsantrasyon.</p>
+    </div>
+  </section>
+</div>
+<script src="uygulama.js"></script>
+<script src="defter.js"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!--
+  Uyku Denizi Postası · yeni bölümlerin kalıbı (Farmakoloji eki ve YDUS eki)
+  Rutin bu dosyayı yalnızca ŞABLONDA bu bölümler YOKSA kullanır:
+    1) Aşağıdaki, id'si udp-yeni-bolumler olan style bloğunun İÇİNDEKİ kuralları, şablonun <head> içindeki ana style
+       bloğunun kapanış etiketinden hemen önceye ekle (style etiketlerinin kendisini kopyalama).
+       Şablonda zaten ".ek.fa" kuralı varsa ekleme.
+    2) Farmakoloji ekini (#farmakoloji) Algoloji ekinin (#algoloji) kapanan </section> etiketinden hemen sonra,
+       YDUS ekini (#ydus) da Farmakoloji ekinden hemen sonra (Bulmaca Köşesi'nden önce) koy.
+  Sonraki haftalarda şablonda bu bölümler artık bulunur; o zaman yalnızca içerikleri değiştirilir.
+  Köşeli parantezli [ ... ] yerler içeriktir; yorumlar (<!-- -->) yönergedir, sayfaya kopyalanmaz.
+-->
+
+<style id="udp-yeni-bolumler">
+/* ---------- Ek 3: Farmakoloji (Gemi Eczanesi) ---------- */
+.ek.fa{--ek-band:repeating-linear-gradient(90deg,#4a5d23 0 18px,transparent 18px 26px);--ek-acc:#4a5d23}
+.fa-sinif{font-family:var(--f-head);font-weight:400;font-style:italic;font-size:.55em;color:var(--ink-soft);white-space:nowrap}
+.fa-kimlik{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:8px;margin:10px 0 20px}
+.fa-kimlik div{border:1px solid rgba(42,32,24,.45);border-top:3px solid var(--ek-acc);background:var(--paper-2);padding:7px 10px}
+.fa-kimlik b{display:block;font-family:var(--f-type);font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ek-acc);font-weight:400}
+.fa-kimlik span{display:block;font-size:.92rem;line-height:1.3;margin-top:2px}
+.fa-sema{margin:8px 0 16px;background:var(--paper-2);border:2px solid var(--ink);padding:10px}
+.fa-sema svg{display:block;width:100%;height:auto}
+.fa-sema figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px;line-height:1.35}
+.fa-toks{border:2px solid var(--wax);background:rgba(155,45,32,.07);padding:12px 14px;margin:0 0 16px}
+.fa-toks h5{margin:0 0 6px;font-family:var(--f-head);font-size:1rem;text-transform:uppercase;letter-spacing:.1em;color:var(--wax)}
+.fa-toks ul{margin:0 0 8px;padding-left:1.1em}.fa-toks li{margin-bottom:4px;font-size:.93rem}
+.ek .pearls.fa-not{background:#33401a}
+/* ---------- Ek 4: YDUS (Yandal Masası) ---------- */
+.ek.yd{--ek-band:repeating-linear-gradient(90deg,#7a5a12 0 10px,var(--ink) 10px 13px,transparent 13px 22px);--ek-acc:#7a5a12}
+.yd-sayilar{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:8px 0 16px}
+.yd-sayilar div{border:2px solid var(--ink);background:var(--paper-2);padding:8px 10px;text-align:center}
+.yd-sayilar b{display:block;font-family:var(--f-head);font-size:1.3rem;line-height:1.1;color:var(--ek-acc)}
+.yd-sayilar span{display:block;font-size:.8rem;line-height:1.25;margin-top:3px}
+.ek .pearls.yd-not{background:#4d3a10}
+.ek .box.quiz{margin-top:24px}
+.ek .box.quiz ol[type="A"] li{margin-bottom:3px}
+@media (prefers-reduced-motion:reduce){.fa-sema svg *{animation:none!important;transition:none!important}}
+@media print{.fa-sema svg *{animation:none!important}}
+</style>
+
+<!-- ===== EK 3: Farmakoloji ===== -->
+<section class="ek fa" id="farmakoloji" aria-labelledby="fa-title">
+  <header class="ek-mast">
+    <div>
+      <div class="ek-tag">Ek sayfa · Farmakoloji · Farma Hafta [n]</div>
+      <h2 id="fa-title">Gemi Eczanesi</h2>
+    </div>
+    <p class="ek-sub">Her hafta tek ilaç ya da ilaç ailesi; mekanizmadan dozuna, raf raf ayrıntılı farmakoloji.</p>
+  </header>
+
+  <div class="kicker">Bu haftanın şişesi · [kaynak kitaplar ve bölümler]</div>
+  <h3 class="t">[İlaç adı] <span class="fa-sinif">· [farmakolojik sınıfı]</span></h3>
+
+  <!-- Kimlik kartı: 6 kutu. Yalnızca kitapta yazan bilgi; yoksa o kutuyu çıkar. -->
+  <div class="fa-kimlik">
+    <div><b>Sınıf</b><span>[ör. seçici α2 agonist]</span></div>
+    <div><b>Etki yeri</b><span>[reseptör / kanal / enzim]</span></div>
+    <div><b>Başlangıç · süre</b><span>[IV başlangıç ve etki süresi]</span></div>
+    <div><b>Metabolizma</b><span>[organ, enzim, aktif metabolit]</span></div>
+    <div><b>Atılım</b><span>[böbrek / safra; yarı ömür]</span></div>
+    <div><b>Antidot · geri çevirme</b><span>[varsa; yoksa "özgül antidotu yok"]</span></div>
+  </div>
+
+  <div class="ek-grid">
+    <article class="body">
+      <h5>Etki mekanizması</h5>
+      <p>[Molekül → reseptör → hücre içi olay → klinik etki zinciri. 1-2 paragraf.]</p>
+
+      <!-- ANİMASYONLU ŞEMA: ilacın etki yerini gösteren özgün satır içi SVG (reseptöre bağlanma, kanal açılıp kapanması,
+           sinapsta salınım ya da plazma düzeyi-zaman eğrisi). CSS @keyframes ile hafif hareket; renkler var(--ink), var(--sea),
+           var(--wax), #4a5d23. viewBox kullan, sabit genişlik verme. Hareketli öğelere class ver; prefers-reduced-motion'da durur. -->
+      <figure class="fa-sema">
+        <svg viewBox="0 0 360 180" role="img" aria-label="[şemanın kısa anlatımı]">[...]</svg>
+        <figcaption>[Şemanın açıklaması, "şematik, ölçeksiz".]</figcaption>
+      </figure>
+
+      <h5>Farmakokinetik</h5>
+      <div class="tbl-wrap"><table class="cmp">
+        <tr><th>Özellik</th><th>Değer</th></tr>
+        <tr><td>Başlangıç / pik etki</td><td>[ ]</td></tr>
+        <tr><td>Etki süresi</td><td>[ ]</td></tr>
+        <tr><td>Dağılım hacmi</td><td>[ ]</td></tr>
+        <tr><td>Proteine bağlanma</td><td>[ ]</td></tr>
+        <tr><td>Metabolizma</td><td>[ ]</td></tr>
+        <tr><td>Eliminasyon yarı ömrü</td><td>[ ]</td></tr>
+        <tr><td>Duyarlı yarı ömür / birikim</td><td>[ ]</td></tr>
+        <tr><td>Atılım</td><td>[ ]</td></tr>
+      </table></div>
+
+      <h5>Organ sistemlerine etkileri</h5>
+      <div class="tbl-wrap"><table class="cmp">
+        <tr><th>Sistem</th><th>Etki</th></tr>
+        <tr><td>Kardiyovasküler</td><td>[ ]</td></tr>
+        <tr><td>Solunum</td><td>[ ]</td></tr>
+        <tr><td>Santral sinir sistemi</td><td>[ ]</td></tr>
+        <tr><td>Böbrek · karaciğer</td><td>[ ]</td></tr>
+        <tr><td>Diğer</td><td>[ ]</td></tr>
+      </table></div>
+
+      <h5>Dozlar</h5>
+      <div class="tbl-wrap"><table class="cmp">
+        <tr><th>Kullanım</th><th>Doz</th><th>Not</th></tr>
+        <tr><td>[ör. indüksiyon / yükleme]</td><td>[ ]</td><td>[ ]</td></tr>
+        <tr><td>[idame / infüzyon]</td><td>[ ]</td><td>[ ]</td></tr>
+        <tr><td>[çocuk]</td><td>[ ]</td><td>[ ]</td></tr>
+      </table></div>
+
+      <h5>Özel hasta grupları</h5>
+      <ul>
+        <li><b>Yaşlı:</b> [ ]</li>
+        <li><b>Gebelik ve emzirme:</b> [ ]</li>
+        <li><b>Böbrek yetmezliği:</b> [ ]</li>
+        <li><b>Karaciğer yetmezliği:</b> [ ]</li>
+        <li><b>Obezite:</b> [hangi kiloya göre dozlanır]</li>
+      </ul>
+    </article>
+
+    <aside>
+      <div class="fa-toks">
+        <h5>Yan etki · toksisite</h5>
+        <ul><li>[ ]</li></ul>
+        <h5>Kontrendikasyon · dikkat</h5>
+        <ul><li>[ ]</li></ul>
+        <h5>Önemli etkileşimler</h5>
+        <ul><li>[ ]</li></ul>
+      </div>
+
+      <h5>Aile karşılaştırması</h5>
+      <div class="tbl-wrap"><table class="cmp">
+        <tr><th>İlaç</th><th>[özellik 1]</th><th>[özellik 2]</th><th>[özellik 3]</th></tr>
+        <tr><td>[bu haftanın ilacı]</td><td>[ ]</td><td>[ ]</td><td>[ ]</td></tr>
+        <tr><td>[akrabası]</td><td>[ ]</td><td>[ ]</td><td>[ ]</td></tr>
+      </table></div>
+
+      <!-- Kart destesi bu kutudan beslenir: her madde <li><b>Kısa hüküm.</b> Açıklama.</li> biçiminde olmalı. -->
+      <div class="pearls fa-not">
+        <div class="kicker">Ameliyathaneye taşınacak 5 farmakoloji notu</div>
+        <ul>
+          <li><b>[Kısa hüküm.]</b> [Bir-iki cümle açıklama.]</li>
+        </ul>
+      </div>
+
+      <!-- 2 soru. Soru karnesi bu yapıyı okur: soru <p>, hemen ardından <ol type="A">, sonra <details> içinde "Doğru cevap: X." -->
+      <div class="box quiz">
+        <span class="tape" aria-hidden="true"></span>
+        <div class="kicker">Eczane sınavı · 2 soru</div>
+        <p><b>1.</b> [Soru kökü]</p>
+        <ol type="A"><li>[ ]</li><li>[ ]</li><li>[ ]</li><li>[ ]</li></ol>
+        <details><summary>Cevabı göster</summary><div class="ans"><p><b>Doğru cevap: [X].</b> [Neden doğru, diğerleri neden yanlış.]</p></div></details>
+        <p style="margin-top:14px"><b>2.</b> [Soru kökü]</p>
+        <ol type="A"><li>[ ]</li><li>[ ]</li><li>[ ]</li><li>[ ]</li></ol>
+        <details><summary>Cevabı göster</summary><div class="ans"><p><b>Doğru cevap: [X].</b> [Açıklama.]</p></div></details>
+      </div>
+
+      <p class="src">Kaynak: [Kitap, baskı, bölüm numarası ve adı]. Dozlar kitaptan alınmıştır; uygulamadan önce kurum protokolü ve prospektüsle karşılaştırın.</p>
+    </aside>
+  </div>
+
+  <div class="cal-note" style="margin-top:18px"><b>Eczane rafı (farmakoloji konu sırası):</b></div>
+  <ol class="ek-cal">
+    <li>1 · [konu]</li><li class="now">[n] · [bu haftanın konusu]</li>
+  </ol>
+</section>
+
+<!-- ===== EK 4: YDUS ===== -->
+<section class="ek yd" id="ydus" aria-labelledby="yd-title">
+  <header class="ek-mast">
+    <div>
+      <div class="ek-tag">Ek sayfa · YDUS Hazırlık · [Yoğun Bakım | Algoloji] · YDUS Hafta [n]</div>
+      <h2 id="yd-title">Yandal Masası</h2>
+    </div>
+    <p class="ek-sub">Yan dal sınavına çalışanlar için: yüksek verimli konu, sınav sayıları, sık karıştırılanlar ve vaka tipi beş soru.</p>
+  </header>
+
+  <div class="ek-grid">
+    <article class="body">
+      <div class="kicker">Yüksek verimli konu · [kaynak kitap ve bölüm]</div>
+      <h3 class="t">[Konu başlığı]</h3>
+      <p>[Konunun sınav gözüyle özeti: tanım, patofizyoloji, tanı ölçütleri, tedavi basamakları. Yoğun bakım ve algoloji eklerindeki
+         asistan düzeyinin bir basamak üstü; yan dal düzeyinde ayrıntı.]</p>
+      <h5>[Alt başlık]</h5>
+      <p>[ ]</p>
+
+      <h5>Sınav sayıları</h5>
+      <!-- Ezberlenecek eşikler, skorlar, dozlar. 4-8 kutu. Hepsi kitap metninden; birimleriyle. -->
+      <div class="yd-sayilar">
+        <div><b>[değer]</b><span>[neyin eşiği / kaynağı]</span></div>
+      </div>
+
+      <h5>Sık karıştırılanlar</h5>
+      <div class="tbl-wrap"><table class="cmp">
+        <tr><th>[Kavram A]</th><th>[Kavram B]</th></tr>
+        <tr><td>[ ]</td><td>[ ]</td></tr>
+      </table></div>
+    </article>
+
+    <aside>
+      <div class="pearls yd-not">
+        <div class="kicker">Sınavdan önce son bakış · 5 not</div>
+        <ul>
+          <li><b>[Kısa hüküm.]</b> [Açıklama.]</li>
+        </ul>
+      </div>
+      <p class="src">Kaynak: [Kitap, baskı, bölüm]. Sorular bu bölümden yazılmıştır; gerçek sınav sorusu değildir.</p>
+    </aside>
+  </div>
+
+  <!-- 5 soru, YDUS biçiminde: vaka kökü + 5 şık (A-E). Açıklamada doğru şıkkın gerekçesi ve her yanlış şıkkın neden yanlış olduğu. -->
+  <div class="box quiz">
+    <span class="tape" aria-hidden="true"></span>
+    <div class="kicker">YDUS tarzı 5 soru · [Yoğun Bakım | Algoloji]</div>
+    <h4>[Soruların ortak başlığı]</h4>
+    <p><b>1.</b> [Vaka kökü ve soru]</p>
+    <ol type="A"><li>[ ]</li><li>[ ]</li><li>[ ]</li><li>[ ]</li><li>[ ]</li></ol>
+    <details><summary>Cevabı göster</summary><div class="ans"><p><b>Doğru cevap: [X].</b> [Gerekçe; diğer şıklar neden yanlış.]</p></div></details>
+    <!-- 2.–5. sorular aynı kalıpla; her soru <p style="margin-top:14px"><b>N.</b> ...</p> ile başlar -->
+  </div>
+
+  <div class="cal-note" style="margin-top:18px"><b>Yandal Masası konu sırası (Yoğun bakım ve Algoloji dönüşümlü):</b></div>
+  <ol class="ek-cal">
+    <li>1 · YB · [konu]</li><li class="now">[n] · [alan] · [bu haftanın konusu]</li>
+  </ol>
+</section>

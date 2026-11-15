@@ -280,9 +280,42 @@ def kontrol(html, durum_yolu):
         if r.returncode:
             hata.append(f"script #{i + 1} sözdizimi hatası: {r.stderr.strip()[:300]}")
     for gerekli in ['class="front"', 'class="clips"', 'class="topic"', 'class="news"', 'id="yogun-bakim"',
-                    'id="algoloji"', 'class="puzzle"', "var words = [", "@media print", "<details"]:
+                    'id="algoloji"', 'id="farmakoloji"', 'id="ydus"', 'class="puzzle"', "var words = [", "@media print", "<details"]:
         if gerekli not in t:
             hata.append(f"eksik bölüm/işaret: {gerekli}")
+    if "[" in re.sub(r"<(script|style)\b.*?</\1>", "", t, flags=re.S) and re.search(r"\[(İlaç adı|Konu başlığı|Kısa hüküm\.|Soru kökü|Vaka kökü|n|X)\]", t):
+        hata.append("kalıptan doldurulmamış [ ... ] yer tutucu kaldı")
+    # Uygulamanın soru karnesi için soru kalıbı: her <ol type="A"> için bir "Doğru cevap: X"
+    siklar = len(re.findall(r'<ol\s+type="A"', t))
+    cevaplar = len(re.findall(r"Doğru cevap\s*:\s*[A-E]\b", t))
+    if siklar != cevaplar:
+        hata.append(f"soru kalıbı bozuk: {siklar} şık listesi (<ol type=\"A\">) ama {cevaplar} 'Doğru cevap: X' açıklaması var")
+
+    def bolum(idsi):
+        m = re.search(r'<section[^>]*id="' + idsi + r'"', t)
+        if not m:
+            return ""
+        son = t.find("</section>", m.end())
+        return t[m.start():son if son > 0 else len(t)]
+    fa, yd = bolum("farmakoloji"), bolum("ydus")
+    if fa:
+        n = len(re.findall(r"Doğru cevap\s*:\s*[A-E]\b", fa))
+        if n < 2:
+            hata.append(f"Farmakoloji ekinde 2 soru olmalı, {n} bulundu")
+        for parca in ("fa-kimlik", "fa-sema", "fa-toks", "pearls"):
+            if parca not in fa:
+                hata.append(f"Farmakoloji ekinde eksik kısım: {parca}")
+    if yd:
+        n = len(re.findall(r"Doğru cevap\s*:\s*[A-E]\b", yd))
+        if n < 5:
+            hata.append(f"YDUS ekinde 5 soru olmalı, {n} bulundu")
+        if len(re.findall(r"<li>", yd)) and not re.search(r'<ol\s+type="A">\s*(<li>.*?</li>\s*){5}</ol>', yd, flags=re.S):
+            uyari.append("YDUS sorularında 5 şık (A-E) bulunamadı")
+        for parca in ("yd-sayilar", "pearls"):
+            if parca not in yd:
+                hata.append(f"YDUS ekinde eksik kısım: {parca}")
+    if len(re.findall(r'class="pearls', t)) < 5:
+        uyari.append("5'ten az inci kutusu (.pearls) var; kart destesi eksik beslenir")
     if "abg" not in t:
         hata.append("kan gazı çözücü (abg) bulunamadı")
     linkler = sorted(set(re.findall(r'href="(https?://[^"]+)"', t)))

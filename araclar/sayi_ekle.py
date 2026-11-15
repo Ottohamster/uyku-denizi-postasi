@@ -2,7 +2,7 @@
 """Bir sayıyı uygulamaya (PWA) ekler. Depo kökünden çalıştırılır; yalnızca standart kütüphane.
 
   python3 araclar/sayi_ekle.py --sayi 3 --tarih 2026-11-13 --html /yol/sayi.html [--pdf /yol/sayi.pdf]
-          --manset "..." --konu "..." --yb "..." --agri "..."
+          --manset "..." --konu "..." --yb "..." --agri "..." [--farma "..."] [--ydus "..."]
 
 Yaptıkları:
   - HTML'i sayilar/sayi-NN.html olarak kopyalar; eksikse doctype/charset/viewport ekler,
@@ -60,6 +60,8 @@ def main():
     a.add_argument("--konu", default="")
     a.add_argument("--yb", default="")
     a.add_argument("--agri", default="")
+    a.add_argument("--farma", default="", help="farmakoloji sayfasının ilacı")
+    a.add_argument("--ydus", default="", help="YDUS sayfasının konusu")
     p = a.parse_args()
     nn = f"{p.sayi:02d}"
     os.makedirs(os.path.join(KOK, "sayilar"), exist_ok=True)
@@ -82,7 +84,7 @@ def main():
     g = datetime.date.fromisoformat(p.tarih)
     kayit = {"sayi": p.sayi, "tarih": p.tarih, "tarih_yazi": f"{g.day} {AYLAR[g.month - 1]} {g.year}",
              "html": html_yol, "pdf": pdf_yol, "manset": p.manset, "konu": p.konu,
-             "yogun_bakim": p.yb, "algoloji": p.agri}
+             "yogun_bakim": p.yb, "algoloji": p.agri, "farmakoloji": p.farma, "ydus": p.ydus}
     eski = next((s for s in veri["sayilar"] if s["sayi"] == p.sayi), None)
     if eski and not pdf_yol:
         kayit["pdf"] = eski.get("pdf")
