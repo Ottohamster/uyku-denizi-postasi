@@ -32,7 +32,20 @@
    "konu": "Standart monitörizasyon",
    "yogun_bakim": "Mekanik ventilasyonun temelleri",
    "algoloji": "Ağrı değerlendirmesi ve skalalar"
+  },
+  {
+   "sayi": 4,
+   "tarih": "2026-11-21",
+   "tarih_yazi": "21 Kasım 2026",
+   "html": "sayilar/sayi-04.html",
+   "pdf": "pdf/Uyku-Denizi-Postasi-Sayi-04.pdf",
+   "manset": "Epiglotu Doğrudan mı Kaldırmalı, Dolaylı mı? Video Laringoskopla 899 Hastada Komplikasyon Farkı Çıkmadı",
+   "konu": "Havayolu değerlendirmesi ve yönetimi",
+   "yogun_bakim": "Sepsis ve septik şok",
+   "algoloji": "Santral sensitizasyon ve modülasyon",
+   "farmakoloji": "Deksmedetomidin",
+   "ydus": "Hemorajik şok ve hasar kontrol resüsitasyonu"
   }
  ],
- "guncelleme": "2026-11-13T11:00:27Z"
+ "guncelleme": "2026-11-21T18:38:49Z"
 }
